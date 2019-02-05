@@ -10,8 +10,7 @@
 		<link rel="icon" href="images/favicon.ico" sizes="96x96">
 		<link rel="icon" href="images/favicon.ico" sizes="128x128">
 		<link rel="icon" href="images/favicon.ico" sizes="196x196">
-		<link rel="stylesheet" href="/css/main.css?v=1549270220106">
-		<title>Flyboots</title>
+		<link rel="stylesheet" href="css/main.css">
 	</head>
 	<body>
 		<div class="wrapper">
@@ -810,12 +809,12 @@
 						</svg></a>
 					<div class="modal__wrap">
 						<div class="modal__title">Вход в личный кабинет</div>
-						<form class="modal__form">
-							<label class="modal__label"><span>Логин</span>
-								<input type="text">
+						<form class="modal__form" role="form" method="POST" id="js-form-user">
+							<label class="modal__label" for="form-email"><span>Электронная  почта</span>
+								<input type="text" name="email" id="form-email">
 							</label>
-							<label class="modal__label"><span>Пароль</span>
-								<input type="password">
+							<label class="modal__label" for="form-password"><span>Пароль</span>
+								<input type="password" name="password" id="form-password">
 							</label><a class="link" href="#" id="js-link-password">Забыли пароль?</a>
 							<button class="btn btn-red">Войти</button>
 						</form>
@@ -828,9 +827,9 @@
 						</svg></a>
 					<div class="modal__wrap">
 						<div class="modal__title">Восстановление пароля</div>
-						<form class="modal__form">
+						<form class="modal__form" role="form" method="POST" id="js-form-password">
 							<label class="modal__label"><span>Электронная почта</span>
-								<input type="text">
+								<input type="text" name="email">
 							</label>
 							<div class="modal__txt">Отправим новый пароль</div>
 							<button class="btn btn-red">Отправить</button>
@@ -854,21 +853,18 @@
 						</svg></a>
 					<div class="modal__wrap">
 						<div class="modal__title">Регистрация</div>
-						<form class="modal__form">
+						<form class="modal__form" role="form" method="POST" id="js-form-registration">
 							<label class="modal__label"><span>Мобильный  телефон</span>
-								<input type="text">
+								<input type="text" name="phone" id="js-form-phone">
 							</label>
 							<label class="modal__label"><span>Электронная  почта</span>
-								<input type="text">
-							</label>
-							<label class="modal__label"><span>Логин</span>
-								<input type="text">
+								<input type="text" name="email">
 							</label>
 							<label class="modal__label"><span>Пароль</span>
-								<input type="password">
+								<input type="password" name="password">
 							</label>
 							<label class="modal__label"><span>Пароль  еще раз</span>
-								<input type="password">
+								<input type="password" name="password">
 							</label>
 							<button class="btn btn-red">Войти</button>
 							<label class="modal__check">
@@ -880,8 +876,8 @@
 				</div>
 			</div>
 		</div>
-		<script src="/js/vendor.js?v=1549270220109"></script>
+		<script src="js/vendor.js"></script>
 		<script src="https://api-maps.yandex.ru/2.1/?apikey=c0de13b2-36aa-4ac2-80e6-6d3fde6821bb&amp;lang=ru_RU" type="text/javascript"></script>
-		<script src="/js/main.js?v=1549270220109"></script>
+		<script src="js/main.js"></script>
 	</body>
 </html>
