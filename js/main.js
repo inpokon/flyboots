@@ -154,6 +154,32 @@
 /************************************************************************/
 /******/ ({
 
+/***/ "./src/js/function/fixed-btn.js":
+/*!**************************************!*\
+  !*** ./src/js/function/fixed-btn.js ***!
+  \**************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+var fixedBtnUp = $('.fixed-btn-up');
+$(document).scroll(function () {
+  var $scrollTop = $(document).scrollTop();
+
+  if ($scrollTop > 350) {
+    fixedBtnUp.addClass('fixed-btn-up--active');
+  } else {
+    fixedBtnUp.removeClass('fixed-btn-up--active');
+  }
+});
+fixedBtnUp.on('click', function (e) {
+  e.preventDefault();
+  $('html, body').animate({
+    scrollTop: 0
+  }, 1000);
+});
+
+/***/ }),
+
 /***/ "./src/js/function/fixed-menu.js":
 /*!***************************************!*\
   !*** ./src/js/function/fixed-menu.js ***!
@@ -291,9 +317,9 @@ $('a#js-offers-link').on('click', function (e) {
   $offersList.toggleClass('offers__list--active');
 
   if ($offersList.hasClass('offers__list--active')) {
-    $(this).text('Скрыть');
+    $(this).find('span').text('Скрыть');
   } else {
-    $(this).text('Показать еще');
+    $(this).find('span').text('Показать еще');
   }
 });
 
@@ -346,6 +372,7 @@ $('.main-slider').slick({
 $('.product-slide__wrapper').each(function () {
   $(this).find('.product-slide').slick({
     lazyLoad: 'ondemand',
+    infinite: false,
     variableWidth: true,
     slidesToShow: 4,
     slidesToScroll: 1,
@@ -357,7 +384,7 @@ $('.product-slide__wrapper').each(function () {
 $('.product-slide__item').each(function () {
   $(this).find('.product-slide__top').slick({
     lazyLoad: 'ondemand',
-    infinite: true,
+    infinite: false,
     slidesToShow: 1,
     slidesToScroll: 1,
     arrows: false,
@@ -366,14 +393,13 @@ $('.product-slide__item').each(function () {
   });
   $(this).find('.product-slide__bottom').slick({
     lazyLoad: 'ondemand',
-    infinite: true,
+    infinite: false,
     slidesToShow: 3,
     slidesToScroll: 1,
     asNavFor: $(this).find('.product-slide__top'),
     dots: false,
     arrows: true,
     focusOnSelect: true,
-    centerMode: true,
     variableWidth: true,
     nextArrow: '<div class="product-slide__arrow product-slide__arrow--next"><svg><use xlink:href="images/sprites.svg#arrow_3"></use></svg></div>',
     // Кастомная стрелка "далее"
@@ -383,86 +409,16 @@ $('.product-slide__item').each(function () {
 
 /***/ }),
 
-/***/ "./src/js/function/yandex.js":
-/*!***********************************!*\
-  !*** ./src/js/function/yandex.js ***!
-  \***********************************/
+/***/ "./src/js/function/valid.js":
+/*!**********************************!*\
+  !*** ./src/js/function/valid.js ***!
+  \**********************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-// Функция ymaps.ready() будет вызвана, когда
-// загрузятся все компоненты API, а также когда будет готово DOM-дерево.
-ymaps.ready(init);
-
-function init() {
-  var myMap = new ymaps.Map("map", {
-    center: [52.275555, 104.281047],
-    zoom: 12
-  });
-
-  function funPlacemark(geo, desc) {
-    var myPlacemark = new ymaps.Placemark(geo, {
-      balloonContent: desc
-    }, {
-      iconLayout: 'default#image',
-      iconImageHref: 'images/sprites/svg/point_1.svg',
-      iconImageSize: [24, 36]
-    });
-    myMap.geoObjects.add(myPlacemark);
-  }
-
-  myMap.behaviors.disable(['scrollZoom']);
-  myMap.controls.remove('geolocationControl').remove('searchControl').remove('routeButtonControl').remove('typeSelector').remove('trafficControl').remove('fullscreenControl').remove('rulerControl');
-  funPlacemark([52.265675, 104.226514], 'Сергеева, 3/5 (ТЦ Silver Mall, пав. В3)');
-  funPlacemark([52.248133, 104.269341], 'Лермонтова, 267/3');
-  funPlacemark([52.275054, 104.256253], 'Гоголя, 53/3');
-  funPlacemark([52.284239, 104.288053], 'Литвинова, 2');
-  funPlacemark([52.284646, 104.289473], 'Урицкого, 4');
-  funPlacemark([52.275819, 104.305081], 'Советская, 58/1 (МТЦ Новый, пав 135)');
-  funPlacemark([52.264467, 104.329618], 'Депутатская, 84/2');
-  funPlacemark([52.275054, 104.256253], 'Гоголя, 53/3');
-  funPlacemark([52.353573, 104.153603], 'Баумана, 216/1');
-}
-
-/***/ }),
-
-/***/ "./src/js/main.js":
-/*!************************!*\
-  !*** ./src/js/main.js ***!
-  \************************/
-/*! no exports provided */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _vendor__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./vendor */ "./src/js/vendor.js");
-
-
-__webpack_require__(/*! ./vendor/slick.min.js */ "./src/js/vendor/slick.min.js");
-
-__webpack_require__(/*! ./vendor/jquery.validate.min.js */ "./src/js/vendor/jquery.validate.min.js");
-
-__webpack_require__(/*! ./vendor/jquery.inputmask.min.js */ "./src/js/vendor/jquery.inputmask.min.js");
-
-__webpack_require__(/*! ./function/yandex.js */ "./src/js/function/yandex.js");
-
-$(document).ready(function () {
-  __webpack_require__(/*! ./function/search.js */ "./src/js/function/search.js");
-
-  __webpack_require__(/*! ./function/sliders.js */ "./src/js/function/sliders.js");
-
-  __webpack_require__(/*! ./function/offers.js */ "./src/js/function/offers.js");
-
-  __webpack_require__(/*! ./function/fixed-menu.js */ "./src/js/function/fixed-menu.js");
-
-  __webpack_require__(/*! ./function/hover-nav-menu.js */ "./src/js/function/hover-nav-menu.js");
-
-  __webpack_require__(/*! ./function/modal.js */ "./src/js/function/modal.js");
-
-  valid('#js-form-user');
-  valid('#js-form-password');
-  valid('#js-form-registration');
-});
+valid('#js-form-user');
+valid('#js-form-password');
+valid('#js-form-registration');
 
 function valid(form) {
   $.validator.addMethod("minlenghtphone", function (value, element) {
@@ -529,9 +485,92 @@ function valid(form) {
 }
 
 $(function () {
-  $("#js-form-phone").inputmask("+ 7 (999) 999 99 99", {
-    placeholder: "_"
+  $("#js-form-phone").inputmask("+ 7 (999) 999-99-99", {
+    placeholder: "-"
   });
+});
+
+/***/ }),
+
+/***/ "./src/js/function/yandex.js":
+/*!***********************************!*\
+  !*** ./src/js/function/yandex.js ***!
+  \***********************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+// Функция ymaps.ready() будет вызвана, когда
+// загрузятся все компоненты API, а также когда будет готово DOM-дерево.
+ymaps.ready(init);
+
+function init() {
+  var myMap = new ymaps.Map("map", {
+    center: [52.275555, 104.281047],
+    zoom: 12
+  });
+
+  function funPlacemark(geo, desc, link, phone, tel, time) {
+    var myPlacemark = new ymaps.Placemark(geo, {
+      balloonContent: '<a href="' + link + '" class="yandex-title"><span>' + desc + '</span></a> <a href="tel:' + phone + '" class="yandex-phone">' + tel + '</a> <div class="yandex-time">' + time + '</div>'
+    }, {
+      iconLayout: 'default#image',
+      iconImageHref: 'images/sprites/svg/point_1.svg',
+      iconImageSize: [24, 36]
+    });
+    myMap.geoObjects.add(myPlacemark);
+  }
+
+  myMap.behaviors.disable(['scrollZoom']);
+  myMap.controls.remove('geolocationControl').remove('searchControl').remove('routeButtonControl').remove('typeSelector').remove('trafficControl').remove('fullscreenControl').remove('rulerControl');
+  funPlacemark([52.265675, 104.226514], 'Сергеева, 3/5 (ТЦ Silver Mall, пав. В3)', '#', '+73952904800', '+7 (3952) 904-800', 'с 10:00 до 20:00');
+  funPlacemark([52.248133, 104.269341], 'Лермонтова, 267/3', '#', '+73952904800', '+7 (3952) 904-800', 'с 10:00 до 20:00');
+  funPlacemark([52.275054, 104.256253], 'Гоголя, 53/3', '#', '+73952904800', '+7 (3952) 904-800', 'с 10:00 до 20:00');
+  funPlacemark([52.284239, 104.288053], 'Литвинова, 2', '#', '+73952904800', '+7 (3952) 904-800', 'с 10:00 до 20:00');
+  funPlacemark([52.284646, 104.289473], 'Урицкого, 4', '#', '+73952904800', '+7 (3952) 904-800', 'с 10:00 до 20:00');
+  funPlacemark([52.275819, 104.305081], 'Советская, 58/1 (МТЦ Новый, пав 135)', '#', '+73952904800', '+7 (3952) 904-800', 'с 10:00 до 20:00');
+  funPlacemark([52.264467, 104.329618], 'Депутатская, 84/2', '#', '+73952904800', '+7 (3952) 904-800', 'с 10:00 до 20:00');
+  funPlacemark([52.275054, 104.256253], 'Гоголя, 53/3', '#', '+73952904800', '+7 (3952) 904-800', 'с 10:00 до 20:00');
+  funPlacemark([52.353573, 104.153603], 'Баумана, 216/1', '#', '+73952904800', '+7 (3952) 904-800', 'с 10:00 до 20:00');
+}
+
+/***/ }),
+
+/***/ "./src/js/main.js":
+/*!************************!*\
+  !*** ./src/js/main.js ***!
+  \************************/
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _vendor__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./vendor */ "./src/js/vendor.js");
+
+
+__webpack_require__(/*! ./vendor/slick.min.js */ "./src/js/vendor/slick.min.js");
+
+__webpack_require__(/*! ./vendor/jquery.validate.min.js */ "./src/js/vendor/jquery.validate.min.js");
+
+__webpack_require__(/*! ./vendor/jquery.inputmask.min.js */ "./src/js/vendor/jquery.inputmask.min.js");
+
+__webpack_require__(/*! ./function/yandex.js */ "./src/js/function/yandex.js");
+
+$(document).ready(function () {
+  __webpack_require__(/*! ./function/search.js */ "./src/js/function/search.js");
+
+  __webpack_require__(/*! ./function/sliders.js */ "./src/js/function/sliders.js");
+
+  __webpack_require__(/*! ./function/offers.js */ "./src/js/function/offers.js");
+
+  __webpack_require__(/*! ./function/fixed-menu.js */ "./src/js/function/fixed-menu.js");
+
+  __webpack_require__(/*! ./function/hover-nav-menu.js */ "./src/js/function/hover-nav-menu.js");
+
+  __webpack_require__(/*! ./function/modal.js */ "./src/js/function/modal.js");
+
+  __webpack_require__(/*! ./function/fixed-btn.js */ "./src/js/function/fixed-btn.js");
+
+  __webpack_require__(/*! ./function/valid.js */ "./src/js/function/valid.js");
 });
 
 /***/ }),
