@@ -11,12 +11,105 @@
 		<link rel="icon" href="images/favicon.ico" sizes="96x96">
 		<link rel="icon" href="images/favicon.ico" sizes="128x128">
 		<link rel="icon" href="images/favicon.ico" sizes="196x196">
-		<link rel="stylesheet" href="css/main.css?v=1549512442254">
+		<link rel="stylesheet" href="css/main.css?v=1549615651801">
 	</head>
 	<body><a class="fixed-btn-up" href="#">
 			<svg class="svg-arrow_3">
 				<use xlink:href="images/sprites.svg#arrow_3"></use>
 			</svg></a>
+		<div class="to-favorites">В избранное</div>
+		<div class="in-favorites">В избранном</div>
+		<div class="overlay overlay-two">
+			<div class="modal quick-modal"><a class="modal__close" href="#">
+					<svg class="svg-close">
+						<use xlink:href="images/sprites.svg#close"></use>
+					</svg></a>
+				<div class="modal__wrap">
+					<div class="modal__subtitle">Быстрый заказ со скидкой 15%</div>
+					<form class="modal__form" role="form" method="POST" id="js-form-quick">
+						<div class="modal__block">
+							<div class="modal__img"><img src="images/item2x/shoes_1.jpg"></div>
+							<div class="modal__description"><a class="modal__text link-solid-black-s" href="#"><span>Тапочки Belsta</span></a>
+								<div class="modal__size">Размер 37</div>
+								<div class="modal__price">612 руб.</div>
+							</div>
+						</div>
+						<label class="modal__label"><span>Мобильный телефон</span>
+							<input class="js-form-phone" type="text" name="phone" placeholder="+7 (999) 999-99-99">
+						</label><span class="modal__min">Пришлем промокод в смс</span><span class="modal__address-txt">Адрес выдачи заказа</span><a class="modal__address-link" href="#"><span id="js-modal-link-address">ул. Сергеева, 3/5 (ТЦ Silver Mall, пав. В3)</span>
+							<div class="modal__address-wrap">
+								<ul class="modal__address">
+									<li class="modal__item modal__item--active" id="sergeeva">
+										<label class="modal__option">
+											<input class="modal__hidden" type="radio" name="address" checked><span>ул. Сергеева, 3/5 (ТЦ Silver Mall, пав. В3)</span>
+										</label>
+									</li>
+									<li class="modal__item" id="lermantova">
+										<label class="modal__option">
+											<input class="modal__hidden" type="radio" name="address"><span>ул. Лермонтова, 267/3</span>
+										</label>
+									</li>
+									<li class="modal__item" id="gogalya">
+										<label class="modal__option">
+											<input class="modal__hidden" type="radio" name="address"><span>ул. Гоголя, 53/3</span>
+										</label>
+									</li>
+									<li class="modal__item" id="litvinova">
+										<label class="modal__option">
+											<input class="modal__hidden" type="radio" name="address"><span>ул. Литвинова, 2</span>
+										</label>
+									</li>
+									<li class="modal__item" id="urickogo">
+										<label class="modal__option">
+											<input class="modal__hidden" type="radio" name="address"><span>ул. Урицкого, 4</span>
+										</label>
+									</li>
+									<li class="modal__item" id="sovetskaya">
+										<label class="modal__option">
+											<input class="modal__hidden" type="radio" name="address"><span>ул. Советская, 58/1 (МТЦ Новый, пав 135)</span>
+										</label>
+									</li>
+									<li class="modal__item" id="deputatskaya">
+										<label class="modal__option">
+											<input class="modal__hidden" type="radio" name="address"><span>ул. Депутатская, 84/2</span>
+										</label>
+									</li>
+									<li class="modal__item" id="baumana">
+										<label class="modal__option">
+											<input class="modal__hidden" type="radio" name="address"><span>ул. Баумана, 216/1</span>
+										</label>
+									</li>
+								</ul>
+							</div></a>
+						<div class="modal__min">Заказ доставим в магазин сегодня в 14:00</div><a class="modal__map-link link-dashed-s" href="#"><span>Проверьте адрес на карте</span>
+							<div class="modal__maps">
+								<div class="modal__maps-wrap">
+									<div id="modal__map" style="width:100%; height: 236px"></div>
+								</div>
+							</div></a>
+						<p class="modal__par">Расскажите друзьям в соцсетях о покупке <br>и мы увеличим скидку до 20%</p>
+						<div class="modal__social">
+							<svg class="svg-social">
+								<use xlink:href="images/sprites.svg#vk"></use>
+							</svg>
+							<svg class="svg-social">
+								<use xlink:href="images/sprites.svg#vk"></use>
+							</svg>
+							<svg class="svg-social">
+								<use xlink:href="images/sprites.svg#vk"></use>
+							</svg>
+							<svg class="svg-social">
+								<use xlink:href="images/sprites.svg#vk"></use>
+							</svg>
+						</div>
+						<button class="btn btn-red btn-disabled">Заказать</button>
+						<label class="modal__check">
+							<input type="checkbox" name="check" checked><span class="modal__check-text">Я согласен на&nbsp;<a href="#">обработку персональных данных</a></span>
+						</label>
+					</form>
+				</div>
+			</div>
+		</div>
 		<div class="wrapper">
 			<div class="content">
 				<header class="header">
@@ -44,7 +137,7 @@
 									<use xlink:href="images/sprites.svg#logo"></use>
 								</svg></a>
 							<ul class="nav-menu__list">
-								<li><a class="nav-menu__link" href="/">Женская
+								<li><a class="nav-menu__link" href="goods.html">Женская
 										<svg class="svg-arrow">
 											<use xlink:href="images/sprites.svg#arrow"></use>
 										</svg></a>
@@ -141,7 +234,7 @@
 										</div>
 									</div>
 								</li>
-								<li><a class="nav-menu__link" href="/">Мужская
+								<li><a class="nav-menu__link" href="goods.html">Мужская
 										<svg class="svg-arrow">
 											<use xlink:href="images/sprites.svg#arrow"></use>
 										</svg></a>
@@ -225,7 +318,7 @@
 										</form>
 									</div>
 								</div></a>
-							<div class="nav-menu__box"><a href="#">
+							<div class="nav-menu__box"><a href="#" id="js-nav-like">
 									<svg class="svg-like">
 										<use xlink:href="images/sprites.svg#like"></use>
 									</svg>Избранное</a><a href="#">Корзина
@@ -323,7 +416,7 @@
 												</ul>
 											</div>
 											<div class="product-slide__price"><span class="product-slide__no-price">720 руб.</span><span>612 руб.</span></div>
-											<div class="product-slide__box"><a class="btn" href="#">В корзину</a><a class="btn product-slide__btn" href="#">Забронировать</a></div>
+											<div class="product-slide__box"><a class="btn product-slide__gradient" href="#">В корзину</a><a class="btn product-slide__btn" href="#">Забронировать</a></div>
 										</div>
 									</div>
 									<div class="product-slide__wrap">
@@ -354,7 +447,7 @@
 												</ul>
 											</div>
 											<div class="product-slide__price"><span class="product-slide__no-price">720 руб.</span><span>638 руб.</span></div>
-											<div class="product-slide__box"><a class="btn" href="#">В корзину</a><a class="btn product-slide__btn" href="#">Забронировать</a></div>
+											<div class="product-slide__box"><a class="btn product-slide__gradient" href="#">В корзину</a><a class="btn product-slide__btn" href="#">Забронировать</a></div>
 										</div>
 									</div>
 									<div class="product-slide__wrap">
@@ -385,7 +478,7 @@
 												</ul>
 											</div>
 											<div class="product-slide__price"><span class="product-slide__no-price">720 руб.</span><span>655 руб.</span></div>
-											<div class="product-slide__box"><a class="btn" href="#">В корзину</a><a class="btn product-slide__btn" href="#">Забронировать</a></div>
+											<div class="product-slide__box"><a class="btn product-slide__gradient" href="#">В корзину</a><a class="btn product-slide__btn" href="#">Забронировать</a></div>
 										</div>
 									</div>
 									<div class="product-slide__wrap">
@@ -416,7 +509,7 @@
 												</ul>
 											</div>
 											<div class="product-slide__price"><span class="product-slide__no-price">720 руб.</span><span>655 руб.</span></div>
-											<div class="product-slide__box"><a class="btn" href="#">В корзину</a><a class="btn product-slide__btn" href="#">Забронировать</a></div>
+											<div class="product-slide__box"><a class="btn product-slide__gradient" href="#">В корзину</a><a class="btn product-slide__btn" href="#">Забронировать</a></div>
 										</div>
 									</div>
 									<div class="product-slide__wrap">
@@ -447,7 +540,7 @@
 												</ul>
 											</div>
 											<div class="product-slide__price"><span class="product-slide__no-price">720 руб.</span><span>612 руб.</span></div>
-											<div class="product-slide__box"><a class="btn" href="#">В корзину</a><a class="btn product-slide__btn" href="#">Забронировать</a></div>
+											<div class="product-slide__box"><a class="btn product-slide__gradient" href="#">В корзину</a><a class="btn product-slide__btn" href="#">Забронировать</a></div>
 										</div>
 									</div>
 								</div>
@@ -483,7 +576,7 @@
 												</ul>
 											</div>
 											<div class="product-slide__price"><span class="product-slide__no-price">8 600 руб.</span><span>4 300 руб.</span></div>
-											<div class="product-slide__box"><a class="btn" href="#">В корзину</a><a class="btn product-slide__btn" href="#">Забронировать</a></div>
+											<div class="product-slide__box"><a class="btn product-slide__gradient" href="#">В корзину</a><a class="btn product-slide__btn" href="#">Забронировать</a></div>
 										</div>
 									</div>
 									<div class="product-slide__wrap">
@@ -514,7 +607,7 @@
 												</ul>
 											</div>
 											<div class="product-slide__price"><span class="product-slide__no-price">7 800 руб.</span><span>3 900 руб.</span></div>
-											<div class="product-slide__box"><a class="btn" href="#">В корзину</a><a class="btn product-slide__btn" href="#">Забронировать</a></div>
+											<div class="product-slide__box"><a class="btn product-slide__gradient" href="#">В корзину</a><a class="btn product-slide__btn" href="#">Забронировать</a></div>
 										</div>
 									</div>
 									<div class="product-slide__wrap">
@@ -545,7 +638,7 @@
 												</ul>
 											</div>
 											<div class="product-slide__price"><span class="product-slide__no-price">7 200 руб.</span><span>3 600 руб.</span></div>
-											<div class="product-slide__box"><a class="btn" href="#">В корзину</a><a class="btn product-slide__btn" href="#">Забронировать</a></div>
+											<div class="product-slide__box"><a class="btn product-slide__gradient" href="#">В корзину</a><a class="btn product-slide__btn" href="#">Забронировать</a></div>
 										</div>
 									</div>
 									<div class="product-slide__wrap">
@@ -576,7 +669,7 @@
 												</ul>
 											</div>
 											<div class="product-slide__price"><span class="product-slide__no-price">4 200 руб.</span><span>2 100 руб.</span></div>
-											<div class="product-slide__box"><a class="btn" href="#">В корзину</a><a class="btn product-slide__btn" href="#">Забронировать</a></div>
+											<div class="product-slide__box"><a class="btn product-slide__gradient" href="#">В корзину</a><a class="btn product-slide__btn" href="#">Забронировать</a></div>
 										</div>
 									</div>
 									<div class="product-slide__wrap">
@@ -607,7 +700,7 @@
 												</ul>
 											</div>
 											<div class="product-slide__price"><span class="product-slide__no-price">8 600 руб.</span><span>4 300 руб.</span></div>
-											<div class="product-slide__box"><a class="btn" href="#">В корзину</a><a class="btn product-slide__btn" href="#">Забронировать</a></div>
+											<div class="product-slide__box"><a class="btn product-slide__gradient" href="#">В корзину</a><a class="btn product-slide__btn" href="#">Забронировать</a></div>
 										</div>
 									</div>
 									<div class="product-slide__wrap">
@@ -638,7 +731,7 @@
 												</ul>
 											</div>
 											<div class="product-slide__price"><span class="product-slide__no-price">7 800 руб.</span><span>3 900 руб.</span></div>
-											<div class="product-slide__box"><a class="btn" href="#">В корзину</a><a class="btn product-slide__btn" href="#">Забронировать</a></div>
+											<div class="product-slide__box"><a class="btn product-slide__gradient" href="#">В корзину</a><a class="btn product-slide__btn" href="#">Забронировать</a></div>
 										</div>
 									</div>
 									<div class="product-slide__wrap">
@@ -669,7 +762,7 @@
 												</ul>
 											</div>
 											<div class="product-slide__price"><span class="product-slide__no-price">7 200 руб.</span><span>3 600 руб.</span></div>
-											<div class="product-slide__box"><a class="btn" href="#">В корзину</a><a class="btn product-slide__btn" href="#">Забронировать</a></div>
+											<div class="product-slide__box"><a class="btn product-slide__gradient" href="#">В корзину</a><a class="btn product-slide__btn" href="#">Забронировать</a></div>
 										</div>
 									</div>
 									<div class="product-slide__wrap">
@@ -700,7 +793,7 @@
 												</ul>
 											</div>
 											<div class="product-slide__price"><span class="product-slide__no-price">4 200 руб.</span><span>2 100 руб.</span></div>
-											<div class="product-slide__box"><a class="btn" href="#">В корзину</a><a class="btn product-slide__btn" href="#">Забронировать</a></div>
+											<div class="product-slide__box"><a class="btn product-slide__gradient" href="#">В корзину</a><a class="btn product-slide__btn" href="#">Забронировать</a></div>
 										</div>
 									</div>
 								</div>
@@ -708,11 +801,11 @@
 						</section>
 						<section class="internet-price"><img class="internet-price__img" src="images/shoes_2x.png">
 							<div class="internet-price__txt">
-								<h2 class="internet-price__title">Скидка 20% на всю обувь и сумки, при заказе через сайт</h2>
+								<h2 class="internet-price__title">Скидка 20% на всю обувь и сумки, при заказе через сайт</h2>
 								<ul class="internet-price__list">
-									<li class="internet-price__item">Выберите понравившийся товар в каталоге и нажмите кнопку «Купить»</li>
+									<li class="internet-price__item">Выберите понравившийся товар в каталоге<br>и нажмите кнопку «Купить»</li>
 									<li class="internet-price__item">Заполните форму и сделайте репост своей покупки в соцсетях</li>
-									<li class="internet-price__item">Мы пришлем промокод на скидку в смс, предъявите его продавцу в магазине</li>
+									<li class="internet-price__item">Мы пришлем промокод на скидку в смс, предъявите его продавцу в магазине</li>
 								</ul>
 							</div>
 						</section>
@@ -724,7 +817,7 @@
 											<use xlink:href="images/sprites.svg#ico_1"></use>
 										</svg>
 									</div>
-									<p class="prime__par">Более <br>2 000 товаров</p>
+									<p class="prime__par">Более<br>2 000 товаров</p>
 								</li>
 								<li class="prime__item">
 									<div class="prime__wrap">
@@ -772,7 +865,7 @@
 							<li><a class="footer__link" href="#">Дисконтная программа</a></li>
 							<li><a class="footer__link" href="#">Акции</a></li>
 							<li><a class="footer__link" href="#">О компании</a></li>
-							<li><a class="footer__link" href="#">Каталог</a></li>
+							<li><a class="footer__link" href="catalog.html">Каталог</a></li>
 						</ul>
 						<div class="footer__box">
 							<div class="footer__block footer__block-tel">
@@ -799,7 +892,7 @@
 					<div class="copy">
 						<div class="copy__block">
 							<p class="copy__par">© 2019 «Флайбутс» интернет-магазин обуви</p><a class="copy__link" href="#"><span>Политика конфиденциальности</span></a>
-						</div><a class="copy__block" href="https://mmit.ru">
+						</div><a class="copy__block" href="https://mmit.ru" target="_blank">
 							<svg class="svg-mmit">
 								<use xlink:href="images/sprites.svg#mmit_logo"></use>
 							</svg>
@@ -815,13 +908,21 @@
 					<div class="modal__wrap">
 						<div class="modal__title">Вход в личный кабинет</div>
 						<form class="modal__form" role="form" method="POST" id="js-form-user">
-							<label class="modal__label" for="form-email"><span>Электронная  почта</span>
+							<label class="modal__label" for="form-email"><span>Электронная почта</span>
 								<input type="text" name="email" id="form-email">
 							</label>
 							<label class="modal__label" for="form-password"><span>Пароль</span>
 								<input type="password" name="password" id="form-password">
+								<div class="modal__pas modal__pas--active">
+									<svg class="svg-pas_1 modal__svg">
+										<use xlink:href="images/sprites.svg#pas_1"></use>
+									</svg>
+									<svg class="svg-pas_2 modal__svg">
+										<use xlink:href="images/sprites.svg#pas_2"></use>
+									</svg>
+								</div>
 							</label><a class="link" href="#" id="js-link-password"><span>Забыли пароль?</span></a>
-							<button class="btn btn-red">Войти</button>
+							<button class="btn btn-red btn-disabled">Войти</button>
 						</form>
 					</div>
 					<div class="modal__box">Впервые здесь?&nbsp;<a class="modal__link" href="#" id="js-modal-registeration">Зарегистрируйтесь</a></div>
@@ -834,10 +935,10 @@
 						<div class="modal__title">Восстановление пароля</div>
 						<form class="modal__form" role="form" method="POST" id="js-form-password">
 							<label class="modal__label"><span>Электронная почта</span>
-								<input type="text" name="email">
+								<input type="text" name="email" id="js-email-password">
 							</label>
 							<div class="modal__txt">Отправим новый пароль</div>
-							<button class="btn btn-red">Отправить</button>
+							<button class="btn btn-red btn-disabled">Отправить</button>
 						</form>
 					</div><a class="password-modal__prev" href="#">
 						<svg class="svg-arrow_6">
@@ -859,21 +960,37 @@
 					<div class="modal__wrap">
 						<div class="modal__title">Регистрация</div>
 						<form class="modal__form" role="form" method="POST" id="js-form-registration">
-							<label class="modal__label"><span>Мобильный  телефон</span>
-								<input type="text" name="phone" id="js-form-phone">
+							<label class="modal__label"><span>Мобильный телефон</span>
+								<input class="js-form-phone" type="text" name="phone" placeholder="+7 (999) 999-99-99">
 							</label>
-							<label class="modal__label"><span>Электронная  почта</span>
+							<label class="modal__label"><span>Электронная почта</span>
 								<input type="text" name="email">
 							</label>
 							<label class="modal__label"><span>Пароль</span>
 								<input type="password" name="password">
+								<div class="modal__pas modal__pas--reg modal__pas--active">
+									<svg class="svg-pas_1 modal__svg">
+										<use xlink:href="images/sprites.svg#pas_1"></use>
+									</svg>
+									<svg class="svg-pas_2 modal__svg">
+										<use xlink:href="images/sprites.svg#pas_2"></use>
+									</svg>
+								</div>
 							</label>
-							<label class="modal__label"><span>Пароль  еще раз</span>
+							<label class="modal__label"><span>Пароль<br>еще раз</span>
 								<input type="password" name="password">
+								<div class="modal__pas modal__pas--reg modal__pas--active">
+									<svg class="svg-pas_1 modal__svg">
+										<use xlink:href="images/sprites.svg#pas_1"></use>
+									</svg>
+									<svg class="svg-pas_2 modal__svg">
+										<use xlink:href="images/sprites.svg#pas_2"></use>
+									</svg>
+								</div>
 							</label>
-							<button class="btn btn-red">Войти</button>
+							<button class="btn btn-red btn-disabled">Войти</button>
 							<label class="modal__check">
-								<input type="checkbox" checked><span class="modal__check-text">Я согласен на&nbsp;<a href="#">обработку персональных данных</a></span>
+								<input type="checkbox" name="check" checked><span class="modal__check-text">Я согласен на&nbsp;<a href="#">обработку персональных данных</a></span>
 							</label>
 						</form>
 					</div>
@@ -881,8 +998,8 @@
 				</div>
 			</div>
 		</div>
-		<script src="js/vendor.js?v=1549512442256"></script>
+		<script src="js/vendor.js?v=1549615651802"></script>
 		<script src="https://api-maps.yandex.ru/2.1/?apikey=c0de13b2-36aa-4ac2-80e6-6d3fde6821bb&amp;lang=ru_RU" type="text/javascript"></script>
-		<script src="js/main.js?v=1549512442256"></script>
+		<script src="js/main.js?v=1549615651802"></script>
 	</body>
 </html>

@@ -154,6 +154,56 @@
 /************************************************************************/
 /******/ ({
 
+/***/ "./src/js/function/dop-like.js":
+/*!*************************************!*\
+  !*** ./src/js/function/dop-like.js ***!
+  \*************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+var $inFavorites = $('.in-favorites');
+var $toFavorites = $('.to-favorites');
+$('.product-slide__like').on('click', function (e) {
+  e.preventDefault();
+  $(this).toggleClass('product-slide__like--active');
+
+  if ($('.product-slide__like').hasClass('product-slide__like--active')) {
+    $('#js-nav-like').addClass('nav-menu__like');
+  } else {
+    $('#js-nav-like').removeClass('nav-menu__like');
+  }
+});
+$('.product-slide__like').hover(function () {
+  var $top = $(this).offset().top;
+  var $left = $(this).offset().left;
+  $top = $top - 40;
+  $left = $left - 39;
+
+  if ($(this).hasClass('product-slide__like--active')) {
+    $toFavorites.removeClass('to-favorites--active');
+    $inFavorites.css({
+      'left': $left + 'px',
+      'top': $top + 'px'
+    }).addClass('in-favorites--active');
+  } else {
+    $inFavorites.removeClass('in-favorites--active');
+    $toFavorites.css({
+      'left': $left + 'px',
+      'top': $top + 'px'
+    }).addClass('to-favorites--active');
+  }
+}, function () {
+  if ($(this).hasClass('product-slide__like--active')) {
+    $toFavorites.removeClass('to-favorites--active');
+    $inFavorites.removeClass('in-favorites--active');
+  } else {
+    $inFavorites.removeClass('in-favorites--active');
+    $toFavorites.removeClass('to-favorites--active');
+  }
+});
+
+/***/ }),
+
 /***/ "./src/js/function/fixed-btn.js":
 /*!**************************************!*\
   !*** ./src/js/function/fixed-btn.js ***!
@@ -242,6 +292,37 @@ $('.doggle-menu').hover(function () {
 
 /***/ }),
 
+/***/ "./src/js/function/modal-address.js":
+/*!******************************************!*\
+  !*** ./src/js/function/modal-address.js ***!
+  \******************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+var $addressLink = $('.modal__address-link'),
+    $listAdress = $('.modal__address-wrap');
+$radioAdress = $('.modal__item');
+$addressLink.on('click', function (e) {
+  e.preventDefault();
+  $listAdress.toggleClass('modal__address-wrap--active');
+});
+$(document).mouseup(function (e) {
+  if (!$listAdress.is(e.target) && $listAdress.has(e.target).length === 0) {
+    $listAdress.removeClass('modal__address-wrap--active');
+  }
+});
+$radioAdress.on('click', function () {
+  $radioAdress.removeClass('modal__item--active');
+  $(this).addClass('modal__item--active');
+  $('.modal__address-wrap').removeClass('modal__address-wrap-active');
+  $('#js-modal-link-address').text($(this).find('span').text());
+});
+$('.modal__map-link').on('click', function () {
+  $('.modal__maps').toggleClass('modal__maps--active');
+});
+
+/***/ }),
+
 /***/ "./src/js/function/modal.js":
 /*!**********************************!*\
   !*** ./src/js/function/modal.js ***!
@@ -261,38 +342,64 @@ var $modal = $('.modal'),
     $regModal = $('.registration-modal'),
     $overlay = $('.overlay'),
     modalActive = 'modal--active',
-    overlayActive = 'overlay--active';
+    overlayActive = 'overlay--active',
+    $productBtn = $('.product-slide__btn'),
+    $quickModal = $('.quick-modal');
 $close.on('click', function (e) {
   e.preventDefault();
   $overlay.removeClass(overlayActive);
   $modal.removeClass(modalActive);
   $('body, html').removeClass('overflow-y-hidden');
 });
+$productBtn.on('click', function (e) {
+  e.preventDefault();
+  $('.overlay-two').addClass(overlayActive);
+  $quickModal.addClass(modalActive);
+  $('body, html').addClass('overflow-y-hidden');
+  setTimeout(function () {
+    $('.quick-modal input.js-form-phone').focus();
+  }, 100);
+});
 $linkUser.on('click', function (e) {
   e.preventDefault();
   $overlay.addClass(overlayActive);
   $userModal.addClass(modalActive);
   $('body, html').addClass('overflow-y-hidden');
+  setTimeout(function () {
+    $('input#form-email').focus();
+  }, 100);
 });
 $linkPassword.on('click', function (e) {
   e.preventDefault();
   $modal.removeClass(modalActive);
   $passwordModal.addClass(modalActive);
+  setTimeout(function () {
+    $('input#js-email-password').focus();
+  }, 100);
 });
 $linkPrev.on('click', function (e) {
   e.preventDefault();
   $modal.removeClass(modalActive);
   $userModal.addClass(modalActive);
+  setTimeout(function () {
+    $('input#form-email').focus();
+  }, 100);
 });
 $linkReg.on('click', function (e) {
   e.preventDefault();
   $modal.removeClass(modalActive);
   $regModal.addClass(modalActive);
+  setTimeout(function () {
+    $('.registration-modal input.js-form-phone').focus();
+  }, 100);
 });
 $linkUserTwo.on('click', function (e) {
   e.preventDefault();
   $modal.removeClass(modalActive);
   $userModal.addClass(modalActive);
+  setTimeout(function () {
+    $('input#form-email').focus();
+  }, 100);
 });
 $(document).mouseup(function (e) {
   if (!$modal.is(e.target) && $modal.has(e.target).length === 0) {
@@ -317,7 +424,7 @@ $('a#js-offers-link').on('click', function (e) {
   $offersList.toggleClass('offers__list--active');
 
   if ($offersList.hasClass('offers__list--active')) {
-    $(this).find('span').text('Скрыть');
+    $(this).find('span').text('Свернуть');
   } else {
     $(this).find('span').text('Показать еще');
   }
@@ -333,9 +440,13 @@ $('a#js-offers-link').on('click', function (e) {
 /***/ (function(module, exports) {
 
 var inputNoBlur = $(".nav-menu__search input"),
-    $search = $(".nav-menu__search");
+    $search = $(".nav-menu__search"),
+    $bags = $('.nav-menu__list li:nth-child(3)'),
+    $sertificat = $('.nav-menu__list li:nth-child(4)');
 $search.on('click', function (e) {
   e.preventDefault();
+  $bags.addClass('no-event');
+  $sertificat.addClass('no-event');
   $(this).addClass('nav-menu__search--active');
   setTimeout(function () {
     inputNoBlur.focus();
@@ -348,6 +459,8 @@ $(document).mouseup(function (e) {
     // и не по его дочерним элементам
     inputNoBlur.blur();
     $search.removeClass('nav-menu__search--active');
+    $bags.removeClass('no-event');
+    $sertificat.removeClass('no-event');
   }
 });
 
@@ -416,9 +529,59 @@ $('.product-slide__item').each(function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
+var inputCheck = $('.registration-modal .modal__check input');
+
+if (inputCheck.prop('checked')) {
+  inputCheck.addClass('valid').removeClass('error');
+} else {
+  inputCheck.removeClass('valid').addClass('error');
+}
+
+inputCheck.on('click', function () {
+  if ($(this).prop('checked')) {
+    $(this).addClass('valid').removeClass('error');
+  } else {
+    $(this).removeClass('valid').addClass('error');
+  }
+});
 valid('#js-form-user');
+activeBtn('.user-modal', 2);
 valid('#js-form-password');
+activeBtn('.password-modal', 1);
 valid('#js-form-registration');
+activeBtn('.registration-modal', 5);
+valid('#js-form-quick');
+activeBtn('.quick-modal', 1);
+
+function activeBtn(modal, col) {
+  var input = $('' + modal + ' input');
+  var btn = $('' + modal + ' .btn');
+
+  function proverka() {
+    var inputValid = $('' + modal + ' input.valid').length;
+    var inputError = $('' + modal + ' input.error').length;
+
+    if (inputError == 0) {
+      if (input.hasClass('valid')) {
+        if (inputValid >= col) {
+          btn.removeClass('btn-disabled');
+        }
+      }
+    } else {
+      btn.addClass('btn-disabled');
+    }
+  }
+
+  input.on('keyup', function () {
+    proverka();
+  });
+  input.on('blur', function () {
+    proverka();
+  });
+  input.on('click', function () {
+    proverka();
+  });
+}
 
 function valid(form) {
   $.validator.addMethod("minlenghtphone", function (value, element) {
@@ -437,11 +600,15 @@ function valid(form) {
         required: true,
         email: true
       },
+      password: {
+        required: true,
+        minlength: 3
+      },
       phone: {
         requiredphone: true,
         minlenghtphone: true
       },
-      terms: {
+      check: {
         required: true
       }
     },
@@ -457,8 +624,12 @@ function valid(form) {
       }
     },
     errorPlacement: function errorPlacement(error, element) {},
-    highlight: function highlight(element, errorClass, validClass) {},
-    unhighlight: function unhighlight(element, errorClass, validClass) {},
+    highlight: function highlight(element, errorClass, validClass) {
+      $(element).addClass(errorClass).removeClass(validClass);
+    },
+    unhighlight: function unhighlight(element, errorClass, validClass) {
+      $(element).removeClass(errorClass).addClass(validClass);
+    },
     submitHandler: function submitHandler(form) {
       //alert("Submitted!");
       $.ajax({
@@ -484,8 +655,14 @@ function valid(form) {
   });
 }
 
+$('.modal__pas').on('click', function () {
+  var input = $(this).prev('input');
+  var type = input.attr('type') == "text" ? "password" : "text";
+  $(this).toggleClass('modal__pas--active');
+  input.prop('type', type);
+});
 $(function () {
-  $("#js-form-phone").inputmask("+ 7 (999) 999-99-99", {
+  $(".js-form-phone").inputmask("+7 (999) 999-99-99", {
     placeholder: "-"
   });
 });
@@ -502,6 +679,7 @@ $(function () {
 // Функция ymaps.ready() будет вызвана, когда
 // загрузятся все компоненты API, а также когда будет готово DOM-дерево.
 ymaps.ready(init);
+ymaps.ready(initTwo);
 
 function init() {
   var myMap = new ymaps.Map("map", {
@@ -522,15 +700,35 @@ function init() {
 
   myMap.behaviors.disable(['scrollZoom']);
   myMap.controls.remove('geolocationControl').remove('searchControl').remove('routeButtonControl').remove('typeSelector').remove('trafficControl').remove('fullscreenControl').remove('rulerControl');
-  funPlacemark([52.265675, 104.226514], 'Сергеева, 3/5 (ТЦ Silver Mall, пав. В3)', '#', '+73952904800', '+7 (3952) 904-800', 'с 10:00 до 20:00');
-  funPlacemark([52.248133, 104.269341], 'Лермонтова, 267/3', '#', '+73952904800', '+7 (3952) 904-800', 'с 10:00 до 20:00');
-  funPlacemark([52.275054, 104.256253], 'Гоголя, 53/3', '#', '+73952904800', '+7 (3952) 904-800', 'с 10:00 до 20:00');
-  funPlacemark([52.284239, 104.288053], 'Литвинова, 2', '#', '+73952904800', '+7 (3952) 904-800', 'с 10:00 до 20:00');
-  funPlacemark([52.284646, 104.289473], 'Урицкого, 4', '#', '+73952904800', '+7 (3952) 904-800', 'с 10:00 до 20:00');
-  funPlacemark([52.275819, 104.305081], 'Советская, 58/1 (МТЦ Новый, пав 135)', '#', '+73952904800', '+7 (3952) 904-800', 'с 10:00 до 20:00');
-  funPlacemark([52.264467, 104.329618], 'Депутатская, 84/2', '#', '+73952904800', '+7 (3952) 904-800', 'с 10:00 до 20:00');
-  funPlacemark([52.275054, 104.256253], 'Гоголя, 53/3', '#', '+73952904800', '+7 (3952) 904-800', 'с 10:00 до 20:00');
-  funPlacemark([52.353573, 104.153603], 'Баумана, 216/1', '#', '+73952904800', '+7 (3952) 904-800', 'с 10:00 до 20:00');
+  funPlacemark([52.265675, 104.226514], 'ул. Сергеева, 3/5 <br> (ТЦ Silver Mall, пав. В3)', '#', '+73952904800', '+7 (3952) 904-800', 'с 10:00 до 20:00');
+  funPlacemark([52.248133, 104.269341], 'ул. Лермонтова, 267/3', '#', '+73952904800', '+7 (3952) 904-800', 'с 10:00 до 20:00');
+  funPlacemark([52.275054, 104.256253], 'ул. Гоголя, 53/3', '#', '+73952904800', '+7 (3952) 904-800', 'с 10:00 до 20:00');
+  funPlacemark([52.284239, 104.288053], 'ул. Литвинова, 2', '#', '+73952904800', '+7 (3952) 904-800', 'с 10:00 до 20:00');
+  funPlacemark([52.284646, 104.289473], 'ул. Урицкого, 4', '#', '+73952904800', '+7 (3952) 904-800', 'с 10:00 до 20:00');
+  funPlacemark([52.275819, 104.305081], 'ул. Советская, 58/1 <br> (МТЦ Новый, пав 135)', '#', '+73952904800', '+7 (3952) 904-800', 'с 10:00 до 20:00');
+  funPlacemark([52.264467, 104.329618], 'ул. Депутатская, 84/2', '#', '+73952904800', '+7 (3952) 904-800', 'с 10:00 до 20:00');
+  funPlacemark([52.353573, 104.153603], 'ул. Баумана, 216/1', '#', '+73952904800', '+7 (3952) 904-800', 'с 10:00 до 20:00');
+}
+
+function initTwo() {
+  funPlacemarkTwo([52.265675, 104.226514], 'ул. Сергеева, 3/5 <br> (ТЦ Silver Mall, пав. В3)', '#', '+73952904800', '+7 (3952) 904-800', 'с 10:00 до 20:00');
+}
+
+function funPlacemarkTwo(geo, desc, link, phone, tel, time) {
+  var myMap = new ymaps.Map("modal__map", {
+    center: geo,
+    zoom: 12
+  });
+  myMap.behaviors.disable(['scrollZoom']);
+  myMap.controls.remove('geolocationControl').remove('searchControl').remove('routeButtonControl').remove('typeSelector').remove('trafficControl').remove('fullscreenControl').remove('rulerControl');
+  var myPlacemark = new ymaps.Placemark(geo, {
+    balloonContent: '<a href="' + link + '" class="yandex-title"><span>' + desc + '</span></a> <a href="tel:' + phone + '" class="yandex-phone">' + tel + '</a> <div class="yandex-time">' + time + '</div>'
+  }, {
+    iconLayout: 'default#image',
+    iconImageHref: 'images/sprites/svg/point_1.svg',
+    iconImageSize: [24, 36]
+  });
+  myMap.geoObjects.add(myPlacemark);
 }
 
 /***/ }),
@@ -568,9 +766,13 @@ $(document).ready(function () {
 
   __webpack_require__(/*! ./function/modal.js */ "./src/js/function/modal.js");
 
+  __webpack_require__(/*! ./function/modal-address.js */ "./src/js/function/modal-address.js");
+
   __webpack_require__(/*! ./function/fixed-btn.js */ "./src/js/function/fixed-btn.js");
 
   __webpack_require__(/*! ./function/valid.js */ "./src/js/function/valid.js");
+
+  __webpack_require__(/*! ./function/dop-like.js */ "./src/js/function/dop-like.js");
 });
 
 /***/ }),
