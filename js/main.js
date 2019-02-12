@@ -154,6 +154,38 @@
 /************************************************************************/
 /******/ ({
 
+/***/ "./src/js/function/bx-filter.js":
+/*!**************************************!*\
+  !*** ./src/js/function/bx-filter.js ***!
+  \**************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+var filterLink = $('.bx-filter-parameters-box-title');
+var filterBlock = $('.bx-filter-block');
+var filterActive = 'bx-filter-parameters-box-title--active';
+var filterWrap = $('.bx-filter-parameters-box');
+filterLink.on('click', function (e) {
+  e.preventDefault();
+  var $this = $(this);
+
+  if (!$this.hasClass(filterActive)) {
+    filterBlock.slideUp();
+    filterLink.removeClass(filterActive);
+  }
+
+  $this.next('.bx-filter-block').slideToggle();
+  $this.toggleClass(filterActive);
+});
+$(document).mouseup(function (e) {
+  if (!filterWrap.is(e.target) && filterWrap.has(e.target).length === 0) {
+    filterBlock.slideUp();
+    filterLink.removeClass(filterActive);
+  }
+});
+
+/***/ }),
+
 /***/ "./src/js/function/dop-like.js":
 /*!*************************************!*\
   !*** ./src/js/function/dop-like.js ***!
@@ -212,11 +244,21 @@ $('.product-slide__like').hover(function () {
 /***/ (function(module, exports) {
 
 var fixedBtnUp = $('.fixed-btn-up');
+var footerTop = $('.footer').offset().top;
+footerTop = footerTop + 140;
+var windowHeight = $(window).height();
+footerTop = footerTop - windowHeight;
 $(document).scroll(function () {
   var $scrollTop = $(document).scrollTop();
 
   if ($scrollTop > 350) {
     fixedBtnUp.addClass('fixed-btn-up--active');
+
+    if ($scrollTop > footerTop) {
+      fixedBtnUp.addClass('fixed-btn-up--bottom');
+    } else {
+      fixedBtnUp.removeClass('fixed-btn-up--bottom');
+    }
   } else {
     fixedBtnUp.removeClass('fixed-btn-up--active');
   }
@@ -265,9 +307,10 @@ fixedMenu();
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-$('.nav-menu__link').hover(function () {
+$('.nav-menu__link--doggle').hover(function () {
   $(this).addClass('nav-menu__link--active');
   $(this).next('.doggle-menu').addClass('doggle-menu--active');
+  $('body').addClass('overlay-dark');
 
   if ($('.doggle-menu').hasClass('doggle-menu--active')) {
     $(this).closest('.nav-menu').addClass('nav-menu--active');
@@ -276,18 +319,21 @@ $('.nav-menu__link').hover(function () {
   $(this).next('.doggle-menu').removeClass('doggle-menu--active');
   $(this).removeClass('nav-menu__link--active');
   $(this).closest('.nav-menu').removeClass('nav-menu--active');
+  $('body').removeClass('overlay-dark');
 });
 $('.doggle-menu').hover(function () {
   $(this).addClass('doggle-menu--active');
-  $(this).prev('.nav-menu__link').addClass('nav-menu__link--active');
+  $(this).prev('.nav-menu__link--doggle').addClass('nav-menu__link--active');
+  $('body').addClass('overlay-dark');
 
   if ($('.doggle-menu').hasClass('doggle-menu--active')) {
     $(this).closest('.nav-menu').addClass('nav-menu--active');
   }
 }, function () {
-  $(this).prev('.nav-menu__link').removeClass('nav-menu__link--active');
+  $(this).prev('.nav-menu__link--doggle').removeClass('nav-menu__link--active');
   $(this).removeClass('doggle-menu--active');
   $(this).closest('.nav-menu').removeClass('nav-menu--active');
+  $('body').removeClass('overlay-dark');
 });
 
 /***/ }),
@@ -311,13 +357,15 @@ $(document).mouseup(function (e) {
     $listAdress.removeClass('modal__address-wrap--active');
   }
 });
-$radioAdress.on('click', function () {
+$radioAdress.on('click', function (e) {
+  e.preventDefault();
   $radioAdress.removeClass('modal__item--active');
   $(this).addClass('modal__item--active');
   $('.modal__address-wrap').removeClass('modal__address-wrap-active');
   $('#js-modal-link-address').text($(this).find('span').text());
 });
-$('.modal__map-link').on('click', function () {
+$('.modal__map-link').on('click', function (e) {
+  e.preventDefault();
   $('.modal__maps').toggleClass('modal__maps--active');
 });
 
@@ -355,7 +403,6 @@ $productBtn.on('click', function (e) {
   e.preventDefault();
   $('.overlay-two').addClass(overlayActive);
   $quickModal.addClass(modalActive);
-  $('body, html').addClass('overflow-y-hidden');
   setTimeout(function () {
     $('.quick-modal input.js-form-phone').focus();
   }, 100);
@@ -418,17 +465,56 @@ $(document).mouseup(function (e) {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-$('a#js-offers-link').on('click', function (e) {
+var $offersLi = $('.main .offers__list li');
+var $offersWoman = $('.doggle-menu__offers--woman .offers__list li');
+var $offersMan = $('.doggle-menu__offers--man .offers__list li');
+var mainLink = $('.main a.offers__toggle');
+var womanLink = $('.doggle-menu__offers--woman a.offers__toggle');
+var manLink = $('.doggle-menu__offers--man a.offers__toggle');
+offersNone($offersLi, 984);
+offersNone($offersWoman, 920);
+offersNone($offersMan, 920);
+mainLink.on('click', function (e) {
   e.preventDefault();
-  var $offersList = $(this).prev('.offers__list');
+  offersClick($(this), $offersLi, 984);
+});
+womanLink.on('click', function (e) {
+  e.preventDefault();
+  offersClick($(this), $offersWoman, 920);
+});
+manLink.on('click', function (e) {
+  e.preventDefault();
+  offersClick($(this), $offersMan, 920);
+});
+
+function offersNone(arg, wid) {
+  var ofWidth = 0;
+
+  for (var i = 0; i < arg.length; i++) {
+    var li = $(arg[i]);
+    var liWidth = li.width();
+    ofWidth += liWidth;
+
+    if (ofWidth > wid) {
+      li.css('display', 'none');
+    }
+  }
+
+  return;
+}
+
+function offersClick($this, offers, wid) {
+  var $offersList = $this.closest('.offers__list');
   $offersList.toggleClass('offers__list--active');
 
   if ($offersList.hasClass('offers__list--active')) {
-    $(this).find('span').text('Свернуть');
+    $this.find('span').text('Свернуть');
+    offers.css('display', 'block');
   } else {
-    $(this).find('span').text('Показать еще');
+    $this.find('span').text('Показать еще');
+    offersNone(offers, wid);
   }
-});
+}
 
 /***/ }),
 
@@ -678,57 +764,240 @@ $(function () {
 
 // Функция ymaps.ready() будет вызвана, когда
 // загрузятся все компоненты API, а также когда будет готово DOM-дерево.
-ymaps.ready(init);
+ymaps.ready(init); //ymaps.ready(testInit);
+
 ymaps.ready(initTwo);
+var yA = '<a href="',
+    yB = '" class="yandex-title"><span>',
+    yC = '</span></a> <a href="tel:',
+    yE = '" class="yandex-phone">',
+    yF = '</a> <div class="yandex-time">',
+    yN = '</div><img class="yandex-img" src="images/sprites/svg/point_1.svg">';
+var point = {
+  iconLayout: 'default#image',
+  iconImageHref: 'images/sprites/svg/point_3.svg',
+  iconImageSize: [24, 36]
+};
+var pointHover = {
+  iconLayout: 'default#image',
+  iconImageHref: 'images/sprites/svg/point_1.svg',
+  iconImageSize: [24, 36]
+};
+var pointNone = {
+  iconLayout: 'default#image',
+  iconImageHref: 'images/sprites/svg/arrow.svg',
+  iconImageSize: [0, 0]
+};
+var groups = [{
+  name: 'ул. Сергеева, 3/5 <br> (ТЦ Silver Mall, пав. В3)',
+  style: 'sergeeva',
+  items: {
+    name: 'ул. Сергеева, 3/5 <br> (ТЦ Silver Mall, пав. В3)',
+    link: '#',
+    phone: '+73952904800',
+    phoneTwo: '+7 (3952) 904-800',
+    time: 'с 10:00 до 20:00',
+    center: [52.265675, 104.226514],
+    myId: 'sergeeva'
+  }
+}, {
+  name: 'ул. Лермонтова, 267/3',
+  style: 'lermantova',
+  items: {
+    name: 'ул. Лермонтова, 267/3',
+    link: '#',
+    phone: '+73952904800',
+    phoneTwo: '+7 (3952) 904-800',
+    time: 'с 10:00 до 20:00',
+    center: [52.248133, 104.269341],
+    myId: 'lermantova'
+  }
+}, {
+  name: 'ул. Гоголя, 53/3',
+  style: 'gogalya',
+  items: {
+    name: 'ул. Гоголя, 53/3',
+    link: '#',
+    phone: '+73952904800',
+    phoneTwo: '+7 (3952) 904-800',
+    time: 'с 10:00 до 20:00',
+    center: [52.275054, 104.256253],
+    myId: 'gogalya'
+  }
+}, {
+  name: 'ул. Литвинова, 2',
+  style: 'litvinova',
+  items: {
+    name: 'ул. Литвинова, 2',
+    link: '#',
+    phone: '+73952904800',
+    phoneTwo: '+7 (3952) 904-800',
+    time: 'с 10:00 до 20:00',
+    center: [52.284239, 104.288053],
+    myId: 'litvinova'
+  }
+}, {
+  name: 'ул. Урицкого, 4',
+  style: 'urickogo',
+  items: {
+    name: 'ул. Урицкого, 4',
+    link: '#',
+    phone: '+73952904800',
+    phoneTwo: '+7 (3952) 904-800',
+    time: 'с 10:00 до 20:00',
+    center: [52.284646, 104.289473],
+    myId: 'urickogo'
+  }
+}, {
+  name: 'ул. Советская, 58/1 <br> (МТЦ Новый, пав 135)',
+  style: 'sovetskaya',
+  items: {
+    name: 'ул. Советская, 58/1 <br> (МТЦ Новый, пав 135)',
+    link: '#',
+    phone: '+73952904800',
+    phoneTwo: '+7 (3952) 904-800',
+    time: 'с 10:00 до 20:00',
+    center: [52.275819, 104.305081],
+    myId: 'sovetskaya'
+  }
+}, {
+  name: 'ул. Депутатская, 84/2',
+  style: 'deputatskaya',
+  items: {
+    name: 'ул. Депутатская, 84/2',
+    link: '#',
+    phone: '+73952904800',
+    phoneTwo: '+7 (3952) 904-800',
+    time: 'с 10:00 до 20:00',
+    center: [52.264467, 104.329618],
+    myId: 'deputatskaya'
+  }
+}, {
+  name: 'ул. Баумана, 216/1',
+  style: 'baumana',
+  items: {
+    name: 'ул. Баумана, 216/1',
+    link: '#',
+    phone: '+73952904800',
+    phoneTwo: '+7 (3952) 904-800',
+    time: 'с 10:00 до 20:00',
+    center: [52.353573, 104.153603],
+    myId: 'baumana'
+  }
+}];
+
+function testInit() {
+  var objMaps = {
+    center: [52.265675, 104.226514],
+    zoom: 12
+  };
+  var myMap = new ymaps.Map("modal__map", objMaps);
+  removeConrol(myMap);
+  var btn = $('.modal__item');
+
+  for (var i = 0; i < groups.length; i++) {
+    checkState(groups[i]);
+    console.log(groups[i].items.myId);
+  } // Функция, которая по состоянию чекбоксов в меню
+  // показывает или скрывает геообъекты из выборки.
+
+
+  function checkState(group) {
+    var shownObjects,
+        byColor = new ymaps.GeoQueryResult();
+
+    if ($(this).prop('checked')) {
+      console.log('this'); // byColor = myObjects.search('options.fillColor = "#ff1000"')
+      //     .add(myObjects.search('options.preset = "islands#redIcon"'));
+    } // Мы отобрали объекты по цвету и по форме. Покажем на карте объекты,
+    // которые совмещают нужные признаки.
+    // shownObjects = byColor.intersect(byShape).addToMap(myMap);
+    // Объекты, которые не попали в выборку, нужно убрать с карты.
+    // myObjects.remove(shownObjects).removeFromMap(myMap);
+
+  }
+
+  btn.on('click', function () {});
+}
+
+function initTwo() {
+  var objMaps = {
+    center: [52.265675, 104.226514],
+    zoom: 12
+  };
+  var myMap = new ymaps.Map("modal__map", objMaps);
+  removeConrol(myMap);
+  var btn = $('.modal__item');
+
+  for (var i = 0; i < groups.length; i++) {
+    createMenuGroup(groups[i]);
+    clickPlac(groups[i]);
+  }
+
+  function clickPlac(group) {
+    btn.bind('click', function () {
+      var thisId = $(this).attr('id');
+
+      if (thisId == group.style) {
+        myMap.panTo(group.items.center, {
+          // Задержка между перемещениями.
+          delay: 1500
+        });
+      } else {}
+    });
+  }
+
+  function createMenuGroup(group) {
+    var obj = {
+      preset: group.style
+    };
+    var collection = new ymaps.GeoObjectCollection(null, obj);
+    var myPlacemark = new ymaps.Placemark(group.items.center, {
+      balloonContentBody: [yA + group.items.link + yB + group.items.name + yC + group.items.phone + yE + group.items.phoneTwo + yF + group.items.time + yN].join()
+    }, point);
+    hoverEff(myPlacemark);
+    myMap.geoObjects.add(myPlacemark);
+  }
+}
 
 function init() {
   var myMap = new ymaps.Map("map", {
     center: [52.275555, 104.281047],
     zoom: 12
   });
+  removeConrol(myMap);
 
-  function funPlacemark(geo, desc, link, phone, tel, time) {
-    var myPlacemark = new ymaps.Placemark(geo, {
-      balloonContent: '<a href="' + link + '" class="yandex-title"><span>' + desc + '</span></a> <a href="tel:' + phone + '" class="yandex-phone">' + tel + '</a> <div class="yandex-time">' + time + '</div>'
-    }, {
-      iconLayout: 'default#image',
-      iconImageHref: 'images/sprites/svg/point_1.svg',
-      iconImageSize: [24, 36]
-    });
-    myMap.geoObjects.add(myPlacemark);
+  for (var i = 0; i < groups.length; i++) {
+    createMenu(groups[i]);
   }
 
-  myMap.behaviors.disable(['scrollZoom']);
-  myMap.controls.remove('geolocationControl').remove('searchControl').remove('routeButtonControl').remove('typeSelector').remove('trafficControl').remove('fullscreenControl').remove('rulerControl');
-  funPlacemark([52.265675, 104.226514], 'ул. Сергеева, 3/5 <br> (ТЦ Silver Mall, пав. В3)', '#', '+73952904800', '+7 (3952) 904-800', 'с 10:00 до 20:00');
-  funPlacemark([52.248133, 104.269341], 'ул. Лермонтова, 267/3', '#', '+73952904800', '+7 (3952) 904-800', 'с 10:00 до 20:00');
-  funPlacemark([52.275054, 104.256253], 'ул. Гоголя, 53/3', '#', '+73952904800', '+7 (3952) 904-800', 'с 10:00 до 20:00');
-  funPlacemark([52.284239, 104.288053], 'ул. Литвинова, 2', '#', '+73952904800', '+7 (3952) 904-800', 'с 10:00 до 20:00');
-  funPlacemark([52.284646, 104.289473], 'ул. Урицкого, 4', '#', '+73952904800', '+7 (3952) 904-800', 'с 10:00 до 20:00');
-  funPlacemark([52.275819, 104.305081], 'ул. Советская, 58/1 <br> (МТЦ Новый, пав 135)', '#', '+73952904800', '+7 (3952) 904-800', 'с 10:00 до 20:00');
-  funPlacemark([52.264467, 104.329618], 'ул. Депутатская, 84/2', '#', '+73952904800', '+7 (3952) 904-800', 'с 10:00 до 20:00');
-  funPlacemark([52.353573, 104.153603], 'ул. Баумана, 216/1', '#', '+73952904800', '+7 (3952) 904-800', 'с 10:00 до 20:00');
+  function createMenu(group) {
+    var myPlacemark = new ymaps.Placemark(group.items.center, {
+      balloonContentBody: [yA + group.items.link + yB + group.items.name + yC + group.items.phone + yE + group.items.phoneTwo + yF + group.items.time + yN].join()
+    }, point);
+    hoverEff(myPlacemark);
+    myMap.geoObjects.add(myPlacemark);
+  }
 }
 
-function initTwo() {
-  funPlacemarkTwo([52.265675, 104.226514], 'ул. Сергеева, 3/5 <br> (ТЦ Silver Mall, пав. В3)', '#', '+73952904800', '+7 (3952) 904-800', 'с 10:00 до 20:00');
+function hoverEff(place) {
+  place.events.add(['mouseenter', 'mouseleave'], function (e) {
+    var target = e.get('target'),
+        type = e.get('type');
+
+    if (typeof target.getGeoObjects != 'undefined') {} else {
+      if (type == 'mouseenter') {
+        target.options.set(pointHover);
+      } else {
+        target.options.set(point);
+      }
+    }
+  });
 }
 
-function funPlacemarkTwo(geo, desc, link, phone, tel, time) {
-  var myMap = new ymaps.Map("modal__map", {
-    center: geo,
-    zoom: 12
-  });
-  myMap.behaviors.disable(['scrollZoom']);
-  myMap.controls.remove('geolocationControl').remove('searchControl').remove('routeButtonControl').remove('typeSelector').remove('trafficControl').remove('fullscreenControl').remove('rulerControl');
-  var myPlacemark = new ymaps.Placemark(geo, {
-    balloonContent: '<a href="' + link + '" class="yandex-title"><span>' + desc + '</span></a> <a href="tel:' + phone + '" class="yandex-phone">' + tel + '</a> <div class="yandex-time">' + time + '</div>'
-  }, {
-    iconLayout: 'default#image',
-    iconImageHref: 'images/sprites/svg/point_1.svg',
-    iconImageSize: [24, 36]
-  });
-  myMap.geoObjects.add(myPlacemark);
+function removeConrol(arg) {
+  arg.controls.remove('geolocationControl').remove('searchControl').remove('routeButtonControl').remove('typeSelector').remove('trafficControl').remove('fullscreenControl').remove('rulerControl');
+  arg.behaviors.disable(['scrollZoom']);
 }
 
 /***/ }),
@@ -773,6 +1042,8 @@ $(document).ready(function () {
   __webpack_require__(/*! ./function/valid.js */ "./src/js/function/valid.js");
 
   __webpack_require__(/*! ./function/dop-like.js */ "./src/js/function/dop-like.js");
+
+  __webpack_require__(/*! ./function/bx-filter.js */ "./src/js/function/bx-filter.js");
 });
 
 /***/ }),

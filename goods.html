@@ -11,14 +11,102 @@
 		<link rel="icon" href="images/favicon.ico" sizes="96x96">
 		<link rel="icon" href="images/favicon.ico" sizes="128x128">
 		<link rel="icon" href="images/favicon.ico" sizes="196x196">
-		<link rel="stylesheet" href="css/main.css?v=1549597617534">
+		<link rel="stylesheet" href="css/main.css?v=1549959566968">
 	</head>
-	<body><a class="fixed-btn-up" href="#">
-			<svg class="svg-arrow_3">
-				<use xlink:href="images/sprites.svg#arrow_3"></use>
-			</svg></a>
+	<body>
 		<div class="to-favorites">В избранное</div>
 		<div class="in-favorites">В избранном</div>
+		<div class="overlay overlay-two">
+			<div class="modal quick-modal"><a class="modal__close" href="#">
+					<svg class="svg-close">
+						<use xlink:href="images/sprites.svg#close"></use>
+					</svg></a>
+				<div class="modal__wrap">
+					<div class="modal__subtitle">Быстрый заказ со скидкой 15%</div>
+					<form class="modal__form" role="form" method="POST" id="js-form-quick">
+						<div class="modal__block">
+							<div class="modal__img"><img src="images/item2x/shoes_1.jpg"></div>
+							<div class="modal__description"><a class="modal__text link-solid-black-s" href="#"><span>Тапочки Belsta</span></a>
+								<div class="modal__size">Размер 37</div>
+								<div class="modal__price">612 руб.</div>
+							</div>
+						</div>
+						<label class="modal__label"><span>Мобильный телефон</span>
+							<input class="js-form-phone" type="text" name="phone" placeholder="+7 (999) 999-99-99">
+						</label><span class="modal__min">Пришлем промокод в смс</span><span class="modal__address-txt">Адрес выдачи заказа</span><a class="modal__address-link" href="#"><span id="js-modal-link-address">ул. Сергеева, 3/5 (ТЦ Silver Mall, пав. В3)</span>
+							<div class="modal__address-wrap">
+								<ul class="modal__address">
+									<li class="modal__item modal__item--active" id="sergeeva">
+										<label class="modal__option">
+											<input class="modal__hidden" type="radio" name="address" checked><span>ул. Сергеева, 3/5 (ТЦ Silver Mall, пав. В3)</span>
+										</label>
+									</li>
+									<li class="modal__item" id="lermantova">
+										<label class="modal__option">
+											<input class="modal__hidden" type="radio" name="address"><span>ул. Лермонтова, 267/3</span>
+										</label>
+									</li>
+									<li class="modal__item" id="gogalya">
+										<label class="modal__option">
+											<input class="modal__hidden" type="radio" name="address"><span>ул. Гоголя, 53/3</span>
+										</label>
+									</li>
+									<li class="modal__item" id="litvinova">
+										<label class="modal__option">
+											<input class="modal__hidden" type="radio" name="address"><span>ул. Литвинова, 2</span>
+										</label>
+									</li>
+									<li class="modal__item" id="urickogo">
+										<label class="modal__option">
+											<input class="modal__hidden" type="radio" name="address"><span>ул. Урицкого, 4</span>
+										</label>
+									</li>
+									<li class="modal__item" id="sovetskaya">
+										<label class="modal__option">
+											<input class="modal__hidden" type="radio" name="address"><span>ул. Советская, 58/1 (МТЦ Новый, пав 135)</span>
+										</label>
+									</li>
+									<li class="modal__item" id="deputatskaya">
+										<label class="modal__option">
+											<input class="modal__hidden" type="radio" name="address"><span>ул. Депутатская, 84/2</span>
+										</label>
+									</li>
+									<li class="modal__item" id="baumana">
+										<label class="modal__option">
+											<input class="modal__hidden" type="radio" name="address"><span>ул. Баумана, 216/1</span>
+										</label>
+									</li>
+								</ul>
+							</div></a>
+						<div class="modal__min">Заказ доставим в магазин сегодня в 14:00</div><a class="modal__map-link link-dashed-s" href="#"><span>Проверьте адрес на карте</span></a>
+						<div class="modal__maps">
+							<div class="modal__maps-wrap">
+								<div id="modal__map" style="width:100%; height: 236px"></div>
+							</div>
+						</div>
+						<p class="modal__par">Расскажите друзьям в соцсетях о покупке <br>и мы увеличим скидку до 20%</p>
+						<div class="modal__social">
+							<svg class="svg-social">
+								<use xlink:href="images/sprites.svg#vk"></use>
+							</svg>
+							<svg class="svg-social">
+								<use xlink:href="images/sprites.svg#vk"></use>
+							</svg>
+							<svg class="svg-social">
+								<use xlink:href="images/sprites.svg#vk"></use>
+							</svg>
+							<svg class="svg-social">
+								<use xlink:href="images/sprites.svg#vk"></use>
+							</svg>
+						</div>
+						<button class="btn btn-red btn-disabled">Заказать</button>
+						<label class="modal__check">
+							<input type="checkbox" name="check" checked><span class="modal__check-text">Я согласен на&nbsp;<a href="#">обработку персональных данных</a></span>
+						</label>
+					</form>
+				</div>
+			</div>
+		</div>
 		<div class="wrapper">
 			<div class="content">
 				<header class="header">
@@ -46,13 +134,13 @@
 									<use xlink:href="images/sprites.svg#logo"></use>
 								</svg></a>
 							<ul class="nav-menu__list">
-								<li><a class="nav-menu__link" href="goods.html">Женская
+								<li><a class="nav-menu__link nav-menu__link--doggle" href="goods.html">Женская
 										<svg class="svg-arrow">
 											<use xlink:href="images/sprites.svg#arrow"></use>
 										</svg></a>
 									<div class="doggle-menu">
 										<div class="doggle-menu__wrap">
-											<div class="doggle-menu__offers">
+											<div class="doggle-menu__offers doggle-menu__offers--woman">
 												<div class="offers">
 													<ul class="offers__list">
 														<li><a class="offers__link" href="#">Женские зимние ботинки</a></li>
@@ -63,8 +151,8 @@
 														<li><a class="offers__link" href="#">Женская летняя обувь</a></li>
 														<li><a class="offers__link" href="#">Мужские зимние ботинки</a></li>
 														<li><a class="offers__link" href="#">Мужские зимние сапоги</a></li>
-														<li><a class="offers__link" href="#">«Janita» мужские</a></li>
-													</ul><a class="link" href="#" id="js-offers-link"><span>Показать еще</span></a>
+														<li><a class="offers__link" href="#">«Janita» мужские</a></li><a class="link offers__toggle" href="#" id="js-offers-link"><span>Показать еще</span></a>
+													</ul>
 												</div>
 											</div>
 											<div class="doggle-menu__cattalog">
@@ -143,13 +231,13 @@
 										</div>
 									</div>
 								</li>
-								<li><a class="nav-menu__link" href="goods.html">Мужская
+								<li><a class="nav-menu__link nav-menu__link--doggle" href="goods.html">Мужская
 										<svg class="svg-arrow">
 											<use xlink:href="images/sprites.svg#arrow"></use>
 										</svg></a>
 									<div class="doggle-menu">
 										<div class="doggle-menu__wrap">
-											<div class="doggle-menu__offers">
+											<div class="doggle-menu__offers doggle-menu__offers--man">
 												<div class="offers">
 													<ul class="offers__list">
 														<li><a class="offers__link" href="#">Женские зимние ботинки</a></li>
@@ -160,8 +248,8 @@
 														<li><a class="offers__link" href="#">Женская летняя обувь</a></li>
 														<li><a class="offers__link" href="#">Мужские зимние ботинки</a></li>
 														<li><a class="offers__link" href="#">Мужские зимние сапоги</a></li>
-														<li><a class="offers__link" href="#">«Janita» мужские</a></li>
-													</ul><a class="link" href="#" id="js-offers-link"><span>Показать еще</span></a>
+														<li><a class="offers__link" href="#">«Janita» мужские</a></li><a class="link offers__toggle" href="#" id="js-offers-link"><span>Показать еще</span></a>
+													</ul>
 												</div>
 											</div>
 											<div class="doggle-menu__cattalog">
@@ -232,9 +320,9 @@
 										<use xlink:href="images/sprites.svg#like"></use>
 									</svg>Избранное</a><a href="#">Корзина
 									<div class="nav-menu__shop">
-										<svg class="svg-shop">
+										<svg class="svg-shop svg-shop--active">
 											<use xlink:href="images/sprites.svg#shop"></use>
-										</svg>
+										</svg><span class="nav-menu__shop-num">1</span>
 									</div></a></div>
 						</nav>
 					</div>
@@ -251,8 +339,13 @@
 								<li><a class="offers__link" href="#">Женская летняя обувь</a></li>
 								<li><a class="offers__link" href="#">Мужские зимние ботинки</a></li>
 								<li><a class="offers__link" href="#">Мужские зимние сапоги</a></li>
-								<li><a class="offers__link" href="#">«Janita» мужские</a></li>
-							</ul><a class="link" href="#" id="js-offers-link"><span>Показать еще</span></a>
+								<li><a class="offers__link" href="#">«Janita» мужские</a></li><a class="link offers__toggle" href="#" id="js-offers-link"><span>Показать еще</span></a>
+							</ul>
+						</div>
+						<div class="breadcrumbs"><a class="breadcrumbs__link" href="catalog.html"><span>Каталог</span></a><a class="breadcrumbs__link" href="goods.html">
+								<svg class="svg-breadcrumbs">
+									<use xlink:href="images/sprites.svg#arrow_5"></use>
+								</svg><span>Женская обувь</span></a>
 						</div>
 						<h1 class="subtitle">Летняя женская обувь</h1>
 						<div class="bx-filter bx-site">
@@ -265,61 +358,42 @@
 											</svg>
 										</div>
 										<div class="bx-filter-block">
-											<div class="checkbox that it">
-												<label class="bx-filter-param-label">
-													<input type="checkbox"/><span class="bx-filter-param-text" title="..Балетки">Балетки</span>
+											<div class="bx-filter-box">
+												<label class="bx-filter-param-label modal__check">
+													<input type="checkbox" name="check"/><span class="bx-filter-param-text modal__check-text" title="..Балетки">Балетки</span>
+												</label>
+												<label class="bx-filter-param-label modal__check">
+													<input type="checkbox" name="check"/><span class="bx-filter-param-text modal__check-text" title="..Ботельоны">Ботельоны</span>
+												</label>
+												<label class="bx-filter-param-label modal__check">
+													<input type="checkbox" name="check"/><span class="bx-filter-param-text modal__check-text" title="..Ботинки">Ботинки</span>
+												</label>
+												<label class="bx-filter-param-label modal__check">
+													<input type="checkbox" name="check"/><span class="bx-filter-param-text modal__check-text" title="..Красовки">Красовки</span>
+												</label>
+												<label class="bx-filter-param-label modal__check">
+													<input type="checkbox" name="check"/><span class="bx-filter-param-text modal__check-text" title="..Летняя обувь">Летняя обувь</span>
+												</label>
+												<label class="bx-filter-param-label modal__check">
+													<input type="checkbox" name="check"/><span class="bx-filter-param-text modal__check-text" title="..Сабо">Сабо</span>
+												</label>
+												<label class="bx-filter-param-label modal__check">
+													<input type="checkbox" name="check"/><span class="bx-filter-param-text modal__check-text" title="..Сабоги">Сабоги</span>
+												</label>
+												<label class="bx-filter-param-label modal__check">
+													<input type="checkbox" name="check"/><span class="bx-filter-param-text modal__check-text" title="..Слипоны">Слипоны</span>
+												</label>
+												<label class="bx-filter-param-label modal__check">
+													<input type="checkbox" name="check"/><span class="bx-filter-param-text modal__check-text" title="..Сникерсы">Сникерсы</span>
+												</label>
+												<label class="bx-filter-param-label modal__check">
+													<input type="checkbox" name="check"/><span class="bx-filter-param-text modal__check-text" title="..Тапочки">Тапочки</span>
+												</label>
+												<label class="bx-filter-param-label modal__check">
+													<input type="checkbox" name="check"/><span class="bx-filter-param-text modal__check-text" title="..Туфли">Туфли</span>
 												</label>
 											</div>
-											<div class="checkbox that it">
-												<label class="bx-filter-param-label">
-													<input type="checkbox"/><span class="bx-filter-param-text" title="..Ботельоны">Ботельоны</span>
-												</label>
-											</div>
-											<div class="checkbox that it">
-												<label class="bx-filter-param-label">
-													<input type="checkbox"/><span class="bx-filter-param-text" title="..Ботинки">Ботинки</span>
-												</label>
-											</div>
-											<div class="checkbox that it">
-												<label class="bx-filter-param-label">
-													<input type="checkbox"/><span class="bx-filter-param-text" title="..Красовки">Красовки</span>
-												</label>
-											</div>
-											<div class="checkbox that it">
-												<label class="bx-filter-param-label">
-													<input type="checkbox"/><span class="bx-filter-param-text" title="..Летняя обувь">Летняя обувь</span>
-												</label>
-											</div>
-											<div class="checkbox that it">
-												<label class="bx-filter-param-label">
-													<input type="checkbox"/><span class="bx-filter-param-text" title="..Сабо">Сабо</span>
-												</label>
-											</div>
-											<div class="checkbox that it">
-												<label class="bx-filter-param-label">
-													<input type="checkbox"/><span class="bx-filter-param-text" title="..Сабоги">Сабоги</span>
-												</label>
-											</div>
-											<div class="checkbox that it">
-												<label class="bx-filter-param-label">
-													<input type="checkbox"/><span class="bx-filter-param-text" title="..Слипоны">Слипоны</span>
-												</label>
-											</div>
-											<div class="checkbox that it">
-												<label class="bx-filter-param-label">
-													<input type="checkbox"/><span class="bx-filter-param-text" title="..Сникерсы">Сникерсы</span>
-												</label>
-											</div>
-											<div class="checkbox that it">
-												<label class="bx-filter-param-label">
-													<input type="checkbox"/><span class="bx-filter-param-text" title="..Тапочки">Тапочки</span>
-												</label>
-											</div>
-											<div class="checkbox that it">
-												<label class="bx-filter-param-label">
-													<input type="checkbox"/><span class="bx-filter-param-text" title="..Туфли">Туфли</span>
-												</label>
-											</div>
+											<button class="btn btn-red bx-filter-btn">показать</button>
 										</div>
 									</div>
 									<div class="bx-filter-parameters-box">
@@ -329,6 +403,17 @@
 											</svg>
 										</div>
 										<div class="bx-filter-block">
+											<div class="bx-filter-box">
+												<div class="bx-filter-box bx-filter-box--price">
+													<label class="bx-filter-param-label"><span class="bx-filter-param-text" title="price-min">от</span>
+														<input type="text" name="price-min">
+													</label>
+													<label class="bx-filter-param-label"><span class="bx-filter-param-text" title="price-max">до</span>
+														<input type="text" name="price-max">
+													</label>
+												</div>
+											</div>
+											<button class="btn btn-red bx-filter-btn">показать</button>
 										</div>
 									</div>
 									<div class="bx-filter-parameters-box">
@@ -338,6 +423,24 @@
 											</svg>
 										</div>
 										<div class="bx-filter-block">
+											<div class="bx-filter-box">
+												<label class="bx-filter-param-label modal__check">
+													<input type="checkbox" name="check"/><span class="bx-filter-param-text modal__check-text" title="..35">35</span>
+												</label>
+												<label class="bx-filter-param-label modal__check">
+													<input type="checkbox" name="check"/><span class="bx-filter-param-text modal__check-text" title="..36">36</span>
+												</label>
+												<label class="bx-filter-param-label modal__check">
+													<input type="checkbox" name="check"/><span class="bx-filter-param-text modal__check-text" title="..37">37</span>
+												</label>
+												<label class="bx-filter-param-label modal__check">
+													<input type="checkbox" name="check"/><span class="bx-filter-param-text modal__check-text" title="..38">38</span>
+												</label>
+												<label class="bx-filter-param-label modal__check">
+													<input type="checkbox" name="check"/><span class="bx-filter-param-text modal__check-text" title="..39">39</span>
+												</label>
+											</div>
+											<button class="btn btn-red bx-filter-btn">показать</button>
 										</div>
 									</div>
 									<div class="bx-filter-parameters-box">
@@ -347,6 +450,18 @@
 											</svg>
 										</div>
 										<div class="bx-filter-block">
+											<div class="bx-filter-box">
+												<label class="bx-filter-param-label modal__check">
+													<input type="checkbox" name="check"/><span class="bx-filter-param-text modal__check-text" title="..Низкий">Низкий</span>
+												</label>
+												<label class="bx-filter-param-label modal__check">
+													<input type="checkbox" name="check"/><span class="bx-filter-param-text modal__check-text" title="..Средний">Средний</span>
+												</label>
+												<label class="bx-filter-param-label modal__check">
+													<input type="checkbox" name="check"/><span class="bx-filter-param-text modal__check-text" title="..Высокий">Высокий</span>
+												</label>
+											</div>
+											<button class="btn btn-red bx-filter-btn">показать</button>
 										</div>
 									</div>
 									<div class="bx-filter-parameters-box">
@@ -356,6 +471,32 @@
 											</svg>
 										</div>
 										<div class="bx-filter-block">
+											<div class="bx-filter-box">
+												<div class="bx-filter-box">
+													<label class="bx-filter-param-label modal__check">
+														<input type="checkbox" name="check"><span class="bx-filter-param-text modal__check-text" title="..">Бежевый</span>
+													</label>
+													<label class="bx-filter-param-label modal__check">
+														<input type="checkbox" name="check"><span class="bx-filter-param-text modal__check-text" title="..">Синий</span>
+													</label>
+													<label class="bx-filter-param-label modal__check">
+														<input type="checkbox" name="check"><span class="bx-filter-param-text modal__check-text" title="..">Зеленый</span>
+													</label>
+													<label class="bx-filter-param-label modal__check">
+														<input type="checkbox" name="check"><span class="bx-filter-param-text modal__check-text" title="..">Белый</span>
+													</label>
+													<label class="bx-filter-param-label modal__check">
+														<input type="checkbox" name="check"><span class="bx-filter-param-text modal__check-text" title="..">Черный</span>
+													</label>
+													<label class="bx-filter-param-label modal__check">
+														<input type="checkbox" name="check"><span class="bx-filter-param-text modal__check-text" title="..">Красный</span>
+													</label>
+													<label class="bx-filter-param-label modal__check">
+														<input type="checkbox" name="check"><span class="bx-filter-param-text modal__check-text" title="..">Розовый</span>
+													</label>
+												</div>
+											</div>
+											<button class="btn btn-red bx-filter-btn">показать</button>
 										</div>
 									</div>
 									<div class="bx-filter-parameters-box">
@@ -365,6 +506,42 @@
 											</svg>
 										</div>
 										<div class="bx-filter-block">
+											<div class="bx-filter-box">
+												<label class="bx-filter-param-label modal__check">
+													<input type="checkbox" name="check"/><span class="bx-filter-param-text modal__check-text" title="..Велюр">Велюр</span>
+												</label>
+												<label class="bx-filter-param-label modal__check">
+													<input type="checkbox" name="check"/><span class="bx-filter-param-text modal__check-text" title="..Замша">Замша</span>
+												</label>
+												<label class="bx-filter-param-label modal__check">
+													<input type="checkbox" name="check"/><span class="bx-filter-param-text modal__check-text" title="..Иск. замша">Иск. замша</span>
+												</label>
+												<label class="bx-filter-param-label modal__check">
+													<input type="checkbox" name="check"/><span class="bx-filter-param-text modal__check-text" title="..Иск. кожа">Иск. кожа</span>
+												</label>
+												<label class="bx-filter-param-label modal__check">
+													<input type="checkbox" name="check"/><span class="bx-filter-param-text modal__check-text" title="..Иск. лак. кожа">Иск. лак. кожа</span>
+												</label>
+												<label class="bx-filter-param-label modal__check">
+													<input type="checkbox" name="check"/><span class="bx-filter-param-text modal__check-text" title="..Иск. нубук">Иск. нубук</span>
+												</label>
+												<label class="bx-filter-param-label modal__check">
+													<input type="checkbox" name="check"/><span class="bx-filter-param-text modal__check-text" title="..Иск. замша">Иск. замша</span>
+												</label>
+												<label class="bx-filter-param-label modal__check">
+													<input type="checkbox" name="check"/><span class="bx-filter-param-text modal__check-text" title="..Иск. кожа">Иск. кожа</span>
+												</label>
+												<label class="bx-filter-param-label modal__check">
+													<input type="checkbox" name="check"/><span class="bx-filter-param-text modal__check-text" title="..Иск. лак. кожа">Иск. лак. кожа</span>
+												</label>
+												<label class="bx-filter-param-label modal__check">
+													<input type="checkbox" name="check"/><span class="bx-filter-param-text modal__check-text" title="..Иск. нубук">Иск. нубук</span>
+												</label>
+												<label class="bx-filter-param-label modal__check">
+													<input type="checkbox" name="check"/><span class="bx-filter-param-text modal__check-text" title="..Иск. замша">Иск. замша</span>
+												</label>
+											</div>
+											<button class="btn btn-red bx-filter-btn">показать</button>
 										</div>
 									</div>
 									<div class="bx-filter-parameters-box">
@@ -374,6 +551,36 @@
 											</svg>
 										</div>
 										<div class="bx-filter-block">
+											<div class="bx-filter-box">
+												<label class="bx-filter-param-label modal__check">
+													<input type="checkbox" name="check"/><span class="bx-filter-param-text modal__check-text" title="..Байка">Байка</span>
+												</label>
+												<label class="bx-filter-param-label modal__check">
+													<input type="checkbox" name="check"/><span class="bx-filter-param-text modal__check-text" title="..Иск. кожа">Иск. кожа</span>
+												</label>
+												<label class="bx-filter-param-label modal__check">
+													<input type="checkbox" name="check"/><span class="bx-filter-param-text modal__check-text" title="..Иск. мех">Иск. мех</span>
+												</label>
+												<label class="bx-filter-param-label modal__check">
+													<input type="checkbox" name="check"/><span class="bx-filter-param-text modal__check-text" title="..Кожа">Кожа</span>
+												</label>
+												<label class="bx-filter-param-label modal__check">
+													<input type="checkbox" name="check"/><span class="bx-filter-param-text modal__check-text" title="..Комбинированная кожа">Комбинированная кожа</span>
+												</label>
+												<label class="bx-filter-param-label modal__check">
+													<input type="checkbox" name="check"/><span class="bx-filter-param-text modal__check-text" title="..Мех">Мех</span>
+												</label>
+												<label class="bx-filter-param-label modal__check">
+													<input type="checkbox" name="check"/><span class="bx-filter-param-text modal__check-text" title="..Иск. лак. кожа">Иск. лак. кожа</span>
+												</label>
+												<label class="bx-filter-param-label modal__check">
+													<input type="checkbox" name="check"/><span class="bx-filter-param-text modal__check-text" title="..Иск. нубук">Иск. нубук</span>
+												</label>
+												<label class="bx-filter-param-label modal__check">
+													<input type="checkbox" name="check"/><span class="bx-filter-param-text modal__check-text" title="..Иск. замша">Иск. замша</span>
+												</label>
+											</div>
+											<button class="btn btn-red bx-filter-btn">показать</button>
 										</div>
 									</div>
 									<div class="bx-filter-parameters-box">
@@ -383,6 +590,18 @@
 											</svg>
 										</div>
 										<div class="bx-filter-block">
+											<div class="bx-filter-box">
+												<label class="bx-filter-param-label modal__check">
+													<input type="checkbox" name="check"/><span class="bx-filter-param-text modal__check-text" title="..Весна-осень">Весна-осень</span>
+												</label>
+												<label class="bx-filter-param-label modal__check">
+													<input type="checkbox" name="check"/><span class="bx-filter-param-text modal__check-text" title="..Лето">Лето</span>
+												</label>
+												<label class="bx-filter-param-label modal__check">
+													<input type="checkbox" name="check"/><span class="bx-filter-param-text modal__check-text" title="..Зима">Зима</span>
+												</label>
+											</div>
+											<button class="btn btn-red bx-filter-btn">показать</button>
 										</div>
 									</div>
 									<div class="bx-filter-parameters-box">
@@ -392,6 +611,45 @@
 											</svg>
 										</div>
 										<div class="bx-filter-block">
+											<div class="bx-filter-box">
+												<label class="bx-filter-param-label modal__check">
+													<input type="checkbox" name="check"/><span class="bx-filter-param-text modal__check-text" title="..Иск. лак. кожа">Иск. лак. кожа</span>
+												</label>
+												<label class="bx-filter-param-label modal__check">
+													<input type="checkbox" name="check"/><span class="bx-filter-param-text modal__check-text" title="..Иск. нубук">Иск. нубук</span>
+												</label>
+												<label class="bx-filter-param-label modal__check">
+													<input type="checkbox" name="check"/><span class="bx-filter-param-text modal__check-text" title="..Иск. замша">Иск. замша</span>
+												</label>
+												<label class="bx-filter-param-label modal__check">
+													<input type="checkbox" name="check"/><span class="bx-filter-param-text modal__check-text" title="..Иск. лак. кожа">Иск. лак. кожа</span>
+												</label>
+												<label class="bx-filter-param-label modal__check">
+													<input type="checkbox" name="check"/><span class="bx-filter-param-text modal__check-text" title="..Иск. нубук">Иск. нубук</span>
+												</label>
+												<label class="bx-filter-param-label modal__check">
+													<input type="checkbox" name="check"/><span class="bx-filter-param-text modal__check-text" title="..Иск. замша">Иск. замша</span>
+												</label>
+												<label class="bx-filter-param-label modal__check">
+													<input type="checkbox" name="check"/><span class="bx-filter-param-text modal__check-text" title="..Иск. лак. кожа">Иск. лак. кожа</span>
+												</label>
+												<label class="bx-filter-param-label modal__check">
+													<input type="checkbox" name="check"/><span class="bx-filter-param-text modal__check-text" title="..Иск. нубук">Иск. нубук</span>
+												</label>
+												<label class="bx-filter-param-label modal__check">
+													<input type="checkbox" name="check"/><span class="bx-filter-param-text modal__check-text" title="..Иск. замша">Иск. замша</span>
+												</label>
+												<label class="bx-filter-param-label modal__check">
+													<input type="checkbox" name="check"/><span class="bx-filter-param-text modal__check-text" title="..Иск. лак. кожа">Иск. лак. кожа</span>
+												</label>
+												<label class="bx-filter-param-label modal__check">
+													<input type="checkbox" name="check"/><span class="bx-filter-param-text modal__check-text" title="..Иск. нубук">Иск. нубук</span>
+												</label>
+												<label class="bx-filter-param-label modal__check">
+													<input type="checkbox" name="check"/><span class="bx-filter-param-text modal__check-text" title="..Иск. замша">Иск. замша</span>
+												</label>
+											</div>
+											<button class="btn btn-red bx-filter-btn">показать</button>
 										</div>
 									</div>
 									<div class="bx-filter-parameters-box">
@@ -401,6 +659,18 @@
 											</svg>
 										</div>
 										<div class="bx-filter-block">
+											<div class="bx-filter-box">
+												<label class="bx-filter-param-label modal__check">
+													<input type="checkbox" name="check"/><span class="bx-filter-param-text modal__check-text" title="..Низкая">Низкая</span>
+												</label>
+												<label class="bx-filter-param-label modal__check">
+													<input type="checkbox" name="check"/><span class="bx-filter-param-text modal__check-text" title="..Средняя">Средняя</span>
+												</label>
+												<label class="bx-filter-param-label modal__check">
+													<input type="checkbox" name="check"/><span class="bx-filter-param-text modal__check-text" title="..Высокая">Высокая</span>
+												</label>
+											</div>
+											<button class="btn btn-red bx-filter-btn">показать</button>
 										</div>
 									</div>
 									<div class="bx-filter-parameters-box">
@@ -410,6 +680,21 @@
 											</svg>
 										</div>
 										<div class="bx-filter-block">
+											<div class="bx-filter-box">
+												<label class="bx-filter-param-label modal__check">
+													<input type="checkbox" name="check"/><span class="bx-filter-param-text modal__check-text" title="..Деловой">Деловой</span>
+												</label>
+												<label class="bx-filter-param-label modal__check">
+													<input type="checkbox" name="check"/><span class="bx-filter-param-text modal__check-text" title="..Повседневный">Повседневный</span>
+												</label>
+												<label class="bx-filter-param-label modal__check">
+													<input type="checkbox" name="check"/><span class="bx-filter-param-text modal__check-text" title="..Праздничный">Праздничный</span>
+												</label>
+												<label class="bx-filter-param-label modal__check">
+													<input type="checkbox" name="check"/><span class="bx-filter-param-text modal__check-text" title="..Спортивный">Спортивный</span>
+												</label>
+											</div>
+											<button class="btn btn-red bx-filter-btn">показать</button>
 										</div>
 									</div>
 									<div class="bx-filter-parameters-box">
@@ -419,6 +704,45 @@
 											</svg>
 										</div>
 										<div class="bx-filter-block">
+											<div class="bx-filter-box">
+												<label class="bx-filter-param-label modal__check">
+													<input type="checkbox" name="check"/><span class="bx-filter-param-text modal__check-text" title="..Иск. лак. кожа">Иск. лак. кожа</span>
+												</label>
+												<label class="bx-filter-param-label modal__check">
+													<input type="checkbox" name="check"/><span class="bx-filter-param-text modal__check-text" title="..Иск. нубук">Иск. нубук</span>
+												</label>
+												<label class="bx-filter-param-label modal__check">
+													<input type="checkbox" name="check"/><span class="bx-filter-param-text modal__check-text" title="..Иск. замша">Иск. замша</span>
+												</label>
+												<label class="bx-filter-param-label modal__check">
+													<input type="checkbox" name="check"/><span class="bx-filter-param-text modal__check-text" title="..Иск. лак. кожа">Иск. лак. кожа</span>
+												</label>
+												<label class="bx-filter-param-label modal__check">
+													<input type="checkbox" name="check"/><span class="bx-filter-param-text modal__check-text" title="..Иск. нубук">Иск. нубук</span>
+												</label>
+												<label class="bx-filter-param-label modal__check">
+													<input type="checkbox" name="check"/><span class="bx-filter-param-text modal__check-text" title="..Иск. замша">Иск. замша</span>
+												</label>
+												<label class="bx-filter-param-label modal__check">
+													<input type="checkbox" name="check"/><span class="bx-filter-param-text modal__check-text" title="..Иск. лак. кожа">Иск. лак. кожа</span>
+												</label>
+												<label class="bx-filter-param-label modal__check">
+													<input type="checkbox" name="check"/><span class="bx-filter-param-text modal__check-text" title="..Иск. нубук">Иск. нубук</span>
+												</label>
+												<label class="bx-filter-param-label modal__check">
+													<input type="checkbox" name="check"/><span class="bx-filter-param-text modal__check-text" title="..Иск. замша">Иск. замша</span>
+												</label>
+												<label class="bx-filter-param-label modal__check">
+													<input type="checkbox" name="check"/><span class="bx-filter-param-text modal__check-text" title="..Иск. лак. кожа">Иск. лак. кожа</span>
+												</label>
+												<label class="bx-filter-param-label modal__check">
+													<input type="checkbox" name="check"/><span class="bx-filter-param-text modal__check-text" title="..Иск. нубук">Иск. нубук</span>
+												</label>
+												<label class="bx-filter-param-label modal__check">
+													<input type="checkbox" name="check"/><span class="bx-filter-param-text modal__check-text" title="..Иск. замша">Иск. замша</span>
+												</label>
+											</div>
+											<button class="btn btn-red bx-filter-btn">показать</button>
 										</div>
 									</div>
 								</div>
@@ -429,11 +753,11 @@
 							</form>
 						</div>
 						<div class="toolbar">
-							<label class="checkbox" for="sort_time">
-								<input type="checkbox" id="sort_time"><span class="checbox__txt">Новинки сверху</span>
+							<label class="modal__check" for="sort_time">
+								<input type="checkbox" name="check" id="sort_time"><span class="modal__check-text toolbar__check">Новинки сверху</span>
 							</label>
 							<div class="toolbar__box">
-								<div class="toolbar__text">Сортировать:</div><a class="toolbar__price" href="#">по возрастанию ценю
+								<div class="toolbar__text">Сортировать:</div><a class="toolbar__price link-dashed-blue-s" href="#"><span>по возрастанию ценю</span>
 									<svg class="svg-filter">
 										<use xlink:href="images/sprites.svg#arrow"></use>
 									</svg></a>
@@ -442,7 +766,7 @@
 								<div class="toolbar__text">Количество предложений:</div><span class="toolbar__count">1 755</span>
 							</div>
 							<div class="toolbar__box">
-								<div class="toolbar__text">Цена от&nbsp;<span class="toolbar__count-min">476</span>&nbsp;руб. до&nbsp;<span class="toolbar__count-min">14 896</span>руб.</div>
+								<div class="toolbar__text">Цена от&nbsp;<span class="toolbar__count-min">476</span>&nbsp;руб. до&nbsp;<span class="toolbar__count-max">14 896</span>&nbsp;руб.</div>
 							</div>
 						</div>
 						<div class="goods">
@@ -452,7 +776,7 @@
 										<svg class="svg-like product-slide__svg-like">
 											<use xlink:href="images/sprites.svg#like"></use>
 										</svg>
-									</div><a class="product-slide__top" href="#">
+									</div><a class="product-slide__top" href="product.html">
 										<div class="product-slide__top-item"><img src="images/item2x/shoes_5.jpg"/></div>
 										<div class="product-slide__top-item"><img src="images/item2x/shoes_2_mini_1.jpg"/></div>
 										<div class="product-slide__top-item"><img src="images/item2x/shoes_2_mini_2.jpg"/></div>
@@ -483,7 +807,7 @@
 										<svg class="svg-like product-slide__svg-like">
 											<use xlink:href="images/sprites.svg#like"></use>
 										</svg>
-									</div><a class="product-slide__top" href="#">
+									</div><a class="product-slide__top" href="product.html">
 										<div class="product-slide__top-item"><img src="images/item2x/shoes_6.jpg"/></div>
 										<div class="product-slide__top-item"><img src="images/item2x/shoes_2_mini_1.jpg"/></div>
 										<div class="product-slide__top-item"><img src="images/item2x/shoes_2_mini_2.jpg"/></div>
@@ -514,7 +838,7 @@
 										<svg class="svg-like product-slide__svg-like">
 											<use xlink:href="images/sprites.svg#like"></use>
 										</svg>
-									</div><a class="product-slide__top" href="#">
+									</div><a class="product-slide__top" href="product.html">
 										<div class="product-slide__top-item"><img src="images/item2x/shoes_7.jpg"/></div>
 										<div class="product-slide__top-item"><img src="images/item2x/shoes_2_mini_1.jpg"/></div>
 										<div class="product-slide__top-item"><img src="images/item2x/shoes_2_mini_2.jpg"/></div>
@@ -545,7 +869,7 @@
 										<svg class="svg-like product-slide__svg-like">
 											<use xlink:href="images/sprites.svg#like"></use>
 										</svg>
-									</div><a class="product-slide__top" href="#">
+									</div><a class="product-slide__top" href="product.html">
 										<div class="product-slide__top-item"><img src="images/item2x/shoes_8.jpg"/></div>
 										<div class="product-slide__top-item"><img src="images/item2x/shoes_2_mini_1.jpg"/></div>
 										<div class="product-slide__top-item"><img src="images/item2x/shoes_2_mini_2.jpg"/></div>
@@ -576,7 +900,7 @@
 										<svg class="svg-like product-slide__svg-like">
 											<use xlink:href="images/sprites.svg#like"></use>
 										</svg>
-									</div><a class="product-slide__top" href="#">
+									</div><a class="product-slide__top" href="product.html">
 										<div class="product-slide__top-item"><img src="images/item2x/shoes_5.jpg"/></div>
 										<div class="product-slide__top-item"><img src="images/item2x/shoes_2_mini_1.jpg"/></div>
 										<div class="product-slide__top-item"><img src="images/item2x/shoes_2_mini_2.jpg"/></div>
@@ -607,7 +931,7 @@
 										<svg class="svg-like product-slide__svg-like">
 											<use xlink:href="images/sprites.svg#like"></use>
 										</svg>
-									</div><a class="product-slide__top" href="#">
+									</div><a class="product-slide__top" href="product.html">
 										<div class="product-slide__top-item"><img src="images/item2x/shoes_6.jpg"/></div>
 										<div class="product-slide__top-item"><img src="images/item2x/shoes_2_mini_1.jpg"/></div>
 										<div class="product-slide__top-item"><img src="images/item2x/shoes_2_mini_2.jpg"/></div>
@@ -638,7 +962,7 @@
 										<svg class="svg-like product-slide__svg-like">
 											<use xlink:href="images/sprites.svg#like"></use>
 										</svg>
-									</div><a class="product-slide__top" href="#">
+									</div><a class="product-slide__top" href="product.html">
 										<div class="product-slide__top-item"><img src="images/item2x/shoes_7.jpg"/></div>
 										<div class="product-slide__top-item"><img src="images/item2x/shoes_2_mini_1.jpg"/></div>
 										<div class="product-slide__top-item"><img src="images/item2x/shoes_2_mini_2.jpg"/></div>
@@ -669,7 +993,7 @@
 										<svg class="svg-like product-slide__svg-like">
 											<use xlink:href="images/sprites.svg#like"></use>
 										</svg>
-									</div><a class="product-slide__top" href="#">
+									</div><a class="product-slide__top" href="product.html">
 										<div class="product-slide__top-item"><img src="images/item2x/shoes_8.jpg"/></div>
 										<div class="product-slide__top-item"><img src="images/item2x/shoes_2_mini_1.jpg"/></div>
 										<div class="product-slide__top-item"><img src="images/item2x/shoes_2_mini_2.jpg"/></div>
@@ -716,7 +1040,10 @@
 					</div>
 				</main>
 			</div>
-			<footer class="footer">
+			<footer class="footer"><a class="fixed-btn-up" href="#">
+					<svg class="svg-arrow_3">
+						<use xlink:href="images/sprites.svg#arrow_3"></use>
+					</svg></a>
 				<div class="container">
 					<div class="footer__wrap">
 						<ul class="footer__list">
@@ -823,7 +1150,7 @@
 						<div class="modal__title">Регистрация</div>
 						<form class="modal__form" role="form" method="POST" id="js-form-registration">
 							<label class="modal__label"><span>Мобильный телефон</span>
-								<input type="text" name="phone" placeholder="+7 (999) 999-99-99" id="js-form-phone">
+								<input class="js-form-phone" type="text" name="phone" placeholder="+7 (999) 999-99-99">
 							</label>
 							<label class="modal__label"><span>Электронная почта</span>
 								<input type="text" name="email">
@@ -860,8 +1187,8 @@
 				</div>
 			</div>
 		</div>
-		<script src="js/vendor.js?v=1549597617536"></script>
+		<script src="js/vendor.js?v=1549959566971"></script>
 		<script src="https://api-maps.yandex.ru/2.1/?apikey=c0de13b2-36aa-4ac2-80e6-6d3fde6821bb&amp;lang=ru_RU" type="text/javascript"></script>
-		<script src="js/main.js?v=1549597617536"></script>
+		<script src="js/main.js?v=1549959566971"></script>
 	</body>
 </html>

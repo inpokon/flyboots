@@ -16,6 +16,10 @@
 			<stop offset="0%" stop-color="#F1554D"/>
 			<stop offset="100%" stop-color="#CF3D35"/>
 		</linearGradient>
+		<linearGradient id="point_3-a" x1="18.929%" x2="72.469%" y1="50%" y2="75.624%">
+			<stop offset="0%" stop-color="#E64840"/>
+			<stop offset="100%" stop-color="#CF3D35"/>
+		</linearGradient>
 	</defs>
 <symbol id="arrow" viewBox="0 0 12 7">
 	<path fill-rule="nonzero" stroke-width=".5" d="M9.987 1.174a.601.601 0 0 1 .834-.012c.234.22.24.584.012.812l-4.41 4.423a.6.6 0 0 1-.846 0l-4.41-4.423a.563.563 0 0 1 .012-.812.601.601 0 0 1 .834.012l3.987 4 3.987-4z"/>
@@ -97,6 +101,13 @@
 	<g fill="none" fill-rule="evenodd">
 		<path fill="url(#point_2-a)" d="M0 12h24c0 5.333-4 13.333-12 24C4 25.333 0 17.333 0 12z"/>
 		<circle cx="12" cy="12" r="12" fill="#F1554D"/>
+		<path fill="#FFF" fill-rule="nonzero" d="M8 6h9v2.794h-5.344v2.27h4.562v2.624h-4.562V19H8z"/>
+	</g>
+</symbol>
+<symbol id="point_3" viewBox="0 0 24 36">
+	<g fill="none" fill-rule="evenodd">
+		<path fill="url(#point_3-a)" d="M0 12h24c0 5.333-4 13.333-12 24C4 25.333 0 17.333 0 12z"/>
+		<circle cx="12" cy="12" r="12" fill="#E64840"/>
 		<path fill="#FFF" fill-rule="nonzero" d="M8 6h9v2.794h-5.344v2.27h4.562v2.624h-4.562V19H8z"/>
 	</g>
 </symbol>
