@@ -444,21 +444,21 @@ $close.on('click', function (e) {
   $.magnificPopup.close();
   $modal.removeClass(modalActive);
 });
-myPopup($linkUser);
-myPopup($linkPassword);
-myPopup($linkReg);
-myPopup($linkUserTwo);
-myPopup($productBtn);
-myPopup($linkPrev);
+myPopup($linkUser, '#form-email');
+myPopup($linkPassword, '#js-email-password');
+myPopup($linkReg, '.js-form-phone');
+myPopup($linkUserTwo, '#form-email');
+myPopup($productBtn, '.js-form-phone');
+myPopup($linkPrev, '#form-email');
 
-function myPopup(arg) {
+function myPopup(arg, foc) {
   arg.magnificPopup({
     type: 'inline',
     preloader: false,
     showCloseBtn: false,
     removalDelay: 500,
     fixedContentPos: true,
-    focus: '#form-email'
+    focus: foc
   });
 }
 
