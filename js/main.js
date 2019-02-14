@@ -444,51 +444,69 @@ $close.on('click', function (e) {
   $.magnificPopup.close();
   $modal.removeClass(modalActive);
 });
-myPopup($linkUser, '#form-email');
-myPopup($linkPassword, '#js-email-password');
-myPopup($linkReg, '.js-form-phone');
-myPopup($linkUserTwo, '#form-email');
-myPopup($productBtn, '.js-form-phone');
-myPopup($linkPrev, '#form-email');
+myPopup($linkUser);
+myPopup($linkPassword);
+myPopup($linkReg);
+myPopup($linkUserTwo);
+myPopup($productBtn);
+myPopup($linkPrev);
 
-function myPopup(arg, foc) {
+function myPopup(arg) {
   arg.magnificPopup({
     type: 'inline',
     preloader: false,
     showCloseBtn: false,
     removalDelay: 500,
     fixedContentPos: true,
-    focus: foc
+    focus: '#form-email'
   });
 }
 
 $productBtn.on('click', function (e) {
   e.preventDefault();
   $quickModal.addClass(modalActive);
+  setTimeout(function () {
+    $('.quick-modal input.js-form-phone').focus();
+  }, 100);
 });
 $linkUser.on('click', function (e) {
   e.preventDefault();
   $userModal.addClass(modalActive);
+  setTimeout(function () {
+    $('input#form-email').focus();
+  }, 100);
 });
 $linkPassword.on('click', function (e) {
   e.preventDefault();
   $modal.removeClass(modalActive);
   $passwordModal.addClass(modalActive);
+  setTimeout(function () {
+    $('input#js-email-password').focus();
+  }, 100);
 });
 $linkPrev.on('click', function (e) {
   e.preventDefault();
   $modal.removeClass(modalActive);
   $userModal.addClass(modalActive);
+  setTimeout(function () {
+    $('input#form-email').focus();
+  }, 100);
 });
 $linkReg.on('click', function (e) {
   e.preventDefault();
   $modal.removeClass(modalActive);
   $regModal.addClass(modalActive);
+  setTimeout(function () {
+    $('.registration-modal input.js-form-phone').focus();
+  }, 100);
 });
 $linkUserTwo.on('click', function (e) {
   e.preventDefault();
   $modal.removeClass(modalActive);
   $userModal.addClass(modalActive);
+  setTimeout(function () {
+    $('input#form-email').focus();
+  }, 100);
 });
 $(document).mouseup(function (e) {
   if (!$modal.is(e.target) && $modal.has(e.target).length === 0) {
