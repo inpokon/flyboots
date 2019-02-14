@@ -11,13 +11,13 @@
 		<link rel="icon" href="images/favicon.ico" sizes="96x96">
 		<link rel="icon" href="images/favicon.ico" sizes="128x128">
 		<link rel="icon" href="images/favicon.ico" sizes="196x196">
-		<link rel="stylesheet" href="css/main.css?v=1549959566583">
+		<link rel="stylesheet" href="css/main.css?v=1550124882919">
 	</head>
 	<body>
 		<div class="to-favorites">В избранное</div>
 		<div class="in-favorites">В избранном</div>
 		<div class="overlay overlay-two">
-			<div class="modal quick-modal"><a class="modal__close" href="#">
+			<div class="modal quick-modal" id="quick-modal"><a class="modal__close" href="#">
 					<svg class="svg-close">
 						<use xlink:href="images/sprites.svg#close"></use>
 					</svg></a>
@@ -31,7 +31,7 @@
 								<div class="modal__price">612 руб.</div>
 							</div>
 						</div>
-						<label class="modal__label"><span>Мобильный телефон</span>
+						<label class="modal__label quick-modal__phone"><span>Мобильный телефон</span>
 							<input class="js-form-phone" type="text" name="phone" placeholder="+7 (999) 999-99-99">
 						</label><span class="modal__min">Пришлем промокод в смс</span><span class="modal__address-txt">Адрес выдачи заказа</span><a class="modal__address-link" href="#"><span id="js-modal-link-address">ул. Сергеева, 3/5 (ТЦ Silver Mall, пав. В3)</span>
 							<div class="modal__address-wrap">
@@ -90,13 +90,13 @@
 								<use xlink:href="images/sprites.svg#vk"></use>
 							</svg>
 							<svg class="svg-social">
-								<use xlink:href="images/sprites.svg#vk"></use>
+								<use xlink:href="images/sprites.svg#fb"></use>
 							</svg>
 							<svg class="svg-social">
-								<use xlink:href="images/sprites.svg#vk"></use>
+								<use xlink:href="images/sprites.svg#ok"></use>
 							</svg>
 							<svg class="svg-social">
-								<use xlink:href="images/sprites.svg#vk"></use>
+								<use xlink:href="images/sprites.svg#tw"></use>
 							</svg>
 						</div>
 						<button class="btn btn-red btn-disabled">Заказать</button>
@@ -124,7 +124,7 @@
 									<li><a class="top-menu__link" href="#"><span>Гарантия</span></a></li>
 								</ul>
 							</div>
-							<div class="top-menu__box"><a class="top-menu__user" href="#" id="js-link-user">
+							<div class="top-menu__box"><a class="top-menu__user" href="#user-modal" id="js-link-user">
 									<svg class="svg-user">
 										<use xlink:href="images/sprites.svg#user"></use>
 									</svg><span>Личный кабинет</span></a></div>
@@ -423,7 +423,7 @@
 												</ul>
 											</div>
 											<div class="product-slide__price"><span class="product-slide__no-price">8 600 руб.</span><span>4 300 руб.</span></div>
-											<div class="product-slide__box"><a class="btn product-slide__gradient" href="#">В корзину</a><a class="btn product-slide__btn" href="#">Забронировать</a></div>
+											<div class="product-slide__box"><a class="btn product-slide__gradient" href="#">В корзину</a><a class="btn product-slide__btn" href="#quick-modal">Забронировать</a></div>
 										</div>
 									</div>
 									<div class="product-slide__wrap">
@@ -454,7 +454,7 @@
 												</ul>
 											</div>
 											<div class="product-slide__price"><span class="product-slide__no-price">7 800 руб.</span><span>3 900 руб.</span></div>
-											<div class="product-slide__box"><a class="btn product-slide__gradient" href="#">В корзину</a><a class="btn product-slide__btn" href="#">Забронировать</a></div>
+											<div class="product-slide__box"><a class="btn product-slide__gradient" href="#">В корзину</a><a class="btn product-slide__btn" href="#quick-modal">Забронировать</a></div>
 										</div>
 									</div>
 									<div class="product-slide__wrap">
@@ -485,7 +485,7 @@
 												</ul>
 											</div>
 											<div class="product-slide__price"><span class="product-slide__no-price">7 200 руб.</span><span>3 600 руб.</span></div>
-											<div class="product-slide__box"><a class="btn product-slide__gradient" href="#">В корзину</a><a class="btn product-slide__btn" href="#">Забронировать</a></div>
+											<div class="product-slide__box"><a class="btn product-slide__gradient" href="#">В корзину</a><a class="btn product-slide__btn" href="#quick-modal">Забронировать</a></div>
 										</div>
 									</div>
 									<div class="product-slide__wrap">
@@ -516,7 +516,7 @@
 												</ul>
 											</div>
 											<div class="product-slide__price"><span class="product-slide__no-price">4 200 руб.</span><span>2 100 руб.</span></div>
-											<div class="product-slide__box"><a class="btn product-slide__gradient" href="#">В корзину</a><a class="btn product-slide__btn" href="#">Забронировать</a></div>
+											<div class="product-slide__box"><a class="btn product-slide__gradient" href="#">В корзину</a><a class="btn product-slide__btn" href="#quick-modal">Забронировать</a></div>
 										</div>
 									</div>
 									<div class="product-slide__wrap">
@@ -547,7 +547,7 @@
 												</ul>
 											</div>
 											<div class="product-slide__price"><span class="product-slide__no-price">8 600 руб.</span><span>4 300 руб.</span></div>
-											<div class="product-slide__box"><a class="btn product-slide__gradient" href="#">В корзину</a><a class="btn product-slide__btn" href="#">Забронировать</a></div>
+											<div class="product-slide__box"><a class="btn product-slide__gradient" href="#">В корзину</a><a class="btn product-slide__btn" href="#quick-modal">Забронировать</a></div>
 										</div>
 									</div>
 									<div class="product-slide__wrap">
@@ -578,7 +578,7 @@
 												</ul>
 											</div>
 											<div class="product-slide__price"><span class="product-slide__no-price">7 800 руб.</span><span>3 900 руб.</span></div>
-											<div class="product-slide__box"><a class="btn product-slide__gradient" href="#">В корзину</a><a class="btn product-slide__btn" href="#">Забронировать</a></div>
+											<div class="product-slide__box"><a class="btn product-slide__gradient" href="#">В корзину</a><a class="btn product-slide__btn" href="#quick-modal">Забронировать</a></div>
 										</div>
 									</div>
 									<div class="product-slide__wrap">
@@ -609,7 +609,7 @@
 												</ul>
 											</div>
 											<div class="product-slide__price"><span class="product-slide__no-price">7 200 руб.</span><span>3 600 руб.</span></div>
-											<div class="product-slide__box"><a class="btn product-slide__gradient" href="#">В корзину</a><a class="btn product-slide__btn" href="#">Забронировать</a></div>
+											<div class="product-slide__box"><a class="btn product-slide__gradient" href="#">В корзину</a><a class="btn product-slide__btn" href="#quick-modal">Забронировать</a></div>
 										</div>
 									</div>
 									<div class="product-slide__wrap">
@@ -640,7 +640,7 @@
 												</ul>
 											</div>
 											<div class="product-slide__price"><span class="product-slide__no-price">4 200 руб.</span><span>2 100 руб.</span></div>
-											<div class="product-slide__box"><a class="btn product-slide__gradient" href="#">В корзину</a><a class="btn product-slide__btn" href="#">Забронировать</a></div>
+											<div class="product-slide__box"><a class="btn product-slide__gradient" href="#">В корзину</a><a class="btn product-slide__btn" href="#quick-modal">Забронировать</a></div>
 										</div>
 									</div>
 								</div>
@@ -810,7 +810,7 @@
 				</div>
 			</footer>
 			<div class="overlay">
-				<div class="modal user-modal"><a class="modal__close" href="#">
+				<div class="modal user-modal" id="user-modal"><a class="modal__close" href="#">
 						<svg class="svg-close">
 							<use xlink:href="images/sprites.svg#close"></use>
 						</svg></a>
@@ -830,13 +830,13 @@
 										<use xlink:href="images/sprites.svg#pas_2"></use>
 									</svg>
 								</div>
-							</label><a class="link" href="#" id="js-link-password"><span>Забыли пароль?</span></a>
+							</label><a class="link" href="#password-modal" id="js-link-password"><span>Забыли пароль?</span></a>
 							<button class="btn btn-red btn-disabled">Войти</button>
 						</form>
 					</div>
-					<div class="modal__box">Впервые здесь?&nbsp;<a class="modal__link" href="#" id="js-modal-registeration">Зарегистрируйтесь</a></div>
+					<div class="modal__box">Впервые здесь?&nbsp;<a class="modal__link" href="#registration-modal" id="js-modal-registeration">Зарегистрируйтесь</a></div>
 				</div>
-				<div class="modal password-modal"><a class="modal__close" href="#">
+				<div class="modal password-modal" id="password-modal"><a class="modal__close" href="#">
 						<svg class="svg-close">
 							<use xlink:href="images/sprites.svg#close"></use>
 						</svg></a>
@@ -849,7 +849,7 @@
 							<div class="modal__txt">Отправим новый пароль</div>
 							<button class="btn btn-red btn-disabled">Отправить</button>
 						</form>
-					</div><a class="password-modal__prev" href="#">
+					</div><a class="password-modal__prev" href="#user-modal" id="password-modal__prev">
 						<svg class="svg-arrow_6">
 							<use xlink:href="images/sprites.svg#arrow_6"></use>
 						</svg></a>
@@ -862,7 +862,7 @@
 						<div class="modal__desc">Письмо с новым паролем отправлено<br> на почту&nbsp;<span>home@gmail.com</span></div><a class="btn">Ок</a>
 					</div>
 				</div>
-				<div class="modal registration-modal"><a class="modal__close" href="#">
+				<div class="modal registration-modal" id="registration-modal"><a class="modal__close" href="#">
 						<svg class="svg-close">
 							<use xlink:href="images/sprites.svg#close"></use>
 						</svg></a>
@@ -903,12 +903,12 @@
 							</label>
 						</form>
 					</div>
-					<div class="modal__box">Зарегистрированы?&nbsp;<a class="modal__link" href="#" id="js-modal-user-2">Войдите по логину</a></div>
+					<div class="modal__box">Зарегистрированы?&nbsp;<a class="modal__link" href="#user-modal" id="js-modal-user-2">Войдите по логину</a></div>
 				</div>
 			</div>
 		</div>
-		<script src="js/vendor.js?v=1549959566585"></script>
+		<script src="js/vendor.js?v=1550124882921"></script>
 		<script src="https://api-maps.yandex.ru/2.1/?apikey=c0de13b2-36aa-4ac2-80e6-6d3fde6821bb&amp;lang=ru_RU" type="text/javascript"></script>
-		<script src="js/main.js?v=1549959566585"></script>
+		<script src="js/main.js?v=1550124882921"></script>
 	</body>
 </html>
