@@ -154,6 +154,254 @@
 /************************************************************************/
 /******/ ({
 
+/***/ "./src/js/function/about.js":
+/*!**********************************!*\
+  !*** ./src/js/function/about.js ***!
+  \**********************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+var tabCompany = $('#js-about-company'),
+    tabOffice = $('#js-about-office'),
+    contentCompany = $('.about__company'),
+    contentOffice = $('.about__office');
+tabCompany.on('click', function (e) {
+  e.preventDefault();
+  tabOffice.removeClass('about__tab--active');
+  $(this).addClass('about__tab--active');
+  contentOffice.removeClass('about__box--active');
+  contentCompany.addClass('about__box--active');
+});
+tabOffice.on('click', function (e) {
+  e.preventDefault();
+  tabCompany.removeClass('about__tab--active');
+  $(this).addClass('about__tab--active');
+  contentCompany.removeClass('about__box--active');
+  contentOffice.addClass('about__box--active');
+});
+
+/***/ }),
+
+/***/ "./src/js/function/basket.js":
+/*!***********************************!*\
+  !*** ./src/js/function/basket.js ***!
+  \***********************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+var del = $('.basket__del'),
+    back = $('.basket__back'),
+    basketItem = $('.basket__item'),
+    basketInput = $('.basket__col-input'),
+    btnMin = $('.basket__col-min'),
+    btnMax = $('.basket__col-max'),
+    priceAll = $('.basket__all'),
+    price = $('.basket__price'),
+    noPrice = $('.basket__noprice'),
+    sale = $('.basket__sale'),
+    basketPriceWrap = $('.basket__price-wrap'),
+    buyAll = $('#js-buy-all'),
+    buySale = $('#js-buy-sale'),
+    buySum = $('#js-buy-sum'),
+    countSale = 0,
+    countNoPrice = 0,
+    countPrice = 0,
+    strSale,
+    strNoPrice,
+    strPrice;
+basketItem.each(function () {
+  var $this = $(this),
+      saleVal = $this.find(sale).text(),
+      saleValues = Number(saleVal),
+      priceVal = Number($this.find(price).text().replace(/\s+/g, '')),
+      formula = priceVal * ((100 - saleValues) / 100),
+      saleSum = priceVal - formula,
+      format = String(formula).replace(/(\d)(?=(\d{3})+([^\d]|$))/g, '$1 ');
+  countNoPrice = countNoPrice + priceVal;
+
+  if (saleValues <= 0) {
+    $this.find(sale).css('display', 'none');
+    $this.find(priceAll).text(format);
+    countSale = countSale + saleSum;
+    countPrice = countPrice + formula;
+  } else {
+    $this.find(price).addClass('basket__noprice').removeClass('basket__price');
+    $this.find(basketPriceWrap).append('<div class="basket__price">' + format + '</div>');
+    $this.find(priceAll).text(format);
+    countSale = countSale + saleSum;
+    countPrice = countPrice + formula;
+  }
+});
+strSale = String(countSale).replace(/(\d)(?=(\d{3})+([^\d]|$))/g, '$1 ');
+strNoPrice = String(countNoPrice).replace(/(\d)(?=(\d{3})+([^\d]|$))/g, '$1 ');
+strPrice = String(countPrice).replace(/(\d)(?=(\d{3})+([^\d]|$))/g, '$1 ');
+buySale.text(strSale);
+buyAll.text(strNoPrice);
+buySum.text(strPrice);
+del.on('click', function (e) {
+  e.preventDefault();
+  var $this = $(this);
+  $this.closest(basketItem).addClass('basket__item--del');
+  basketDel($(this), back, false);
+});
+back.on('click', function (e) {
+  e.preventDefault();
+  var $this = $(this);
+  $this.closest(basketItem).removeClass('basket__item--del');
+  basketDel($this, del, true);
+});
+btnMax.on('click', function (e) {
+  e.preventDefault();
+  minMax($(this), true);
+});
+btnMin.on('click', function (e) {
+  e.preventDefault();
+  minMax($(this), false);
+});
+basketInput.on('keyup', function () {
+  var $this = $(this);
+  $this.val($this.val().replace(/\D/, ''));
+}); // basketInput.on('blur', function () {
+//     blurPrice($(this));
+// });
+//
+// var count = 0;
+//
+// function blurPrice($this) {
+//     var thisVal = Number($this.val()),
+//         valPriceAll = Number($this.closest(basketItem).find('.basket__all').text().replace(/\s+/g, '')),
+//         valNoPrice = Number($this.closest(basketItem).find('.basket__noprice').text().replace(/\s+/g, '')),
+//         valPrice = Number($this.closest(basketItem).find('.basket__price').text().replace(/\s+/g, '')),
+//         strSale, format, strNoPrice, strPrice, a, b, c;
+//
+//         if (thisVal <= 1 || thisVal == NaN) {
+//             valPriceAll = valPrice;
+//             format = String(valPriceAll).replace(/(\d)(?=(\d{3})+([^\d]|$))/g, '$1 ');
+//             $this.closest(basketItem).find(priceAll).text(format);
+//             $this.val(1);
+//             count = countPrice - valPrice;
+//             countPrice = count + valPrice;
+//             strPrice = String(countPrice).replace(/(\d)(?=(\d{3})+([^\d]|$))/g, '$1 ');
+//             buySum.text(strPrice);
+//         } else {
+//             a = valPriceAll * thisVal;
+//             format = String(a).replace(/(\d)(?=(\d{3})+([^\d]|$))/g, '$1 ');
+//             $this.closest(basketItem).find(priceAll).text(format);
+//             count = countPrice - valPriceAll;
+//             countPrice = count + a;
+//             strPrice = String(countPrice).replace(/(\d)(?=(\d{3})+([^\d]|$))/g, '$1 ');
+//             buySum.text(strPrice);
+//         }
+//     console.log(count);
+//
+// }
+
+function minMax($this, input) {
+  var prices = $('.basket__price'),
+      col = Number($this.closest(basketItem).find(basketInput).val()),
+      priceAllVal = Number($this.closest('.basket__item').find(priceAll).text().replace(/\s+/g, '')),
+      priceVal = Number($this.closest('.basket__item').find(prices).text().replace(/\s+/g, '')),
+      valNoPrice = Number($this.closest(basketItem).find('.basket__noprice').text().replace(/\s+/g, '')),
+      valPrice = Number($this.closest(basketItem).find('.basket__price').text().replace(/\s+/g, '')),
+      saleSum = 0,
+      strSale,
+      format,
+      formatPrice,
+      strPrice,
+      strNoPrice,
+      a,
+      b,
+      c,
+      d;
+  a = input ? col + 1 : col - 1;
+  d = input ? priceAllVal = priceAllVal + priceVal : priceAllVal = priceAllVal - priceVal;
+  format = String(d).replace(/(\d)(?=(\d{3})+([^\d]|$))/g, '$1 ');
+  formatPrice = String(priceVal).replace(/(\d)(?=(\d{3})+([^\d]|$))/g, '$1 ');
+  $this.closest(basketItem).find(priceAll).text(format);
+  $this.closest(basketItem).find(basketInput).val(a);
+
+  if (input ? col < 1 : col <= 1) {
+    $this.closest(basketItem).find(basketInput).val(1);
+    $this.closest(basketItem).find(priceAll).text(formatPrice);
+  } else {
+    b = input ? countPrice = countPrice + priceVal : countPrice = countPrice - priceVal;
+    strPrice = String(b).replace(/(\d)(?=(\d{3})+([^\d]|$))/g, '$1 ');
+    buySum.text(strPrice);
+
+    if ($this.closest(basketItem).find($('.basket__price-wrap > div')).hasClass('basket__noprice')) {
+      saleSum = valNoPrice - valPrice;
+      b = input ? countSale = countSale + saleSum : countSale = countSale - saleSum;
+      c = input ? countNoPrice = countNoPrice + valNoPrice : countNoPrice = countNoPrice - valNoPrice;
+      ;
+      strSale = String(b).replace(/(\d)(?=(\d{3})+([^\d]|$))/g, '$1 ');
+      strNoPrice = String(c).replace(/(\d)(?=(\d{3})+([^\d]|$))/g, '$1 ');
+      buySale.text(strSale);
+      buyAll.text(strNoPrice);
+    } else {
+      c = input ? countNoPrice = countNoPrice + valPrice : countNoPrice = countNoPrice - valPrice;
+      ;
+      strNoPrice = String(c).replace(/(\d)(?=(\d{3})+([^\d]|$))/g, '$1 ');
+      buyAll.text(strNoPrice);
+    }
+  }
+}
+
+function basketDel($this, arg, input) {
+  $this.removeClass('basket__svg--active');
+  $this.closest(basketItem).find(arg).addClass('basket__svg--active');
+  var col = Number($this.closest(basketItem).find(basketInput).val()),
+      valPriceAll = Number($this.closest(basketItem).find(priceAll).text().replace(/\s+/g, '')),
+      valNoPrice = Number($this.closest(basketItem).find('.basket__noprice').text().replace(/\s+/g, '')),
+      valPrice = Number($this.closest(basketItem).find('.basket__price').text().replace(/\s+/g, '')),
+      saleSum = 0,
+      strSale,
+      format,
+      strNoPrice,
+      a,
+      b,
+      c;
+  a = input ? countPrice = countPrice + valPriceAll : countPrice = countPrice - valPriceAll;
+  format = String(a).replace(/(\d)(?=(\d{3})+([^\d]|$))/g, '$1 ');
+  buySum.text(format);
+
+  if ($this.closest(basketItem).find($('.basket__price-wrap > div')).hasClass('basket__noprice')) {
+    valNoPrice = valNoPrice * col;
+    saleSum = valNoPrice - valPriceAll;
+    b = input ? countNoPrice = countNoPrice + valNoPrice : countNoPrice = countNoPrice - valNoPrice;
+    c = input ? countSale = countSale + saleSum : countSale = countSale - saleSum;
+    strNoPrice = String(b).replace(/(\d)(?=(\d{3})+([^\d]|$))/g, '$1 ');
+    strSale = String(c).replace(/(\d)(?=(\d{3})+([^\d]|$))/g, '$1 ');
+    buyAll.text(strNoPrice);
+    buySale.text(strSale);
+  } else {
+    b = input ? countNoPrice = countNoPrice + valPrice : countNoPrice = countNoPrice - valPrice;
+    strNoPrice = String(b).replace(/(\d)(?=(\d{3})+([^\d]|$))/g, '$1 ');
+    buyAll.text(strNoPrice);
+  }
+}
+
+var linkDostavka = $('#js-dostavka');
+var linkModal = $('.link-modal');
+var linkModalItem = $('.link-modal__item');
+linkDostavka.on('click', function (e) {
+  e.preventDefault();
+  $(this).find(linkModal).toggleClass('link-modal--active');
+});
+$(document).mouseup(function (e) {
+  if (!linkModal.is(e.target) && linkModal.has(e.target).length === 0 && linkDostavka.has(e.target).length === 0) {
+    linkModal.removeClass('link-modal--active');
+  }
+});
+linkModalItem.on('click', function (e) {
+  e.preventDefault();
+  var txt = $(this).text();
+  $('#js-dostavka > span').text(txt);
+  linkModalItem.removeClass('link-modal__item--active');
+  $(this).addClass('link-modal__item--active');
+});
+
+/***/ }),
+
 /***/ "./src/js/function/bx-filter.js":
 /*!**************************************!*\
   !*** ./src/js/function/bx-filter.js ***!
@@ -183,6 +431,83 @@ $(document).mouseup(function (e) {
     filterLink.removeClass(filterActive);
   }
 });
+
+/***/ }),
+
+/***/ "./src/js/function/card-product-filter.js":
+/*!************************************************!*\
+  !*** ./src/js/function/card-product-filter.js ***!
+  \************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+var cardSize = $('.card-product__item');
+var onLink = $('.card-product__link-on');
+var onWrap = $('.card-product__on-wrap');
+
+if ($('li').is('.card-product__item')) {
+  if (cardSize.length == 1) {
+    cardSize.addClass('card-product__item--one');
+  }
+
+  cardSize.on('click', function (e) {
+    e.preventDefault();
+
+    if (!$(this).hasClass('card-product__item--active')) {
+      cardSize.removeClass('card-product__item--active');
+      cardSize.removeClass('card-product__item--prev');
+    }
+
+    $(this).addClass('card-product__item--active');
+    $(this).prev('.card-product__item').addClass('card-product__item--prev');
+  });
+}
+
+if ($('div').is('.card-product__link-on')) {
+  onLink.on('click', function (e) {
+    e.preventDefault();
+    onWrap.toggleClass('card-product__on-wrap--active');
+    $(this).toggleClass('card-product__link-on--active');
+  });
+  $(document).mouseup(function (e) {
+    // событие клика по веб-документу
+    if (!onWrap.is(e.target) // если клик был не по нашему блоку
+    && onWrap.has(e.target).length === 0 && onLink.has(e.target).length === 0) {
+      // и не по его дочерним элементам
+      onWrap.removeClass('card-product__on-wrap--active');
+      onLink.removeClass('card-product__link-on--active');
+    }
+  });
+}
+
+if ($('div').is('.card-product__filter')) {
+  var cardFilter = $('.card-product__filter');
+  var filterTop = cardFilter.offset().top;
+  var cardProductHeight = $('.card-product').innerHeight();
+  var cardProductBottom = cardProductHeight + filterTop;
+  var windowHeight = $(window).height();
+  var filterHeight = cardFilter.innerHeight();
+  var indentDownFilter = windowHeight - filterHeight - 60;
+  var cardTopWindow = cardProductBottom - windowHeight + indentDownFilter;
+  var filterTopFix = filterTop - 60;
+  $(document).scroll(function () {
+    var $scrollTop = $(document).scrollTop();
+
+    if ($scrollTop > filterTopFix) {
+      $('.card-product__filter-wrap').addClass('card-product__filter-wrap--fixed');
+
+      if ($scrollTop > cardTopWindow) {
+        $('.card-product__filter-wrap').removeClass('card-product__filter-wrap--fixed');
+        cardFilter.addClass('card-product__filter--bottom');
+      } else {
+        cardFilter.removeClass('card-product__filter--bottom');
+        $('.card-product__filter-wrap').addClass('card-product__filter-wrap--fixed');
+      }
+    } else {
+      $('.card-product__filter-wrap').removeClass('card-product__filter-wrap--fixed');
+    }
+  });
+}
 
 /***/ }),
 
@@ -277,6 +602,34 @@ $('.product-slide__like').hover(function () {
   } else {
     $inFavorites.removeClass('in-favorites--active');
     $toFavorites.removeClass('to-favorites--active');
+  }
+});
+
+/***/ }),
+
+/***/ "./src/js/function/favorites.js":
+/*!**************************************!*\
+  !*** ./src/js/function/favorites.js ***!
+  \**************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+var favLink = $('.fav-con__link');
+var like = $('.fav-con .product-slide__like');
+favLink.on('click', function (e) {
+  e.preventDefault();
+  favLink.removeClass('fav-con__link--active');
+  $(this).addClass('fav-con__link--active');
+});
+like.on('click', function () {
+  if ($(this).hasClass('product-slide__like--active')) {
+    $(this).removeClass('product-slide__no-like');
+    $(this).html('<svg class="svg-like product-slide__svg-like"><use xlink:href="images/sprites.svg#like"></use></svg>');
+    $(this).closest('.product-slide__wrap').removeClass('product-slide__wrap--del');
+  } else {
+    $(this).addClass('product-slide__no-like');
+    $(this).html('<svg class="svg-back"><use xlink:href="images/sprites.svg#back"></use></svg>');
+    $(this).closest('.product-slide__wrap').addClass('product-slide__wrap--del');
   }
 });
 
@@ -576,6 +929,22 @@ function offersClick($this, offers, wid) {
 
 /***/ }),
 
+/***/ "./src/js/function/result.js":
+/*!***********************************!*\
+  !*** ./src/js/function/result.js ***!
+  \***********************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+var resultLink = $('.result__link');
+resultLink.on('click', function (e) {
+  e.preventDefault();
+  resultLink.removeClass('result__link--active');
+  $(this).addClass('result__link--active');
+});
+
+/***/ }),
+
 /***/ "./src/js/function/search.js":
 /*!***********************************!*\
   !*** ./src/js/function/search.js ***!
@@ -625,6 +994,16 @@ $('.main-slider').slick({
   nextArrow: '<div class="main-slider__arrow main-slider__arrow--next"><svg><use xlink:href="images/sprites.svg#arrow_2"></use></svg></div>',
   // Кастомная стрелка "далее"
   prevArrow: '<div class="main-slider__arrow main-slider__arrow--prev"><svg><use xlink:href="images/sprites.svg#arrow_2"></use></svg></div>'
+});
+$('.about__slider').slick({
+  lazyLoad: 'ondemand',
+  infinite: false,
+  variableWidth: true,
+  slidesToShow: 5,
+  slidesToScroll: 1,
+  nextArrow: '<div class="card-product__arrow card-product__arrow--next"><svg><use xlink:href="images/sprites.svg#arrow_3"></use></svg></div>',
+  // Кастомная стрелка "далее"
+  prevArrow: '<div class="card-product__arrow card-product__arrow--prev"><svg><use xlink:href="images/sprites.svg#arrow_3"></use></svg></div>'
 });
 $('.card-product__slider-top').slick({
   lazyLoad: 'ondemand',
@@ -1139,6 +1518,16 @@ $(document).ready(function () {
   __webpack_require__(/*! ./function/bx-filter.js */ "./src/js/function/bx-filter.js");
 
   __webpack_require__(/*! ./function/card-product.js */ "./src/js/function/card-product.js");
+
+  __webpack_require__(/*! ./function/card-product-filter.js */ "./src/js/function/card-product-filter.js");
+
+  __webpack_require__(/*! ./function/basket.js */ "./src/js/function/basket.js");
+
+  __webpack_require__(/*! ./function/favorites.js */ "./src/js/function/favorites.js");
+
+  __webpack_require__(/*! ./function/result.js */ "./src/js/function/result.js");
+
+  __webpack_require__(/*! ./function/about.js */ "./src/js/function/about.js");
 });
 
 /***/ }),
