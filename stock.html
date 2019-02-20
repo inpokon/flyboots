@@ -11,7 +11,7 @@
 		<link rel="icon" href="images/favicon.ico" sizes="96x96">
 		<link rel="icon" href="images/favicon.ico" sizes="128x128">
 		<link rel="icon" href="images/favicon.ico" sizes="196x196">
-		<link rel="stylesheet" href="css/main.css?v=1550477783650">
+		<link rel="stylesheet" href="css/main.css?v=1550634614941">
 	</head>
 	<body>
 		<div class="to-favorites">В избранное</div>
@@ -117,7 +117,7 @@
 							</div>
 							<div class="top-menu__box">
 								<ul class="top-menu__list">
-									<li><a class="top-menu__link" href="#"><span>Адреса магазинов</span></a></li>
+									<li><a class="top-menu__link" href="address.html"><span>Адреса магазинов</span></a></li>
 									<li><a class="top-menu__link" href="stock.html"><span>Акции</span></a></li>
 									<li><a class="top-menu__link" href="delivery.html"><span>Оплата и доставка</span></a></li>
 									<li><a class="top-menu__link" href="timeplan.html"><span>Рассрочка</span></a></li>
@@ -301,7 +301,8 @@
 								</li>
 								<li><a class="nav-menu__link" href="/">Сумки</a></li>
 								<li><a class="nav-menu__link" href="certificate.html">Сертификаты</a></li>
-							</ul><a class="nav-menu__search" href="#">
+							</ul>
+							<div class="nav-menu__search">
 								<div class="nav-menu__search-wrap">
 									<div class="nav-menu__search-block">
 										<form class="search">
@@ -314,7 +315,8 @@
 											<button name="s">Найти</button>
 										</form>
 									</div>
-								</div></a>
+								</div>
+							</div>
 							<div class="nav-menu__box"><a href="favorites.html" id="js-nav-like">
 									<svg class="svg-like">
 										<use xlink:href="images/sprites.svg#like"></use>
@@ -331,10 +333,31 @@
 					<div class="container">
 						<div class="advantage">
 							<div class="advantage__left">
+								<div class="stock">
+									<h2 class="title-left">Акции</h2>
+									<div class="stock__wrap">
+										<div class="stock__item">
+											<div class="stock__img"><img src="images/img_2x_1.jpg" alt="stock"></div>
+											<div class="stock__box">
+												<h3 class="stock__title">«Готовь Яниту летом!»</h3>
+												<div class="stock__data">Действует до августа 2019</div>
+												<div class="stock__desc">- 20% на всю зимнюю коллекцию обуви фирмы Janita.<br>Только в магазинах по адресу:</div><a class="link-solid-black-s" href="#"><span>ул. Литвинова, 2</span></a><a class="link-solid-black-s" href="#"><span>ул. Лермонтова, 267/3</span></a><a class="link-solid-black-s" href="#"><span>ул. Депутатская, 84/2</span></a><a class="link-solid-black-s" href="#"><span>ул. Советская, 58/1, МТЦ «Новый», пав. 135</span></a>
+											</div>
+										</div>
+										<div class="stock__item">
+											<div class="stock__img"><img src="images/img_2x_2.jpg" alt="stock"></div>
+											<div class="stock__box">
+												<h3 class="stock__title">Распродажа мужской коллекции</h3>
+												<div class="stock__data">Действует до марта 2019</div>
+												<div class="stock__desc">- 15% на всю зимнюю коллекцию обуви</div>
+											</div>
+										</div>
+									</div>
+								</div>
 							</div>
 							<div class="advantage__right">
 								<ul class="advantage__list">
-									<li class="advantage__item advantage__item--active"><a class="link-solid-blue-s" href="timeplan.html"><span>Рассрочка</span></a></li>
+									<li class="advantage__item"><a class="link-solid-blue-s" href="timeplan.html"><span>Рассрочка</span></a></li>
 									<li class="advantage__item"><a class="link-solid-blue-s" href="delivery.html"><span>Доставка и оплата</span></a></li>
 									<li class="advantage__item"><a class="link-solid-blue-s" href="guarantee.html"><span>Гарантия</span></a></li>
 									<li class="advantage__item"><a class="link-solid-blue-s" href="discount.html"><span>Дисконтная программа</span></a></li>
@@ -352,7 +375,7 @@
 				<div class="container">
 					<div class="footer__wrap">
 						<ul class="footer__list">
-							<li><a class="footer__link" href="#">Адреса магазинов</a></li>
+							<li><a class="footer__link" href="address.html">Адреса магазинов</a></li>
 							<li><a class="footer__link" href="delivery.html">Оплата и доставка</a></li>
 							<li><a class="footer__link" href="timeplan.html">Рассрочка</a></li>
 							<li><a class="footer__link" href="guarantee.html">Гарантия</a></li>
@@ -421,30 +444,32 @@
 					</div>
 					<div class="modal__box">Впервые здесь?&nbsp;<a class="modal__link" href="#registration-modal" id="js-modal-registeration">Зарегистрируйтесь</a></div>
 				</div>
-				<div class="modal password-modal" id="password-modal"><a class="modal__close" href="#">
-						<svg class="svg-close">
-							<use xlink:href="images/sprites.svg#close"></use>
-						</svg></a>
-					<div class="modal__wrap">
-						<div class="modal__title">Восстановление пароля</div>
-						<form class="modal__form" role="form" method="POST" id="js-form-password">
-							<label class="modal__label"><span>Электронная почта</span>
-								<input type="text" name="email" id="js-email-password">
-							</label>
-							<div class="modal__txt">Отправим новый пароль</div>
-							<button class="btn btn-red btn-disabled">Отправить</button>
-						</form>
-					</div><a class="password-modal__prev" href="#user-modal" id="password-modal__prev">
-						<svg class="svg-arrow_6">
-							<use xlink:href="images/sprites.svg#arrow_6"></use>
-						</svg></a>
-				</div>
-				<div class="modal ok-modal"><a class="modal__close" href="#">
-						<svg class="svg-close">
-							<use xlink:href="images/sprites.svg#close"></use>
-						</svg></a>
-					<div class="modal__wrap">
-						<div class="modal__desc">Письмо с новым паролем отправлено<br> на почту&nbsp;<span>home@gmail.com</span></div><a class="btn">Ок</a>
+				<div class="modal-wrap" id="password-modal">
+					<div class="modal password-modal"><a class="modal__close" href="#">
+							<svg class="svg-close">
+								<use xlink:href="images/sprites.svg#close"></use>
+							</svg></a>
+						<div class="modal__wrap">
+							<div class="modal__title">Восстановление пароля</div>
+							<form class="modal__form" role="form" method="POST" id="js-form-password">
+								<label class="modal__label"><span>Электронная почта</span>
+									<input type="text" name="email" id="js-email-password">
+								</label>
+								<div class="modal__txt">Отправим новый пароль</div>
+								<button class="btn btn-red btn-disabled">Отправить</button>
+							</form>
+						</div><a class="password-modal__prev" href="#user-modal" id="password-modal__prev">
+							<svg class="svg-arrow_6">
+								<use xlink:href="images/sprites.svg#arrow_6"></use>
+							</svg></a>
+					</div>
+					<div class="modal ok-modal"><a class="modal__close" href="#">
+							<svg class="svg-close">
+								<use xlink:href="images/sprites.svg#close"></use>
+							</svg></a>
+						<div class="modal__wrap">
+							<div class="modal__desc">Письмо с новым паролем отправлено<br> на почту&nbsp;<span>home@gmail.com</span></div><a class="btn">Ок</a>
+						</div>
 					</div>
 				</div>
 				<div class="modal registration-modal" id="registration-modal"><a class="modal__close" href="#">
@@ -492,8 +517,8 @@
 				</div>
 			</div>
 		</div>
-		<script src="js/vendor.js?v=1550477783651"></script>
+		<script src="js/vendor.js?v=1550634614942"></script>
 		<script src="https://api-maps.yandex.ru/2.1/?apikey=c0de13b2-36aa-4ac2-80e6-6d3fde6821bb&amp;lang=ru_RU" type="text/javascript"></script>
-		<script src="js/main.js?v=1550477783651"></script>
+		<script src="js/main.js?v=1550634614942"></script>
 	</body>
 </html>

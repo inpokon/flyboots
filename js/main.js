@@ -182,6 +182,62 @@ tabOffice.on('click', function (e) {
 
 /***/ }),
 
+/***/ "./src/js/function/accaunt.js":
+/*!************************************!*\
+  !*** ./src/js/function/accaunt.js ***!
+  \************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+var wrapPass = $('#js-wrap-pass-edit'),
+    btnEditAcc = $('#js-acc-edit'),
+    btnPrevAcc = $('#js-acc-off'),
+    btnEditPass = $('#js-acc-pass'),
+    btnPrevPass = $('#js-pass-off');
+btnEditAcc.on('click', function () {
+  $(this).closest('.account__wrap').removeClass('account__wrap--no-active');
+  $(this).closest('.account__wrap').find('.account__bottom--no-active').removeClass('account__bottom--no-active');
+  $(this).closest('.account__bottom').addClass('account__bottom--no-active');
+});
+btnPrevAcc.on('click', function () {
+  $(this).closest('.account__wrap').addClass('account__wrap--no-active');
+  $(this).closest('.account__wrap').find('.account__bottom--no-active').removeClass('account__bottom--no-active');
+  $(this).closest('.account__bottom').addClass('account__bottom--no-active');
+});
+btnEditPass.on('click', function () {
+  $(this).closest('.account__password').addClass('account__wrap--disabled');
+  wrapPass.removeClass('account__wrap--disabled');
+});
+btnPrevPass.on('click', function () {
+  $('.account__password').removeClass('account__wrap--disabled');
+  wrapPass.addClass('account__wrap--disabled');
+});
+
+/***/ }),
+
+/***/ "./src/js/function/advantage.js":
+/*!**************************************!*\
+  !*** ./src/js/function/advantage.js ***!
+  \**************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+if ($('div').is('.advantage')) {
+  $(function () {
+    var location = window.location.href;
+    var cur_url = location.split('/').pop();
+    $('.advantage__list li').each(function () {
+      var link = $(this).find('a').attr('href');
+
+      if (cur_url == link) {
+        $(this).addClass('advantage__item--active');
+      }
+    });
+  });
+}
+
+/***/ }),
+
 /***/ "./src/js/function/basket.js":
 /*!***********************************!*\
   !*** ./src/js/function/basket.js ***!
@@ -791,7 +847,9 @@ var $modal = $('.modal'),
     modalActive = 'modal--active',
     overlayActive = 'overlay--active',
     $productBtn = $('.product-slide__btn'),
-    $quickModal = $('.quick-modal');
+    $quickModal = $('.quick-modal'),
+    $addressLinkModal = $('.address__slide-img'),
+    $addressModal = $('.address__pop');
 $close.on('click', function (e) {
   e.preventDefault();
   $.magnificPopup.close();
@@ -803,6 +861,7 @@ myPopup($linkReg);
 myPopup($linkUserTwo);
 myPopup($productBtn);
 myPopup($linkPrev);
+myPopup($addressLinkModal);
 
 function myPopup(arg) {
   arg.magnificPopup({
@@ -815,6 +874,10 @@ function myPopup(arg) {
   });
 }
 
+$addressLinkModal.on('click', function (e) {
+  e.preventDefault();
+  $addressModal.addClass('address__pop--active');
+});
 $productBtn.on('click', function (e) {
   e.preventDefault();
   $quickModal.addClass(modalActive);
@@ -833,6 +896,7 @@ $linkPassword.on('click', function (e) {
   e.preventDefault();
   $modal.removeClass(modalActive);
   $passwordModal.addClass(modalActive);
+  $('.modal-wrap').addClass(modalActive);
   setTimeout(function () {
     $('input#js-email-password').focus();
   }, 100);
@@ -840,6 +904,7 @@ $linkPassword.on('click', function (e) {
 $linkPrev.on('click', function (e) {
   e.preventDefault();
   $modal.removeClass(modalActive);
+  $('.modal-wrap').removeClass(modalActive);
   $userModal.addClass(modalActive);
   setTimeout(function () {
     $('input#form-email').focus();
@@ -956,8 +1021,7 @@ var inputNoBlur = $(".nav-menu__search input"),
     $search = $(".nav-menu__search"),
     $bags = $('.nav-menu__list li:nth-child(3)'),
     $sertificat = $('.nav-menu__list li:nth-child(4)');
-$search.on('click', function (e) {
-  e.preventDefault();
+$search.on('click', function () {
   $bags.addClass('no-event');
   $sertificat.addClass('no-event');
   $(this).addClass('nav-menu__search--active');
@@ -994,6 +1058,27 @@ $('.main-slider').slick({
   nextArrow: '<div class="main-slider__arrow main-slider__arrow--next"><svg><use xlink:href="images/sprites.svg#arrow_2"></use></svg></div>',
   // Кастомная стрелка "далее"
   prevArrow: '<div class="main-slider__arrow main-slider__arrow--prev"><svg><use xlink:href="images/sprites.svg#arrow_2"></use></svg></div>'
+});
+$('.address__slider-pop').slick({
+  lazyLoad: 'ondemand',
+  infinite: false,
+  slidesToShow: 1,
+  slidesToScroll: 1,
+  asNavFor: $('.address__slider'),
+  nextArrow: '<div class="card-product__arrow card-product__arrow--next"><svg><use xlink:href="images/sprites.svg#arrow_3"></use></svg></div>',
+  // Кастомная стрелка "далее"
+  prevArrow: '<div class="card-product__arrow card-product__arrow--prev"><svg><use xlink:href="images/sprites.svg#arrow_3"></use></svg></div>'
+});
+$('.address__slider').slick({
+  lazyLoad: 'ondemand',
+  infinite: false,
+  variableWidth: true,
+  slidesToShow: 8,
+  slidesToScroll: 1,
+  asNavFor: $('.address__slider-pop'),
+  nextArrow: '<div class="card-product__arrow card-product__arrow--next"><svg><use xlink:href="images/sprites.svg#arrow_3"></use></svg></div>',
+  // Кастомная стрелка "далее"
+  prevArrow: '<div class="card-product__arrow card-product__arrow--prev"><svg><use xlink:href="images/sprites.svg#arrow_3"></use></svg></div>'
 });
 $('.about__slider').slick({
   lazyLoad: 'ondemand',
@@ -1259,28 +1344,16 @@ var pointNone = {
   iconImageSize: [0, 0]
 };
 var groups = [{
-  name: 'ул. Сергеева, 3/5 <br> (ТЦ Silver Mall, пав. В3)',
-  style: 'sergeeva',
+  name: 'ул. Баумана, 216/1',
+  style: 'baumana',
   items: {
-    name: 'ул. Сергеева, 3/5 <br> (ТЦ Silver Mall, пав. В3)',
+    name: 'ул. Баумана, 216/1',
     link: '#',
-    phone: '+73952904800',
-    phoneTwo: '+7 (3952) 904-800',
+    phone: '+73952400755',
+    phoneTwo: '+7 (3952) 400-755',
     time: 'с 10:00 до 20:00',
-    center: [52.265675, 104.226514],
-    myId: 'sergeeva'
-  }
-}, {
-  name: 'ул. Лермонтова, 267/3',
-  style: 'lermantova',
-  items: {
-    name: 'ул. Лермонтова, 267/3',
-    link: '#',
-    phone: '+73952904800',
-    phoneTwo: '+7 (3952) 904-800',
-    time: 'с 10:00 до 20:00',
-    center: [52.248133, 104.269341],
-    myId: 'lermantova'
+    center: [52.353573, 104.153603],
+    myId: 'baumana'
   }
 }, {
   name: 'ул. Гоголя, 53/3',
@@ -1295,28 +1368,28 @@ var groups = [{
     myId: 'gogalya'
   }
 }, {
-  name: 'ул. Литвинова, 2',
-  style: 'litvinova',
+  name: 'ул. Депутатская, 84/2',
+  style: 'deputatskaya',
   items: {
-    name: 'ул. Литвинова, 2',
+    name: 'ул. Депутатская, 84/2',
     link: '#',
-    phone: '+73952904800',
-    phoneTwo: '+7 (3952) 904-800',
+    phone: '+73952900450',
+    phoneTwo: '+7 (3952) 900-450',
     time: 'с 10:00 до 20:00',
-    center: [52.284239, 104.288053],
-    myId: 'litvinova'
+    center: [52.264467, 104.329618],
+    myId: 'deputatskaya'
   }
 }, {
-  name: 'ул. Урицкого, 4',
-  style: 'urickogo',
+  name: 'ул. Сергеева, 3/5 <br> (ТЦ Silver Mall, пав. В3)',
+  style: 'sergeeva',
   items: {
-    name: 'ул. Урицкого, 4',
+    name: 'ул. Сергеева, 3/5 <br> (ТЦ Silver Mall, пав. В3)',
     link: '#',
-    phone: '+73952904800',
-    phoneTwo: '+7 (3952) 904-800',
-    time: 'с 10:00 до 20:00',
-    center: [52.284646, 104.289473],
-    myId: 'urickogo'
+    phone: '+79501135987',
+    phoneTwo: '+7 (950) 113-59-87',
+    time: 'с 10:00 до 22:00',
+    center: [52.265675, 104.226514],
+    myId: 'sergeeva'
   }
 }, {
   name: 'ул. Советская, 58/1 <br> (МТЦ Новый, пав 135)',
@@ -1324,35 +1397,47 @@ var groups = [{
   items: {
     name: 'ул. Советская, 58/1 <br> (МТЦ Новый, пав 135)',
     link: '#',
-    phone: '+73952904800',
-    phoneTwo: '+7 (3952) 904-800',
-    time: 'с 10:00 до 20:00',
+    phone: '+79025106917',
+    phoneTwo: '+7 (902) 510-69-17',
+    time: 'с 10:00 до 22:00',
     center: [52.275819, 104.305081],
     myId: 'sovetskaya'
   }
 }, {
-  name: 'ул. Депутатская, 84/2',
-  style: 'deputatskaya',
+  name: 'ул. Литвинова, 2',
+  style: 'litvinova',
   items: {
-    name: 'ул. Депутатская, 84/2',
+    name: 'ул. Литвинова, 2',
     link: '#',
-    phone: '+73952904800',
-    phoneTwo: '+7 (3952) 904-800',
+    phone: '+73952487800',
+    phoneTwo: '+7 (3952) 487-800',
     time: 'с 10:00 до 20:00',
-    center: [52.264467, 104.329618],
-    myId: 'deputatskaya'
+    center: [52.284239, 104.288053],
+    myId: 'litvinova'
   }
 }, {
-  name: 'ул. Баумана, 216/1',
-  style: 'baumana',
+  name: 'ул. Лермонтова, 267/3',
+  style: 'lermantova',
   items: {
-    name: 'ул. Баумана, 216/1',
+    name: 'ул. Лермонтова, 267/3',
     link: '#',
-    phone: '+73952904800',
-    phoneTwo: '+7 (3952) 904-800',
+    phone: '+73952664800',
+    phoneTwo: '+7 (3952) 664-800',
     time: 'с 10:00 до 20:00',
-    center: [52.353573, 104.153603],
-    myId: 'baumana'
+    center: [52.248133, 104.269341],
+    myId: 'lermantova'
+  }
+}, {
+  name: 'ул. Урицкого, 4',
+  style: 'urickogo',
+  items: {
+    name: 'ул. Урицкого, 4',
+    link: '#',
+    phone: '+79501235680',
+    phoneTwo: '+7 (950) 123-56-80',
+    time: 'с 10:00 до 20:00',
+    center: [52.284646, 104.289473],
+    myId: 'urickogo'
   }
 }];
 
@@ -1528,6 +1613,10 @@ $(document).ready(function () {
   __webpack_require__(/*! ./function/result.js */ "./src/js/function/result.js");
 
   __webpack_require__(/*! ./function/about.js */ "./src/js/function/about.js");
+
+  __webpack_require__(/*! ./function/advantage.js */ "./src/js/function/advantage.js");
+
+  __webpack_require__(/*! ./function/accaunt.js */ "./src/js/function/accaunt.js");
 });
 
 /***/ }),
