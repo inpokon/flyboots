@@ -11,7 +11,7 @@
 		<link rel="icon" href="images/favicon.ico" sizes="96x96">
 		<link rel="icon" href="images/favicon.ico" sizes="128x128">
 		<link rel="icon" href="images/favicon.ico" sizes="196x196">
-		<link rel="stylesheet" href="css/main.css?v=1550634612708">
+		<link rel="stylesheet" href="css/main.css?v=1550816605133">
 	</head>
 	<body>
 		<div class="to-favorites">В избранное</div>
@@ -33,7 +33,7 @@
 						</div>
 						<label class="modal__label quick-modal__phone"><span>Мобильный телефон</span>
 							<input class="js-form-phone" type="text" name="phone" placeholder="+7 (999) 999-99-99">
-						</label><span class="modal__min">Пришлем промокод в смс</span><span class="modal__address-txt">Адрес выдачи заказа</span><a class="modal__address-link" href="#"><span id="js-modal-link-address">ул. Сергеева, 3/5 (ТЦ Silver Mall, пав. В3)</span>
+						</label><span class="modal__min">Пришлем промокод в смс</span><span class="modal__address-txt">Адрес выдачи заказа</span><span class="modal__address-link"><span id="js-modal-link-address">ул. Сергеева, 3/5 (ТЦ Silver Mall, пав. В3)</span>
 							<div class="modal__address-wrap">
 								<ul class="modal__address">
 									<li class="modal__item modal__item--active" id="sergeeva">
@@ -77,7 +77,7 @@
 										</label>
 									</li>
 								</ul>
-							</div></a>
+							</div></span>
 						<div class="modal__min">Заказ доставим в магазин сегодня в 14:00</div><a class="modal__map-link link-dashed-s" href="#"><span>Проверьте адрес на карте</span></a>
 						<div class="modal__maps">
 							<div class="modal__maps-wrap">
@@ -405,15 +405,13 @@
 											</svg>
 										</div>
 										<div class="bx-filter-block">
-											<div class="bx-filter-box">
-												<div class="bx-filter-box bx-filter-box--price">
-													<label class="bx-filter-param-label"><span class="bx-filter-param-text" title="price-min">от</span>
-														<input type="text" name="price-min">
-													</label>
-													<label class="bx-filter-param-label"><span class="bx-filter-param-text" title="price-max">до</span>
-														<input type="text" name="price-max">
-													</label>
-												</div>
+											<div class="bx-filter-box bx-filter-box--price">
+												<label class="bx-filter-param-label"><span class="bx-filter-param-text" title="price-min">от</span>
+													<input type="text" name="price-min">
+												</label>
+												<label class="bx-filter-param-label"><span class="bx-filter-param-text" title="price-max">до</span>
+													<input type="text" name="price-max">
+												</label>
 											</div>
 											<button class="btn btn-red bx-filter-btn">показать</button>
 										</div>
@@ -474,29 +472,27 @@
 										</div>
 										<div class="bx-filter-block">
 											<div class="bx-filter-box">
-												<div class="bx-filter-box">
-													<label class="bx-filter-param-label modal__check">
-														<input type="checkbox" name="check"><span class="bx-filter-param-text modal__check-text" title="..">Бежевый</span>
-													</label>
-													<label class="bx-filter-param-label modal__check">
-														<input type="checkbox" name="check"><span class="bx-filter-param-text modal__check-text" title="..">Синий</span>
-													</label>
-													<label class="bx-filter-param-label modal__check">
-														<input type="checkbox" name="check"><span class="bx-filter-param-text modal__check-text" title="..">Зеленый</span>
-													</label>
-													<label class="bx-filter-param-label modal__check">
-														<input type="checkbox" name="check"><span class="bx-filter-param-text modal__check-text" title="..">Белый</span>
-													</label>
-													<label class="bx-filter-param-label modal__check">
-														<input type="checkbox" name="check"><span class="bx-filter-param-text modal__check-text" title="..">Черный</span>
-													</label>
-													<label class="bx-filter-param-label modal__check">
-														<input type="checkbox" name="check"><span class="bx-filter-param-text modal__check-text" title="..">Красный</span>
-													</label>
-													<label class="bx-filter-param-label modal__check">
-														<input type="checkbox" name="check"><span class="bx-filter-param-text modal__check-text" title="..">Розовый</span>
-													</label>
-												</div>
+												<label class="color-check">
+													<input type="checkbox" name="check"><span class="color-check__text" title=".."><span class="color-check__beffor" style="background: #f8f5ea"></span>Бежевый</span>
+												</label>
+												<label class="color-check">
+													<input type="checkbox" name="check"><span class="color-check__text" title=".."><span class="color-check__beffor" style="background: #5140f3"></span>Синий</span>
+												</label>
+												<label class="color-check">
+													<input type="checkbox" name="check"><span class="color-check__text" title=".."><span class="color-check__beffor" style="background: #10b242"></span>Зеленый</span>
+												</label>
+												<label class="color-check">
+													<input type="checkbox" name="check"><span class="color-check__text" title=".."><span class="color-check__beffor" style="background: #ffffff"></span>Белый</span>
+												</label>
+												<label class="color-check">
+													<input type="checkbox" name="check"><span class="color-check__text" title=".."><span class="color-check__beffor" style="background: #24232e"></span>Черный</span>
+												</label>
+												<label class="color-check">
+													<input type="checkbox" name="check"><span class="color-check__text" title=".."><span class="color-check__beffor" style="background: #cd3730"></span>Красный</span>
+												</label>
+												<label class="color-check">
+													<input type="checkbox" name="check"><span class="color-check__text" title=".."><span class="color-check__beffor" style="background: #fb89fb"></span>Розовый</span>
+												</label>
 											</div>
 											<button class="btn btn-red bx-filter-btn">показать</button>
 										</div>
@@ -759,10 +755,10 @@
 								<input type="checkbox" name="check" id="sort_time"><span class="modal__check-text toolbar__check">Новинки сверху</span>
 							</label>
 							<div class="toolbar__box">
-								<div class="toolbar__text">Сортировать:</div><a class="toolbar__price link-dashed-blue-s" href="#"><span>по возрастанию ценю</span>
+								<div class="toolbar__text">Сортировать:</div><span class="toolbar__price link-dashed-blue-s asc"><span>по возрастанию ценю</span>
 									<svg class="svg-filter">
 										<use xlink:href="images/sprites.svg#arrow"></use>
-									</svg></a>
+									</svg></span>
 							</div>
 							<div class="toolbar__box">
 								<div class="toolbar__text">Количество предложений:</div><span class="toolbar__count">1 755</span>
@@ -800,7 +796,7 @@
 										</ul>
 									</div>
 									<div class="product-slide__price"><span class="product-slide__no-price">8 600 руб.</span><span>4 300 руб.</span></div>
-									<div class="product-slide__box"><a class="btn product-slide__gradient" href="#">В корзину</a><a class="btn product-slide__btn" href="#quick-modal">Забронировать</a></div>
+									<div class="product-slide__box"><a class="btn product-slide__btn" href="#quick-modal">Забронировать</a><a class="btn product-slide__gradient" href="#">В корзину</a></div>
 								</div>
 							</div>
 							<div class="product-slide__wrap">
@@ -831,7 +827,7 @@
 										</ul>
 									</div>
 									<div class="product-slide__price"><span class="product-slide__no-price">7 800 руб.</span><span>3 900 руб.</span></div>
-									<div class="product-slide__box"><a class="btn product-slide__gradient" href="#">В корзину</a><a class="btn product-slide__btn" href="#quick-modal">Забронировать</a></div>
+									<div class="product-slide__box"><a class="btn product-slide__btn" href="#quick-modal">Забронировать</a><a class="btn product-slide__gradient" href="#">В корзину</a></div>
 								</div>
 							</div>
 							<div class="product-slide__wrap">
@@ -862,7 +858,7 @@
 										</ul>
 									</div>
 									<div class="product-slide__price"><span class="product-slide__no-price">7 200 руб.</span><span>3 600 руб.</span></div>
-									<div class="product-slide__box"><a class="btn product-slide__gradient" href="#">В корзину</a><a class="btn product-slide__btn" href="#quick-modal">Забронировать</a></div>
+									<div class="product-slide__box"><a class="btn product-slide__btn" href="#quick-modal">Забронировать</a><a class="btn product-slide__gradient" href="#">В корзину</a></div>
 								</div>
 							</div>
 							<div class="product-slide__wrap">
@@ -893,7 +889,7 @@
 										</ul>
 									</div>
 									<div class="product-slide__price"><span class="product-slide__no-price">4 200 руб.</span><span>2 100 руб.</span></div>
-									<div class="product-slide__box"><a class="btn product-slide__gradient" href="#">В корзину</a><a class="btn product-slide__btn" href="#quick-modal">Забронировать</a></div>
+									<div class="product-slide__box"><a class="btn product-slide__btn" href="#quick-modal">Забронировать</a><a class="btn product-slide__gradient" href="#">В корзину</a></div>
 								</div>
 							</div>
 							<div class="product-slide__wrap">
@@ -924,7 +920,7 @@
 										</ul>
 									</div>
 									<div class="product-slide__price"><span class="product-slide__no-price">8 600 руб.</span><span>4 300 руб.</span></div>
-									<div class="product-slide__box"><a class="btn product-slide__gradient" href="#">В корзину</a><a class="btn product-slide__btn" href="#quick-modal">Забронировать</a></div>
+									<div class="product-slide__box"><a class="btn product-slide__btn" href="#quick-modal">Забронировать</a><a class="btn product-slide__gradient" href="#">В корзину</a></div>
 								</div>
 							</div>
 							<div class="product-slide__wrap">
@@ -955,7 +951,7 @@
 										</ul>
 									</div>
 									<div class="product-slide__price"><span class="product-slide__no-price">7 800 руб.</span><span>3 900 руб.</span></div>
-									<div class="product-slide__box"><a class="btn product-slide__gradient" href="#">В корзину</a><a class="btn product-slide__btn" href="#quick-modal">Забронировать</a></div>
+									<div class="product-slide__box"><a class="btn product-slide__btn" href="#quick-modal">Забронировать</a><a class="btn product-slide__gradient" href="#">В корзину</a></div>
 								</div>
 							</div>
 							<div class="product-slide__wrap">
@@ -986,7 +982,7 @@
 										</ul>
 									</div>
 									<div class="product-slide__price"><span class="product-slide__no-price">7 200 руб.</span><span>3 600 руб.</span></div>
-									<div class="product-slide__box"><a class="btn product-slide__gradient" href="#">В корзину</a><a class="btn product-slide__btn" href="#quick-modal">Забронировать</a></div>
+									<div class="product-slide__box"><a class="btn product-slide__btn" href="#quick-modal">Забронировать</a><a class="btn product-slide__gradient" href="#">В корзину</a></div>
 								</div>
 							</div>
 							<div class="product-slide__wrap">
@@ -1017,7 +1013,7 @@
 										</ul>
 									</div>
 									<div class="product-slide__price"><span class="product-slide__no-price">4 200 руб.</span><span>2 100 руб.</span></div>
-									<div class="product-slide__box"><a class="btn product-slide__gradient" href="#">В корзину</a><a class="btn product-slide__btn" href="#quick-modal">Забронировать</a></div>
+									<div class="product-slide__box"><a class="btn product-slide__btn" href="#quick-modal">Забронировать</a><a class="btn product-slide__gradient" href="#">В корзину</a></div>
 								</div>
 							</div>
 						</div>
@@ -1191,8 +1187,8 @@
 				</div>
 			</div>
 		</div>
-		<script src="js/vendor.js?v=1550634612711"></script>
+		<script src="js/vendor.js?v=1550816605159"></script>
 		<script src="https://api-maps.yandex.ru/2.1/?apikey=c0de13b2-36aa-4ac2-80e6-6d3fde6821bb&amp;lang=ru_RU" type="text/javascript"></script>
-		<script src="js/main.js?v=1550634612712"></script>
+		<script src="js/main.js?v=1550816605160"></script>
 	</body>
 </html>

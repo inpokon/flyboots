@@ -1,0 +1,273 @@
+
+<title>Оформление заказа | Интернет-магазин FLYBOOTS</title><!DOCTYPE html>
+<html lang="ru">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width">
+		<link rel="icon" href="images/favicon.ico">
+		<link rel="icon" href="images/favicon.ico" sizes="16x16">
+		<link rel="icon" href="images/favicon.ico" sizes="32x32">
+		<link rel="icon" href="images/favicon.ico" sizes="96x96">
+		<link rel="icon" href="images/favicon.ico" sizes="128x128">
+		<link rel="icon" href="images/favicon.ico" sizes="196x196">
+		<link rel="stylesheet" href="css/main.css?v=1550816602871">
+	</head>
+	<body>
+		<div class="wrapper">
+			<div class="content">
+				<header class="header">
+					<div class="container">
+						<div class="header-checkout"><a href="index.html">
+								<svg class="svg-logo-checkout">
+									<use xlink:href="images/sprites.svg#logo"></use>
+								</svg></a>
+							<div class="header-checkout__service">Служба доставки<a class="header-checkout__tel" href="tel:+73952503587">+7 (3952) 50-35-87</a></div>
+							<div class="header-checkout__time">Режим работы
+								<div class="header-checkout__txt">Будни c 10:00 до 19:00, сб и вс - выходной</div>
+							</div>
+						</div>
+					</div>
+				</header>
+				<main class="main">
+					<div class="container">
+						<h1 class="title-left">Оформление заказа</h1>
+						<div class="checkout">
+							<div class="checkout__left">
+								<div class="checkout__desc-top"><a class="checkout__tab checkout__tab--active" href="#" data-tab="js-tab-user"><span class="checkout__tab-span">1. Пользователь</span></a><a class="checkout__tab" href="#" data-tab="js-tab-delivery"><span class="checkout__tab-span">2. Доставка</span></a><a class="checkout__tab" href="#" data-tab="js-tab-order"><span class="checkout__tab-span">3. Оплата</span></a></div>
+								<form class="checkout__desc-bottom" id="js-checkout">
+									<div class="checkout__desc-wrap checkout__desc-wrap--active" data-tab="js-tab-user">
+										<label class="checkout__label"><span>Имя</span>
+											<input type="text" name="name">
+										</label>
+										<label class="checkout__label checkout__label--mobile"><span>Мобильный телефон</span>
+											<input class="js-form-phone" type="text" name="phone" placeholder="+7 (000) 000-00-00">
+											<div class="checkout__italic">Для подтверждения заказа</div>
+										</label>
+										<label class="checkout__label"><span>Электронная почта</span>
+											<input type="text" name="email">
+										</label>
+										<div class="checkout__box"><span class="btn-reds btn-dis" id="js-step-one">Продолжить</span><span class="checkout__error">Заполните все поля</span></div>
+										<label class="modal__check">
+											<input type="checkbox" name="check" checked><span class="modal__check-text">Я согласен на&nbsp;<a href="#">обработку персональных данных</a></span>
+										</label>
+									</div>
+									<div class="checkout__desc-wrap" data-tab="js-tab-delivery">
+										<div class="checkout__txt">Город</div><span class="checkout__city-link" id="js-dostavka"><span>Иркутск</span>
+											<div class="link-modal" id="js-link-modal">
+												<ul class="link-modal__wrap">
+													<li class="link-modal__item link-modal__item--active">
+														<label class="link-modal__option">
+															<input class="link-modal__hidden" type="radio" name="city" value="irkutsk" checked><span>Иркутск</span>
+														</label>
+													</li>
+													<li class="link-modal__item">
+														<label class="link-modal__option">
+															<input class="link-modal__hidden" type="radio" value="Angarsk" name="city"><span>Ангарск</span>
+														</label>
+													</li>
+													<li class="link-modal__item">
+														<label class="link-modal__option">
+															<input class="link-modal__hidden" type="radio" value="Usolie" name="city"><span>Усолье-Сибирское</span>
+														</label>
+													</li>
+													<li class="link-modal__item">
+														<label class="link-modal__option">
+															<input class="link-modal__hidden" type="radio" value="Shelehov" name="city"><span>Шелехов</span>
+														</label>
+													</li>
+													<li class="link-modal__item">
+														<label class="link-modal__option">
+															<input class="link-modal__hidden" type="radio" value="Russia" name="city"><span>Россия</span>
+														</label>
+													</li>
+												</ul>
+											</div></span>
+										<div class="checkout__txt">Способ доставки</div>
+										<div class="checkout__tabs-delivery checkout__delivery checkout__delivery--active">
+											<label class="about__tab about__tab--active" id="js-pickup">
+												<svg class="svg-shop_2">
+													<use xlink:href="images/sprites.svg#shop_2"></use>
+												</svg><span>Самовывоз</span>
+												<input class="link-modal__hidden" type="radio" name="deliveryTab" value="pickup" checked>
+											</label>
+											<div class="modal__min checkout__min">Доставка бесплатно</div>
+											<label class="about__tab" id="js-curier">
+												<svg class="svg-curier">
+													<use xlink:href="images/sprites.svg#curier"></use>
+												</svg><span>Курьером</span>
+												<input class="link-modal__hidden" type="radio" name="deliveryTab" value="curier">
+											</label>
+										</div>
+										<div class="checkout__tabs-tk checkout__delivery">
+											<label class="about__tab about__tab--active" id="js-tk">
+												<svg class="svg-cdek">
+													<use xlink:href="images/sprites.svg#cdek"></use>
+												</svg><span>ТК «СДЭК»</span>
+												<input class="link-modal__hidden" type="radio" checked>
+											</label>
+											<div class="modal__min">Стоимость доставки 500 рублей</div>
+										</div>
+										<div class="checkout__wrap checkout__wrap--active checkout__wrap-pickup">
+											<div class="checkout__txt">Адрес выдачи заказа</div><span class="modal__address-link"><span id="js-modal-link-address">ул. Сергеева, 3/5 (ТЦ Silver Mall, пав. В3)</span>
+												<div class="modal__address-wrap">
+													<ul class="modal__address">
+														<li class="modal__item modal__item--active" id="sergeeva">
+															<label class="modal__option">
+																<input class="modal__hidden" type="radio" name="address" checked><span>ул. Сергеева, 3/5 (ТЦ Silver Mall, пав. В3)</span>
+															</label>
+														</li>
+														<li class="modal__item" id="lermantova">
+															<label class="modal__option">
+																<input class="modal__hidden" type="radio" name="address"><span>ул. Лермонтова, 267/3</span>
+															</label>
+														</li>
+														<li class="modal__item" id="gogalya">
+															<label class="modal__option">
+																<input class="modal__hidden" type="radio" name="address"><span>ул. Гоголя, 53/3</span>
+															</label>
+														</li>
+														<li class="modal__item" id="litvinova">
+															<label class="modal__option">
+																<input class="modal__hidden" type="radio" name="address"><span>ул. Литвинова, 2</span>
+															</label>
+														</li>
+														<li class="modal__item" id="urickogo">
+															<label class="modal__option">
+																<input class="modal__hidden" type="radio" name="address"><span>ул. Урицкого, 4</span>
+															</label>
+														</li>
+														<li class="modal__item" id="sovetskaya">
+															<label class="modal__option">
+																<input class="modal__hidden" type="radio" name="address"><span>ул. Советская, 58/1 (МТЦ Новый, пав 135)</span>
+															</label>
+														</li>
+														<li class="modal__item" id="deputatskaya">
+															<label class="modal__option">
+																<input class="modal__hidden" type="radio" name="address"><span>ул. Депутатская, 84/2</span>
+															</label>
+														</li>
+														<li class="modal__item" id="baumana">
+															<label class="modal__option">
+																<input class="modal__hidden" type="radio" name="address"><span>ул. Баумана, 216/1</span>
+															</label>
+														</li>
+													</ul>
+												</div></span>
+											<div class="modal__min">Заказ доставим в магазин завтра в 10:00</div><span class="modal__map-link link-dashed-s"><span>Адрес магазина на карте</span></span>
+											<div class="modal__maps">
+												<div class="modal__maps-wrap">
+													<div id="modal__map" style="width:100%; height: 236px"></div>
+												</div>
+											</div>
+										</div>
+										<div class="checkout__wrap-curier checkout__wrap">
+											<div class="checkout__txt checkout__date-time">День и время</div>
+											<label class="checkout__date">
+												<input class="hidden" type="text" id="datetimepicker"><span class="exact-time__text">Укажите дату доставки</span>
+											</label>
+											<label class="checkout__label checkout__address"><span>Адрес доставки</span>
+												<input type="text" name="address">
+												<div class="modal__min">Улица, дом, квартира</div>
+											</label>
+										</div>
+										<label class="checkout__textarea"><span>Комментарий к заказу</span>
+											<textarea type="text" name="textarea" cols="61" rows="3="></textarea>
+										</label>
+										<div class="modal__min">Любая информация, которая поможет вам получить<br>заказ с улыбкой</div>
+										<div class="checkout__box"><span class="btn-reds" id="js-step-two">Продолжить</span></div>
+									</div>
+									<div class="checkout__desc-wrap" data-tab="js-tab-order">
+										<div class="checkout__txt">Способ оплаты</div>
+										<div class="checkout__tabs-pay checkout__delivery checkout__delivery--active">
+											<label class="about__tab about__tab--active" id="js-cash">
+												<svg class="svg-money">
+													<use xlink:href="images/sprites.svg#money"></use>
+												</svg><span>При получении<br>наличными или банк. картой</span>
+												<input class="link-modal__hidden" type="radio" name="pay" value="cash" checked>
+											</label>
+											<div class="modal__min checkout__min">Доставка бесплатно</div>
+											<label class="about__tab" id="js-visa">
+												<svg class="svg-pay">
+													<use xlink:href="images/sprites.svg#pay"></use>
+												</svg><span>На сайте<br>банковской картой</span>
+												<input class="link-modal__hidden" type="radio" name="pay" value="visa">
+											</label>
+										</div>
+										<div class="checkout__box">
+											<button class="btn-reds checkout__btn-cash checkout__btn checkout__btn--active">Оформить заказ</button><span class="btn-reds checkout__btn-visa checkout__btn">К оплате</span>
+										</div>
+									</div>
+								</form>
+							</div>
+							<div class="checkout__right">
+								<div class="checkout__top">
+									<div class="checkout__top-txt">Мой заказ</div><a class="checkout__link" href="#"><span>Изменить</span></a>
+								</div>
+								<div class="checkout__main">
+									<div class="checkout__item">
+										<div class="checkout__desc">
+											<div class="checkout__name">Сапоги Francesco Donni</div>
+											<div class="checkout__art">Артикул: A272-1</div>
+											<div class="checkout__size">Размер 38</div>
+										</div>
+										<div class="checkout__coll">1 шт</div>
+										<div class="checkout__sale">-30%</div>
+										<div class="checkout__prices">
+											<div class="checkout__no-price">8 600 руб.</div>
+											<div class="checkout__price">4 300 руб.</div>
+										</div>
+									</div>
+									<div class="checkout__item">
+										<div class="checkout__desc">
+											<div class="checkout__name">Ботинки Renzoni-Geronea</div>
+											<div class="checkout__art">Артикул: A272-1</div>
+											<div class="checkout__size">Размер 38</div>
+										</div>
+										<div class="checkout__coll">1 шт</div>
+										<div class="checkout__sale">-30%</div>
+										<div class="checkout__prices">
+											<div class="checkout__no-price">7 800 руб.</div>
+											<div class="checkout__price">3 900 руб.</div>
+										</div>
+									</div>
+								</div>
+								<div class="checkout__bottom">
+									<div class="checkout__block">
+										<div class="checkout__sum-name">Всего товаров</div>
+										<div class="checkout__sum">8 200 руб.</div>
+									</div>
+									<div class="checkout__block">
+										<div class="checkout__sum-name">Доставка</div>
+										<div class="checkout__sum">0 руб.</div>
+									</div>
+									<div class="checkout__block">
+										<div class="checkout__sum-name">Итого к оплате</div>
+										<div class="checkout__sum">8 200 руб.</div>
+									</div>
+								</div>
+								<div class="checkout__text-right"><span class="checkout__text-one checkout__text-span checkout__text-span--active">Если товар в магазине:<br>«Заказ можно забрать сегодня»</span><span class="checkout__text-two checkout__text-span">Если чек заказа ниже 5000 руб:<br>Доставка 500 рублей</span></div>
+							</div>
+						</div>
+					</div>
+				</main>
+			</div>
+			<footer class="footer">
+				<div class="container">
+					<div class="copy">
+						<div class="copy__block">
+							<p class="copy__par">© 2019 «Флайбутс» интернет-магазин обуви</p><span>ИНН 380900222005</span>
+						</div><a class="copy__block" href="https://mmit.ru" target="_blank">
+							<svg class="svg-mmit">
+								<use xlink:href="images/sprites.svg#mmit_logo"></use>
+							</svg>
+							<p class="copy__par">Разработка и поддержка сайта</p></a>
+					</div>
+				</div>
+			</footer>
+		</div>
+		<script src="js/vendor.js?v=1550816602871"></script>
+		<script src="https://api-maps.yandex.ru/2.1/?apikey=c0de13b2-36aa-4ac2-80e6-6d3fde6821bb&amp;lang=ru_RU" type="text/javascript"></script>
+		<script src="js/main.js?v=1550816602871"></script>
+	</body>
+</html>
