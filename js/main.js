@@ -470,6 +470,8 @@ var filterLink = $('.bx-filter-parameters-box-title');
 var filterBlock = $('.bx-filter-block');
 var filterActive = 'bx-filter-parameters-box-title--active';
 var filterWrap = $('.bx-filter-parameters-box');
+var filterParam = $('.filter-check');
+var filterParamDesc = $('.bx-filter-desc');
 filterLink.on('click', function (e) {
   e.preventDefault();
   var $this = $(this);
@@ -486,6 +488,88 @@ $(document).mouseup(function (e) {
   if (!filterWrap.is(e.target) && filterWrap.has(e.target).length === 0) {
     filterBlock.slideUp();
     filterLink.removeClass(filterActive);
+  }
+});
+
+for (var i = 0; i < filterParam.length; i++) {
+  if ($(filterParam[i]).find('input').prop('checked')) {
+    var txt = $(filterParam[i]).find('span').text();
+    $(filterParam[i]).closest('.bx-filter-parameters-box').find('.bx-filter-desc').addClass('bx-filter-desc--active');
+    $(filterParam[i]).closest('.bx-filter-parameters-box').find('.bx-filter-desc-wrap').append('<span>&nbsp;' + txt + '</span>');
+  }
+}
+
+filterParam.on('click', function () {
+  if ($(this).find('input').prop('checked')) {
+    $(this).addClass('filter-check--active');
+  } else {
+    $(this).removeClass('filter-check--active');
+  }
+
+  if ($('.filter-check--active').length > 0) {
+    $(this).closest('.bx-filter-parameters-box').find('.bx-filter-desc').addClass('bx-filter-desc--active');
+    var txt = $(this).find('span').text();
+
+    if ($(this).find('input').prop('checked')) {
+      $(this).closest('.bx-filter-parameters-box').find('.bx-filter-desc-wrap').append('<span data-span="' + txt + '">&nbsp;' + txt + '</span>');
+    } else {
+      $(this).closest('.bx-filter-parameters-box').find('.bx-filter-desc-wrap span[data-span="' + txt + '"]').remove();
+    }
+  } else {
+    $(this).closest('.bx-filter-parameters-box').find('.bx-filter-desc').removeClass('bx-filter-desc--active');
+    $(this).closest('.bx-filter-parameters-box').find('.bx-filter-desc-wrap span').remove();
+  }
+});
+$('.bx-filter-close').on('click', function () {
+  $(this).closest('.bx-filter-parameters-box').find('.filter-check input:checked').prop('checked', false);
+  $(this).closest('.bx-filter-parameters-box').find('.bx-filter-desc').removeClass('bx-filter-desc--active');
+  $(this).closest('.bx-filter-parameters-box').find('.bx-filter-desc-wrap span').remove();
+  $('.filter-desc-min').remove();
+  $('.filter-price-min').val('');
+  $('.filter-desc-max').remove();
+  $('.filter-price-max').val('');
+});
+$('.bx-filter-dump').on('click', function () {
+  $('.filter-check input:checked').prop('checked', false);
+  $('.bx-filter-desc').removeClass('bx-filter-desc--active');
+  $('.bx-filter-desc-wrap span').remove();
+  $('.filter-desc-min').remove();
+  $('.filter-price-min').val('');
+  $('.filter-desc-max').remove();
+  $('.filter-price-max').val('');
+});
+$('.filter-price-min').on('blur', function () {
+  var thisVal = Number($(this).val());
+  var nextVal = Number($('.filter-price-max').val());
+
+  if (thisVal > 0 || nextVal > 0) {
+    $(this).closest('.bx-filter-parameters-box').find('.bx-filter-desc').addClass('bx-filter-desc--active');
+
+    if (thisVal > 0) {
+      $('.filter-desc-min').remove();
+      $(this).closest('.bx-filter-parameters-box').find('.bx-filter-desc-wrap').append('<span class="filter-desc-min">от:&nbsp;' + thisVal + '</span>');
+    } else {
+      $('.filter-desc-min').remove();
+    }
+  } else {
+    $(this).closest('.bx-filter-parameters-box').find('.bx-filter-desc').removeClass('bx-filter-desc--active');
+  }
+});
+$('.filter-price-max').on('blur', function () {
+  var thisVal = Number($(this).val());
+  var nextVal = Number($('.filter-price-min').val());
+
+  if (thisVal > 0 || nextVal > 0) {
+    $(this).closest('.bx-filter-parameters-box').find('.bx-filter-desc').addClass('bx-filter-desc--active');
+
+    if (thisVal > 0) {
+      $('.filter-desc-max').remove();
+      $(this).closest('.bx-filter-parameters-box').find('.bx-filter-desc-wrap').append('<span class="filter-desc-max">до:&nbsp;' + thisVal + '</span>');
+    } else {
+      $('.filter-desc-max').remove();
+    }
+  } else {
+    $(this).closest('.bx-filter-parameters-box').find('.bx-filter-desc').removeClass('bx-filter-desc--active');
   }
 });
 
