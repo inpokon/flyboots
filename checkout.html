@@ -11,12 +11,12 @@
 		<link rel="icon" href="images/favicon.ico" sizes="96x96">
 		<link rel="icon" href="images/favicon.ico" sizes="128x128">
 		<link rel="icon" href="images/favicon.ico" sizes="196x196">
-		<link rel="stylesheet" href="css/main.css?v=1550816602871">
+		<link rel="stylesheet" href="css/main.css?v=1551002211418">
 	</head>
 	<body>
 		<div class="wrapper">
 			<div class="content">
-				<header class="header">
+				<header class="header header-checkout-wrap">
 					<div class="container">
 						<div class="header-checkout"><a href="index.html">
 								<svg class="svg-logo-checkout">
@@ -114,42 +114,42 @@
 													<ul class="modal__address">
 														<li class="modal__item modal__item--active" id="sergeeva">
 															<label class="modal__option">
-																<input class="modal__hidden" type="radio" name="address" checked><span>ул. Сергеева, 3/5 (ТЦ Silver Mall, пав. В3)</span>
+																<input class="modal__hidden" type="radio" name="address" value="Россия, Иркутская область, Иркутск, ул. Сергеева, 3/5 (ТЦ Silver Mall, пав. В3)" data-phone="+7 (950) 113-59-87" data-time="с 10:00 до 22:00" checked><span>ул. Сергеева, 3/5 (ТЦ Silver Mall, пав. В3)</span>
 															</label>
 														</li>
 														<li class="modal__item" id="lermantova">
 															<label class="modal__option">
-																<input class="modal__hidden" type="radio" name="address"><span>ул. Лермонтова, 267/3</span>
+																<input class="modal__hidden" type="radio" name="address" value="Россия, Иркутская область, Иркутск, ул. Лермонтова, 267/3" data-phone="+7 (3952) 664-800" data-time="с 10:00 до 20:00"><span>ул. Лермонтова, 267/3</span>
 															</label>
 														</li>
 														<li class="modal__item" id="gogalya">
 															<label class="modal__option">
-																<input class="modal__hidden" type="radio" name="address"><span>ул. Гоголя, 53/3</span>
+																<input class="modal__hidden" type="radio" name="address" value="Россия, Иркутская область, Иркутск, ул. Гоголя, 53/3" data-phone="+7 (3952) 904-800" data-time="с 10:00 до 20:00"><span>ул. Гоголя, 53/3</span>
 															</label>
 														</li>
 														<li class="modal__item" id="litvinova">
 															<label class="modal__option">
-																<input class="modal__hidden" type="radio" name="address"><span>ул. Литвинова, 2</span>
+																<input class="modal__hidden" type="radio" name="address" value="Россия, Иркутская область, Иркутск, ул. Литвинова, 2" data-phone="+7 (3952) 487-800" data-time="с 10:00 до 20:00"><span>ул. Литвинова, 2</span>
 															</label>
 														</li>
 														<li class="modal__item" id="urickogo">
 															<label class="modal__option">
-																<input class="modal__hidden" type="radio" name="address"><span>ул. Урицкого, 4</span>
+																<input class="modal__hidden" type="radio" name="address" value="Россия, Иркутская область, Иркутск, ул. Урицкого, 4" data-phone="+7 (950) 123-56-80" data-time="с 10:00 до 20:00"><span>ул. Урицкого, 4</span>
 															</label>
 														</li>
 														<li class="modal__item" id="sovetskaya">
 															<label class="modal__option">
-																<input class="modal__hidden" type="radio" name="address"><span>ул. Советская, 58/1 (МТЦ Новый, пав 135)</span>
+																<input class="modal__hidden" type="radio" name="address" value="Россия, Иркутская область, Иркутск, ул. Советская, 58/1 (МТЦ Новый, пав 135)" data-phone="+7 (902) 510-69-17" data-time="с 10:00 до 22:00"><span>ул. Советская, 58/1 (МТЦ Новый, пав 135)</span>
 															</label>
 														</li>
 														<li class="modal__item" id="deputatskaya">
 															<label class="modal__option">
-																<input class="modal__hidden" type="radio" name="address"><span>ул. Депутатская, 84/2</span>
+																<input class="modal__hidden" type="radio" name="address" value="Россия, Иркутская область, Иркутск, ул. Депутатская, 84/2" data-phone="+7 (950) 113-59-87" data-time="с 10:00 до 20:00"><span>ул. Депутатская, 84/2</span>
 															</label>
 														</li>
 														<li class="modal__item" id="baumana">
 															<label class="modal__option">
-																<input class="modal__hidden" type="radio" name="address"><span>ул. Баумана, 216/1</span>
+																<input class="modal__hidden" type="radio" name="address" value="Россия, Иркутская область, Иркутск, ул. Баумана, 216/1" data-phone="+7 (3952) 400-755" data-time="с 10:00 до 20:00"><span>ул. Баумана, 216/1</span>
 															</label>
 														</li>
 													</ul>
@@ -162,19 +162,56 @@
 											</div>
 										</div>
 										<div class="checkout__wrap-curier checkout__wrap">
-											<div class="checkout__txt checkout__date-time">День и время</div>
-											<label class="checkout__date">
-												<input class="hidden" type="text" id="datetimepicker"><span class="exact-time__text">Укажите дату доставки</span>
-											</label>
+											<div class="checkout__txt checkout__date-time">День и время</div><span class="checkout__date"><span class="exact-time__text">Укажите дату доставки</span>
+												<div class="link-modal">
+													<div class="link-modal__wrap">
+														<div class="checkout__mouth-wrap"><span class="checkout__mouth-one">Январь</span><span class="checkout__mouth-two checkout__mouth--none">Февраль</span></div>
+														<div class="checkout__day-wrap">
+															<div class="checkout__day-box">
+																<label class="checkout__day checkout__day--active" id="checkout__day-one">
+																	<input class="link-modal__hidden" type="radio" name="day" value="irkutsk" checked><span>30 пн</span>
+																</label>
+																<label class="checkout__day" id="checkout__day-two">
+																	<input class="link-modal__hidden" type="radio" value="Angarsk" name="day"><span>31 вт</span>
+																</label>
+																<label class="checkout__day" id="checkout__day-three">
+																	<input class="link-modal__hidden" type="radio" value="Usolie" name="day"><span>1 ср</span>
+																</label>
+															</div>
+														</div>
+														<div class="checkout__time-wrap">
+															<label class="checkout__time checkout__time--active" id="checkout__time-one">
+																<input class="link-modal__hidden" type="radio" value="" name="day-time"><span>с 10:00 до 13:00</span>
+															</label>
+															<label class="checkout__time" id="checkout__time-two">
+																<input class="link-modal__hidden" type="radio" value="" name="day-time"><span>с 13:00 до 16:00</span>
+															</label>
+															<label class="checkout__time" id="checkout__time-three">
+																<input class="link-modal__hidden" type="radio" value="" name="day-time"><span>с 16:00 до 18:00</span>
+															</label>
+														</div>
+													</div>
+												</div></span>
 											<label class="checkout__label checkout__address"><span>Адрес доставки</span>
-												<input type="text" name="address">
+												<div class="checkout__search">
+													<svg class="svg-checkout-search">
+														<use xlink:href="images/sprites.svg#search"></use>
+													</svg>
+												</div>
+												<input type="text" name="address" id="suggest">
 												<div class="modal__min">Улица, дом, квартира</div>
-											</label>
+											</label><span class="modal__map-link link-dashed-s modal__map-link--curier"><span>Проверьте адрес на карте</span></span>
+											<div class="modal__maps">
+												<div class="modal__maps-wrap">
+													<div id="notice"></div>
+													<div id="maps-chekout"></div>
+												</div>
+											</div>
 										</div>
 										<label class="checkout__textarea"><span>Комментарий к заказу</span>
 											<textarea type="text" name="textarea" cols="61" rows="3="></textarea>
 										</label>
-										<div class="modal__min">Любая информация, которая поможет вам получить<br>заказ с улыбкой</div>
+										<div class="modal__min modal__min--mb">Любая информация, которая поможет вам получить<br>заказ с улыбкой</div>
 										<div class="checkout__box"><span class="btn-reds" id="js-step-two">Продолжить</span></div>
 									</div>
 									<div class="checkout__desc-wrap" data-tab="js-tab-order">
@@ -186,7 +223,6 @@
 												</svg><span>При получении<br>наличными или банк. картой</span>
 												<input class="link-modal__hidden" type="radio" name="pay" value="cash" checked>
 											</label>
-											<div class="modal__min checkout__min">Доставка бесплатно</div>
 											<label class="about__tab" id="js-visa">
 												<svg class="svg-pay">
 													<use xlink:href="images/sprites.svg#pay"></use>
@@ -196,7 +232,10 @@
 										</div>
 										<div class="checkout__box">
 											<button class="btn-reds checkout__btn-cash checkout__btn checkout__btn--active">Оформить заказ</button><span class="btn-reds checkout__btn-visa checkout__btn">К оплате</span>
-										</div>
+										</div><span class="checkout__final">
+											<svg class="svg-ssl">
+												<use xlink:href="images/sprites.svg#ssl"></use>
+											</svg><span>Безопасное соединение по шлюзу ОАО «Сбербанк России»<br>через протокол шифрования SSL</span></span>
 									</div>
 								</form>
 							</div>
@@ -266,8 +305,8 @@
 				</div>
 			</footer>
 		</div>
-		<script src="js/vendor.js?v=1550816602871"></script>
+		<script src="js/vendor.js?v=1551002211418"></script>
 		<script src="https://api-maps.yandex.ru/2.1/?apikey=c0de13b2-36aa-4ac2-80e6-6d3fde6821bb&amp;lang=ru_RU" type="text/javascript"></script>
-		<script src="js/main.js?v=1550816602871"></script>
+		<script src="js/main.js?v=1551002211418"></script>
 	</body>
 </html>
