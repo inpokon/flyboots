@@ -1158,6 +1158,12 @@ $(".filter-price-min, .filter-price-max").keypress(function (event) {
   if (event.charCode && event.charCode != 0 && event.charCode != 46 && (event.charCode < 48 || event.charCode > 57)) return false;
 });
 
+if ($('a').is('.top-menu__user--active')) {}
+
+$('#js-user-active').on('click', function () {
+  $(this).closest('.top-menu__box').find('.top-menu__modal').toggleClass('top-menu__modal--active');
+});
+
 /***/ }),
 
 /***/ "./src/js/function/hover-nav-menu.js":
@@ -1782,13 +1788,25 @@ $(function () {
 
 // Функция ymaps.ready() будет вызвана, когда
 // загрузятся все компоненты API, а также когда будет готово DOM-дерево.
-if ($('div').is('.map')) {
+if ($('div').is('.address')) {
   ymaps.ready(init);
+}
+
+if ($('section').is('.internet-price')) {
+  if ($(window).width() >= '769') {
+    ymaps.ready(init);
+  }
 } //ymaps.ready(testInit);
 
 
 if ($('div').is('.modal__maps')) {
-  ymaps.ready(initTwo);
+  if ($(window).width() >= '769') {
+    ymaps.ready(initTwo);
+  }
+
+  if ($('div').is('.card-product')) {
+    ymaps.ready(initTwo);
+  }
 }
 
 if ($('div').is('#maps-chekout')) {
@@ -2335,6 +2353,10 @@ if ($('div').is('.history-order')) {
     $this.appendTo(boxApp);
   }
 }
+
+$('#js-user-active-two').on('click', function () {
+  $(this).closest('.top-menu__box').find('.top-menu__modal').toggleClass('top-menu__modal--active');
+});
 
 /***/ }),
 

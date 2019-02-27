@@ -11,7 +11,7 @@
 		<link rel="icon" href="images/favicon.ico" sizes="96x96">
 		<link rel="icon" href="images/favicon.ico" sizes="128x128">
 		<link rel="icon" href="images/favicon.ico" sizes="196x196">
-		<link rel="stylesheet" href="css/main.css?v=1551181161725">
+		<link rel="stylesheet" href="css/main.css?v=1551244724706">
 	</head>
 	<body>
 		<div class="to-favorites">В избранное</div>
@@ -124,10 +124,20 @@
 									<li><a class="top-menu__link" href="guarantee.html"><span>Гарантия</span></a></li>
 								</ul>
 							</div>
-							<div class="top-menu__box"><a class="top-menu__user" href="#user-modal" id="js-link-user">
+							<div class="top-menu__box"><a class="top-menu__user top-menu__user--none" href="#user-modal" id="js-link-user">
 									<svg class="svg-user">
 										<use xlink:href="images/sprites.svg#user"></use>
-									</svg><span>Личный кабинет</span></a></div>
+									</svg><span>Личный кабинет</span></a><span class="top-menu__user top-menu__user--block" id="js-user-active">
+									<svg class="svg-user">
+										<use xlink:href="images/sprites.svg#user"></use>
+									</svg><span>Антон Прокопьев</span>
+									<svg class="svg-arrow">
+										<use xlink:href="images/sprites.svg#arrow"></use>
+									</svg></span>
+								<div class="top-menu__modal">
+									<div class="top-menu__modal-wrap"><a class="top-menu__modal-item" href="account.html">Личный кабинет</a><a class="top-menu__modal-item" href="account.html">Выйти</a></div>
+								</div>
+							</div>
 						</div>
 						<nav class="nav-menu">
 							<div class="burger-menu"><span></span></div><a class="nav-menu__logo" href="/">
@@ -318,10 +328,20 @@
 												<li><a class="top-menu__link" href="about.html"><span>О компании</span></a></li>
 											</ul>
 										</div>
-										<div class="top-menu__box"><a class="top-menu__user" href="#user-modal" id="js-link-user-two">
+										<div class="top-menu__box"><a class="top-menu__user top-menu__user--none" href="#user-modal" id="js-link-user-two">
 												<svg class="svg-user">
 													<use xlink:href="images/sprites.svg#user"></use>
-												</svg><span>Личный кабинет</span></a></div>
+												</svg><span>Личный кабинет</span></a><span class="top-menu__user top-menu__user--block" id="js-user-active-two">
+												<svg class="svg-user">
+													<use xlink:href="images/sprites.svg#user"></use>
+												</svg><span>Антон Прокопьев</span>
+												<svg class="svg-arrow">
+													<use xlink:href="images/sprites.svg#arrow"></use>
+												</svg></span>
+											<div class="top-menu__modal">
+												<div class="top-menu__modal-wrap"><a class="top-menu__modal-item" href="account.html">Личный кабинет</a><a class="top-menu__modal-item" href="account.html">Выйти</a></div>
+											</div>
+										</div>
 										<div class="top-menu__box"><a class="top-menu__tel" href="tel:+73952503587">+7 (3952) 50-35-87</a></div>
 									</div>
 								</div>
@@ -341,10 +361,10 @@
 									</div>
 								</div>
 							</div>
-							<div class="nav-menu__box"><a href="favorites.html" id="js-nav-like">
+							<div class="nav-menu__box"><a class="nav-menu__link-like" href="favorites.html" id="js-nav-like">
 									<svg class="svg-like">
 										<use xlink:href="images/sprites.svg#like"></use>
-									</svg><span>Избранное</span></a><a href="basket.html"><span>Корзина</span>
+									</svg><span>Избранное</span></a><a class="nav-menu__link-basket" href="basket.html"><span>Корзина</span>
 									<div class="nav-menu__shop">
 										<svg class="svg-shop svg-shop--active">
 											<use xlink:href="images/sprites.svg#shop"></use>
@@ -549,8 +569,8 @@
 				</div>
 			</div>
 		</div>
-		<script src="js/vendor.js?v=1551181161726"></script>
+		<script src="js/vendor.js?v=1551244724707"></script>
 		<script src="https://api-maps.yandex.ru/2.1/?apikey=c0de13b2-36aa-4ac2-80e6-6d3fde6821bb&amp;lang=ru_RU" type="text/javascript"></script>
-		<script src="js/main.js?v=1551181161726"></script>
+		<script src="js/main.js?v=1551244724707"></script>
 	</body>
 </html>
