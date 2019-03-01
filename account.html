@@ -11,7 +11,7 @@
 		<link rel="icon" href="images/favicon.ico" sizes="96x96">
 		<link rel="icon" href="images/favicon.ico" sizes="128x128">
 		<link rel="icon" href="images/favicon.ico" sizes="196x196">
-		<link rel="stylesheet" href="css/main.css?v=1551244718188">
+		<link rel="stylesheet" href="css/main.css?v=1551416502946">
 	</head>
 	<body>
 		<div class="to-favorites">В избранное</div>
@@ -381,29 +381,29 @@
 								<div class="account">
 									<h2 class="title-left">Личный кабинет</h2>
 									<div class="account__wrap account__wrap--no-active">
-										<form>
+										<form id="js-form-account">
 											<div class="account__title">Персональные данные</div>
 											<label class="account__label"><span>Имя</span>
-												<input type="text" name="name" placeholder="Антон">
+												<input class="valid" type="text" name="name" value="Антон">
 											</label>
 											<label class="account__label"><span>Мобильный&nbsp;<br>телефон</span>
-												<input type="text" name="phone" placeholder="+7 (908) 669-19-69">
+												<input class="js-form-phone valid" type="text" name="phone" value="+7 (908) 669-19-69">
 											</label>
 											<label class="account__label"><span>Электронная&nbsp;<br>почта</span>
-												<input type="text" name="email" placeholder="inpokon@gmail.com">
+												<input class="valid" type="text" name="email" value="inpokon@gmail.com">
 											</label>
 											<div class="account__bottom account__bottom--no-active">
-												<button class="btn-green">Сохранить</button><span class="btn-grad" id="js-acc-off">Отменить</span>
+												<button class="btn btn-green btn-disabled">Сохранить</button><span class="btn-grad" id="js-acc-off">Отменить</span>
 											</div>
 											<div class="account__bottom"><span class="btn-green btn-green--account" id="js-acc-edit">Редактировать</span></div>
 										</form>
 									</div>
 									<div class="account__password"><span class="btn-green btn-green--account" id="js-acc-pass">Изменить пароль</span></div>
 									<div class="account__wrap account__wrap--disabled" id="js-wrap-pass-edit">
-										<form>
+										<form id="js-form-account-password">
 											<div class="account__title">Пароль и безопасность</div>
 											<label class="modal__label account__label"><span>Старый&nbsp;<br>пароль</span>
-												<input type="password" name="password">
+												<input class="valid" type="password" name="password" value="qwert12345">
 												<div class="modal__pas modal__pas--active">
 													<svg class="svg-pas_1 modal__svg">
 														<use xlink:href="images/sprites.svg#pas_1"></use>
@@ -414,7 +414,7 @@
 												</div>
 											</label>
 											<label class="account__label modal__label"><span>Новый&nbsp;<br>пароль</span>
-												<input type="password" name="password">
+												<input class="valid" type="password" name="password" value="qwert12345">
 												<div class="modal__pas modal__pas--active">
 													<svg class="svg-pas_1 modal__svg">
 														<use xlink:href="images/sprites.svg#pas_1"></use>
@@ -425,7 +425,7 @@
 												</div>
 											</label>
 											<label class="account__label modal__label"><span>Пароль&nbsp;<br>еще раз</span>
-												<input type="password" name="password">
+												<input class="valid" type="password" name="password" value="qwert12345">
 												<div class="modal__pas modal__pas--active">
 													<svg class="svg-pas_1 modal__svg">
 														<use xlink:href="images/sprites.svg#pas_1"></use>
@@ -436,7 +436,7 @@
 												</div>
 											</label>
 											<div class="account__bottom">
-												<button class="btn-green btn-disabled">Сохранить</button><span class="btn-grad" id="js-pass-off">Отменить</span>
+												<button class="btn-green btn-disabled btn">Сохранить</button><span class="btn-grad" id="js-pass-off">Отменить</span>
 											</div>
 										</form>
 									</div>
@@ -603,8 +603,8 @@
 				</div>
 			</div>
 		</div>
-		<script src="js/vendor.js?v=1551244718190"></script>
+		<script src="js/vendor.js?v=1551416502947"></script>
 		<script src="https://api-maps.yandex.ru/2.1/?apikey=c0de13b2-36aa-4ac2-80e6-6d3fde6821bb&amp;lang=ru_RU" type="text/javascript"></script>
-		<script src="js/main.js?v=1551244718190"></script>
+		<script src="js/main.js?v=1551416502947"></script>
 	</body>
 </html>

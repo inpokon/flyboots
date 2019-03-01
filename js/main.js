@@ -617,14 +617,14 @@ function scrollBarFixed() {
 if ($('div').is('.card-product__filter')) {
   tabClickHeightEllement();
 
-  if ($(window).width() >= '1280') {
+  if ($(window).width() >= '768') {
     scrollBarFixed();
   }
 
   $(document).scroll(function () {
     tabClickHeightEllement();
 
-    if ($(window).width() >= '1280') {
+    if ($(window).width() >= '768') {
       scrollBarFixed();
     }
   });
@@ -679,7 +679,7 @@ tab.on('click', function (e) {
   $(this).closest('.card-product__desc').find('.card-product__desc-wrap[data-tab= ' + thisId + ']').addClass('card-product__desc-wrap--active');
   tabClickHeightEllement();
 
-  if ($(window).width() >= '1280') {
+  if ($(window).width() >= '768') {
     scrollBarFixed();
   }
 });
@@ -1122,7 +1122,7 @@ function fixedMenu() {
       navMenuHeight = $navMenu.innerHeight(),
       navMenuTop = $navMenu.offset().top;
 
-  if ($(window).width() >= '1280') {
+  if ($(window).width() >= '768') {
     $(document).scroll(function () {
       var $scrollTop = $(document).scrollTop();
 
@@ -1582,7 +1582,7 @@ $('.product-slide__wrapper').each(function () {
   });
 });
 
-if ($(window).width() >= '1280') {
+if ($(window).width() >= '768') {
   $('.card-product__slider-bottom').slick({
     lazyLoad: 'ondemand',
     infinite: true,
@@ -1658,6 +1658,10 @@ activeBtn('.registration-modal', 5);
 valid('#js-form-quick');
 activeBtn('.quick-modal', 1);
 valid('#js-checkout');
+activeBtn('#js-form-account', 3);
+valid('#js-form-account');
+activeBtn('#js-form-account-password', 3);
+valid('#js-form-account-password');
 
 function activeBtn(modal, col) {
   var input = $('' + modal + ' input');
@@ -1685,6 +1689,9 @@ function activeBtn(modal, col) {
     proverka();
   });
   input.on('click', function () {
+    proverka();
+  });
+  input.one('change', function () {
     proverka();
   });
 }
@@ -2210,7 +2217,7 @@ $(document).ready(function () {
 
   __webpack_require__(/*! ./function/fun.js */ "./src/js/function/fun.js");
 
-  if ($(window).width() < '1280') {
+  if ($(window).width() < '768') {
     __webpack_require__(/*! ./mobile/sliders.js */ "./src/js/mobile/sliders.js");
 
     __webpack_require__(/*! ./mobile/burger-menu.js */ "./src/js/mobile/burger-menu.js");
