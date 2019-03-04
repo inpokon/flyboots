@@ -2487,7 +2487,7 @@ form {
       font-weight: 500;
       display: none; }
       .nav-menu__shop-num--active {
-        display: block; }
+        display: block !important; }
     .nav-menu__shop use {
       -webkit-transition: fill .3s;
       -o-transition: fill .3s;
@@ -3275,14 +3275,17 @@ form {
     font-size: 1.188rem;
     line-height: 1.26;
     margin-top: 12px;
-    margin-bottom: 8px; }
+    margin-bottom: 8px;
+    white-space: nowrap; }
     .product-slide__price span {
-      margin-right: 17px; }
+      margin-right: 17px;
+      white-space: nowrap; }
     .product-slide__price .product-slide__no-price {
       font-size: 1.063rem;
       line-height: 1.41;
       color: #d0271e;
-      text-decoration: line-through; }
+      text-decoration: line-through;
+      white-space: nowrap; }
   .product-slide__box {
     display: -webkit-box;
     display: -webkit-flex;
@@ -5768,18 +5771,21 @@ form {
      -moz-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  margin-bottom: 12px; }
+  margin-bottom: 12px;
+  white-space: nowrap; }
   .card-product__on-item > a {
     font-size: 0.9375rem;
     line-height: 1.33;
     color: #292930;
-    margin-right: 24px; }
+    margin-right: 24px;
+    white-space: nowrap; }
   .card-product__on-item > span {
     font-family: "FiraSans", "Arial", sans-sarif;
     font-size: 0.8125rem;
     font-weight: 500;
     line-height: 1.14;
-    color: #1cd554; }
+    color: #1cd554;
+    white-space: nowrap; }
 
 .card-product .product-slide__price {
   margin-top: 19px;
@@ -5934,21 +5940,15 @@ form {
     font-size: 1rem;
     line-height: 1.5;
     color: #292930; }
-    .basket__price::after {
-      content: ' руб.'; }
   .basket__noprice {
     font-size: 1rem;
     line-height: 1.5;
     color: #d0271e;
     text-decoration: line-through; }
-    .basket__noprice::after {
-      content: ' руб.'; }
   .basket__all {
     font-size: 1rem;
     line-height: 1.5;
     color: #292930; }
-    .basket__all::after {
-      content: ' руб.'; }
   .basket__col {
     display: -webkit-box;
     display: -webkit-flex;
@@ -5964,7 +5964,10 @@ form {
       border-top: 1px solid rgba(41, 41, 48, 0.3);
       border-bottom: 1px solid rgba(41, 41, 48, 0.3);
       text-align: center;
-      pointer-events: none; }
+      pointer-events: none;
+      -webkit-border-radius: 0;
+         -moz-border-radius: 0;
+              border-radius: 0; }
     .basket__col-min {
       -webkit-border-radius: 2px 0 0 2px;
          -moz-border-radius: 2px 0 0 2px;
@@ -6111,8 +6114,6 @@ form {
     color: #292930; }
     .basket__buy-left {
       width: 223px; }
-    .basket__buy-right::after {
-      content: ' руб.'; }
   .basket__buy:nth-child(3) {
     font-family: "FiraSans", "Arial", sans-sarif;
     font-size: 1.125rem;
@@ -6122,8 +6123,6 @@ form {
     margin-top: 12px; }
   .basket__sale::before {
     content: '-'; }
-  .basket__sale::after {
-    content: '%'; }
   .basket__link {
     position: relative; }
     .basket__link svg {
@@ -6538,9 +6537,10 @@ form {
       font-size: 1rem;
       line-height: 2.15;
       color: #393185;
-      cursor: default; }
+      cursor: pointer; }
     .advantage__item--active a {
-      color: #292930; }
+      color: #292930;
+      cursor: default; }
       .advantage__item--active a span {
         border-bottom-color: transparent; }
     .advantage__item--active:hover a {
@@ -8125,7 +8125,10 @@ form {
   .wrapper {
     width: 100vw;
     overflow: hidden;
-    height: auto; }
+    height: -webkit-max-content;
+    height: -moz-max-content;
+    height: max-content;
+    min-height: 100%; }
   body {
     padding-top: 56px; }
   .container {
@@ -8181,7 +8184,9 @@ form {
        -moz-border-radius: 0 0 0 3px;
             border-radius: 0 0 0 3px; }
     .burger-menu--active {
-      left: 320px; }
+      left: -webkit-calc(100vw - 56px);
+      left: -moz-calc(100vw - 56px);
+      left: calc(100vw - 56px); }
       .burger-menu--active span {
         background-color: transparent !important; }
         .burger-menu--active span::before {
@@ -8269,11 +8274,16 @@ form {
     top: 0;
     left: 0;
     width: 100vw;
-    height: 56px; }
+    height: 56px;
+    -webkit-border-radius: 0 0 4px 4px;
+       -moz-border-radius: 0 0 4px 4px;
+            border-radius: 0 0 4px 4px; }
     .nav-menu__list-wrap {
       position: fixed;
       top: 0;
-      left: -320px;
+      left: -webkit-calc(-100vw + 56px);
+      left: -moz-calc(-100vw + 56px);
+      left: calc(-100vw + 56px);
       display: -webkit-box;
       display: -webkit-flex;
       display: -moz-box;
@@ -8286,7 +8296,9 @@ form {
          -moz-box-direction: normal;
           -ms-flex-direction: column;
               flex-direction: column;
-      width: 320px;
+      width: -webkit-calc(100vw - 56px);
+      width: -moz-calc(100vw - 56px);
+      width: calc(100vw - 56px);
       z-index: 3000;
       max-height: 100vh;
       overflow: hidden;
@@ -8298,7 +8310,8 @@ form {
         left: 0; }
     .nav-menu__burger {
       overflow-y: scroll;
-      padding-bottom: 70px; }
+      padding-bottom: 70px;
+      background-color: #ffffff; }
     .nav-menu__list {
       -webkit-box-orient: vertical;
       -webkit-box-direction: normal;
@@ -8975,6 +8988,10 @@ form {
     max-width: 100%; }
   .quick-modal__phone {
     max-width: 100%; }
+  .quick-modal .modal__wrap {
+    padding: 35px 32px 48px; }
+  .quick-modal .modal__form {
+    padding: 0; }
   .main-slider {
     min-height: 148px;
     height: 39vw;
