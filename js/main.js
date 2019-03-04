@@ -2390,7 +2390,7 @@ function windowSize() {
 $('.main .offers__list').slick({
   infinite: false,
   slidesToShow: 2,
-  slidesToScroll: 1,
+  slidesToScroll: 2,
   variableWidth: true,
   arrows: false,
   dots: false
