@@ -2266,6 +2266,7 @@ $('.burger-menu').on('click', function (e) {
 });
 $('.nav-menu__link--doggle').on('click', function (e) {
   e.preventDefault();
+  $(this).toggleClass('nav-menu__link--active');
   $(this).next('.doggle-menu').toggleClass('doggle-menu--active');
 });
 
@@ -2364,6 +2365,7 @@ if ($('div').is('.history-order')) {
 }
 
 $('#js-user-active-two').on('click', function () {
+  $(this).toggleClass('top-menu__user--active');
   $(this).closest('.top-menu__box').find('.top-menu__modal').toggleClass('top-menu__modal--active');
 });
 

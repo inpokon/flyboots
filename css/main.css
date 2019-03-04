@@ -1059,6 +1059,11 @@ a {
   a:focus {
     outline: none; }
 
+@media (min-width: 768.9px) {
+  a:hover {
+    text-decoration: none;
+    color: #292930; } }
+
 button, input {
   outline: none; }
   button:focus, input:focus {
@@ -2315,6 +2320,8 @@ form {
   transition: border-radius .3s;
   transition: border-radius .3s, -webkit-border-radius .3s, -moz-border-radius .3s;
   z-index: 150; }
+  .nav-menu__burger {
+    height: 100%; }
   .nav-menu--active {
     -webkit-border-bottom-left-radius: 0;
        -moz-border-radius-bottomleft: 0;
@@ -2362,6 +2369,8 @@ form {
     display: -ms-flexbox;
     display: flex;
     height: 100%; }
+    .nav-menu__list-wrap {
+      height: 100%; }
     .nav-menu__list li {
       height: 100%; }
   .nav-menu__link {
@@ -3506,7 +3515,8 @@ form {
     position: relative;
     padding-right: 66px;
     padding-bottom: 13px;
-    margin-right: 72px; }
+    margin-right: 72px;
+    z-index: 0; }
     .footer__block-tel .footer__md {
       padding: 0 10px;
       background-color: #f1edde;
@@ -3524,7 +3534,7 @@ form {
          -moz-border-radius: 3px;
               border-radius: 3px;
       border: 1px solid #E0DAC5;
-      z-index: 0; }
+      z-index: -1; }
   .footer__tel {
     display: block;
     font-family: "FiraSans", "Arial", sans-sarif;
@@ -4213,7 +4223,8 @@ form {
         -webkit-align-items: flex-start;
            -moz-box-align: start;
             -ms-flex-align: start;
-                align-items: flex-start; }
+                align-items: flex-start;
+        line-height: normal; }
   .fast-catalog__wrapper--woman {
     background-image: url("../images/shoes_woman_2x.jpg"); }
   .fast-catalog__wrapper--man {
@@ -6373,7 +6384,7 @@ form {
        -moz-border-radius: 3px 0 0 3px;
             border-radius: 3px 0 0 3px;
     border-right: none; }
-  .about__tab:last-child {
+  .about__tab:nth-child(2) {
     -webkit-border-radius: 0 3px 3px 0;
        -moz-border-radius: 0 3px 3px 0;
             border-radius: 0 3px 3px 0;
@@ -8112,7 +8123,8 @@ form {
 @media (min-width: 768.9px) {
   .nav-menu__link:hover {
     background-color: #fff;
-    color: #d0271e; }
+    color: #d0271e;
+    text-decoration: none; }
     .nav-menu__link:hover svg use {
       fill: #d0271e;
       stroke: #d0271e; } }
@@ -8305,13 +8317,15 @@ form {
       -webkit-transition: left .3s;
       -o-transition: left .3s;
       -moz-transition: left .3s;
-      transition: left .3s; }
+      transition: left .3s;
+      height: auto; }
       .nav-menu__list-wrap--active {
         left: 0; }
     .nav-menu__burger {
       overflow-y: scroll;
       padding-bottom: 70px;
-      background-color: #ffffff; }
+      background-color: #ffffff;
+      height: auto; }
     .nav-menu__list {
       -webkit-box-orient: vertical;
       -webkit-box-direction: normal;
@@ -8338,6 +8352,12 @@ form {
       line-height: 1.43;
       border-top: 1px solid #18181d;
       text-transform: capitalize; }
+      .nav-menu__link--active svg {
+        -webkit-transform: rotate(180deg);
+           -moz-transform: rotate(180deg);
+            -ms-transform: rotate(180deg);
+             -o-transform: rotate(180deg);
+                transform: rotate(180deg); }
     .nav-menu__search {
       padding: 0 24px 0 0; }
     .nav-menu__shop {
@@ -8493,6 +8513,12 @@ form {
     max-width: -webkit-max-content;
     max-width: -moz-max-content;
     max-width: max-content; }
+  .top-menu__user--active .svg-arrow {
+    -webkit-transform: rotate(180deg);
+       -moz-transform: rotate(180deg);
+        -ms-transform: rotate(180deg);
+         -o-transform: rotate(180deg);
+            transform: rotate(180deg); }
   .top-menu__user--block .svg-arrow {
     position: absolute;
     top: 16px;
@@ -8504,7 +8530,11 @@ form {
     position: relative;
     right: auto;
     top: auto;
-    width: 100%; }
+    width: 100%;
+    -webkit-transition: none;
+    -o-transition: none;
+    -moz-transition: none;
+    transition: none; }
   .top-menu__modal-wrap {
     border-bottom: none;
     border-left: none;
@@ -8517,6 +8547,11 @@ form {
       padding: 17px 16px 19px; }
     .top-menu__modal-wrap a:last-child {
       border-color: #e1e1e2; }
+  .top-menu__modal-item {
+    font-size: 14px;
+    padding: 13px 16px 16px; }
+  .top-menu__modal-wrap a {
+    padding: 13px 16px 16px; }
   .doggle-menu {
     position: relative;
     top: 0;
@@ -8819,7 +8854,7 @@ form {
             flex-shrink: 0;
     width: 88.5vw;
     margin-right: 12px;
-    min-height: 368px;
+    min-height: 369px;
     padding: 34px 24px 44px; }
   .fast-catalog__list {
     max-height: 270px; }
@@ -9487,7 +9522,11 @@ form {
   .basket__left {
     padding-top: 24px; }
   .basket__link-modal {
-    left: -84px; }
+    left: -84px;
+    -webkit-transition: none;
+    -o-transition: none;
+    -moz-transition: none;
+    transition: none; }
   .header-checkout {
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
