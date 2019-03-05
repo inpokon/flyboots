@@ -409,8 +409,8 @@ var linkModalItem = $('.link-modal__item');
 linkDostavka.on('click', function () {
   $(this).find(linkModal).toggleClass('link-modal--active');
 });
-$(document).mouseup(function (e) {
-  if (!linkModal.is(e.target) && linkModal.has(e.target).length === 0 && linkDostavka.has(e.target).length === 0) {
+$(document).on('mouseup, touchend', function (e) {
+  if (!linkModal.is(e.target) && linkModal.has(e.target).length === 0 && linkDostavka.has(e.target).length === 0 && $('.toolbar__price').has(e.target).length === 0) {
     linkModal.removeClass('link-modal--active');
   }
 });
@@ -444,17 +444,20 @@ filterLink.on('click', function (e) {
   var $this = $(this);
 
   if (!$this.hasClass(filterActive)) {
-    filterBlock.slideUp();
+    filterBlock.removeClass('bx-filter-block--active');
     filterLink.removeClass(filterActive);
+    filterWrap.removeClass('bx-filter-parameters-box--desc-active');
   }
 
-  $this.next('.bx-filter-block').slideToggle();
+  $this.next(filterBlock).toggleClass('bx-filter-block--active');
+  $this.closest(filterWrap).toggleClass('bx-filter-parameters-box--desc-active');
   $this.toggleClass(filterActive);
 });
-$(document).mouseup(function (e) {
-  if (!filterWrap.is(e.target) && filterWrap.has(e.target).length === 0) {
-    filterBlock.slideUp();
+$(document).on('mouseup, touchend', function (e) {
+  if (!filterWrap.is(e.target) && filterWrap.has(e.target).length === 0 && filterLink.has(e.target).length === 0) {
+    filterBlock.removeClass('bx-filter-block--active');
     filterLink.removeClass(filterActive);
+    filterWrap.removeClass('bx-filter-parameters-box--desc-active');
   }
 });
 
@@ -654,7 +657,7 @@ if ($('div').is('.card-product__link-on')) {
     onWrap.toggleClass('card-product__on-wrap--active');
     $(this).toggleClass('card-product__link-on--active');
   });
-  $(document).mouseup(function (e) {
+  $(document).on('mouseup, touchend', function (e) {
     // событие клика по веб-документу
     if (!onWrap.is(e.target) // если клик был не по нашему блоку
     && onWrap.has(e.target).length === 0 && onLink.has(e.target).length === 0) {
@@ -1152,6 +1155,7 @@ if ($('nav').is('.nav-menu')) {
 
 $('.toolbar__price').on('click', function () {
   $(this).toggleClass('asc dasc');
+  $(this).find('.link-modal').toggleClass('link-modal--active');
 });
 $(".filter-price-min, .filter-price-max").keypress(function (event) {
   event = event || window.event;
@@ -1219,7 +1223,7 @@ $radioAdress = $('.modal__item');
 $addressLink.on('click', function () {
   $(this).find($listAdress).toggleClass('modal__address-wrap--active');
 });
-$(document).mouseup(function (e) {
+$(document).on('mouseup, touchend', function (e) {
   if (!$listAdress.is(e.target) && $listAdress.has(e.target).length === 0 && $addressLink.has(e.target).length === 0) {
     $listAdress.removeClass('modal__address-wrap--active');
   }
@@ -1357,7 +1361,7 @@ $linkUserTwo.on('click', function (e) {
     $('input#form-email').focus();
   }, 100);
 });
-$(document).mouseup(function (e) {
+$(document).on('mouseup, touchend', function (e) {
   if (!$modal.is(e.target) && $modal.has(e.target).length === 0) {
     $modal.removeClass(modalActive);
   }
@@ -1460,7 +1464,7 @@ $search.on('click', function () {
     inputNoBlur.focus();
   }, 700);
 });
-$(document).mouseup(function (e) {
+$(document).on('mouseup, touchend', function (e) {
   // событие клика по веб-документу
   if (!$search.is(e.target) // если клик был не по нашему блоку
   && $search.has(e.target).length === 0) {

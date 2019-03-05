@@ -11,7 +11,7 @@
 		<link rel="icon" href="images/favicon.ico" sizes="96x96">
 		<link rel="icon" href="images/favicon.ico" sizes="128x128">
 		<link rel="icon" href="images/favicon.ico" sizes="196x196">
-		<link rel="stylesheet" href="css/main.css?v=1551416508552">
+		<link rel="stylesheet" href="css/main.css?v=1551763520282">
 	</head>
 	<body>
 		<div class="to-favorites">В избранное</div>
@@ -915,14 +915,35 @@
 							</form>
 						</div>
 						<div class="toolbar">
-							<label class="modal__check" for="sort_time">
-								<input type="checkbox" name="check" id="sort_time"><span class="modal__check-text toolbar__check">Новинки сверху</span>
-							</label>
 							<div class="toolbar__box">
 								<div class="toolbar__text">Сортировать:</div><span class="toolbar__price link-dashed-blue-s asc"><span>по возрастанию ценю</span>
 									<svg class="svg-filter">
 										<use xlink:href="images/sprites.svg#arrow"></use>
-									</svg></span>
+									</svg>
+									<div class="link-modal">
+										<ul class="link-modal__wrap">
+											<li class="link-modal__item link-modal__item--active">
+												<label class="link-modal__option">
+													<input class="link-modal__hidden" type="radio" name="toolbar" checked><span>по возрастанию ценю</span>
+												</label>
+											</li>
+											<li class="link-modal__item">
+												<label class="link-modal__option">
+													<input class="link-modal__hidden" type="radio" name="toolbar"><span>по убыванию цены</span>
+												</label>
+											</li>
+											<li class="link-modal__item">
+												<label class="link-modal__option">
+													<input class="link-modal__hidden" type="radio" name="toolbar"><span>новинки сверху</span>
+												</label>
+											</li>
+											<li class="link-modal__item">
+												<label class="link-modal__option">
+													<input class="link-modal__hidden" type="radio" name="toolbar"><span>скидки</span>
+												</label>
+											</li>
+										</ul>
+									</div></span>
 							</div>
 							<div class="toolbar__box">
 								<div class="toolbar__text">Количество предложений:</div><span class="toolbar__count">1 755</span>
@@ -1351,8 +1372,8 @@
 				</div>
 			</div>
 		</div>
-		<script src="js/vendor.js?v=1551416508555"></script>
+		<script src="js/vendor.js?v=1551763520286"></script>
 		<script src="https://api-maps.yandex.ru/2.1/?apikey=c0de13b2-36aa-4ac2-80e6-6d3fde6821bb&amp;lang=ru_RU" type="text/javascript"></script>
-		<script src="js/main.js?v=1551416508555"></script>
+		<script src="js/main.js?v=1551763520286"></script>
 	</body>
 </html>
