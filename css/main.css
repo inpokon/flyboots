@@ -4835,6 +4835,18 @@ input.error {
   .pagination__prev {
     margin-right: 8px; }
 
+.pagination-load {
+  width: 24px;
+  height: 24px;
+  position: relative;
+  -webkit-box-sizing: content-box;
+     -moz-box-sizing: content-box;
+          box-sizing: content-box;
+  margin: 0 auto; }
+  .pagination-load img {
+    width: 100%;
+    height: 100%; }
+
 .modal__subtitle {
   font-family: "FiraSans", "Arial", sans-sarif;
   font-size: 1.375rem;
@@ -5372,14 +5384,57 @@ input.error {
   display: flex;
   -webkit-flex-wrap: wrap;
       -ms-flex-wrap: wrap;
-          flex-wrap: wrap; }
+          flex-wrap: wrap;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+     -moz-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between; }
   .goods .product-slide__wrap {
     min-height: 394px;
-    margin-bottom: 28px; }
+    margin-bottom: 28px;
+    margin-right: 0; }
   .goods .product-slide__wrap:nth-child(4n+4) {
     margin-right: 0; }
   .goods-box {
     margin-top: 60px; }
+  .goods__pages {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    width: 100%;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+       -moz-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    margin-bottom: 47px;
+    margin-top: 13px;
+    font-size: 14px;
+    position: relative;
+    z-index: 0; }
+    .goods__pages span {
+      line-height: 1.43;
+      color: rgba(41, 41, 48, 0.8);
+      background-color: #f8f5ea;
+      padding-left: 16px;
+      padding-right: 16px; }
+    .goods__pages::before {
+      content: '';
+      position: absolute;
+      width: 100%;
+      left: 0;
+      top: 50%;
+      -webkit-transform: translateY(-50%);
+         -moz-transform: translateY(-50%);
+          -ms-transform: translateY(-50%);
+           -o-transform: translateY(-50%);
+              transform: translateY(-50%);
+      height: 1px;
+      background-color: #c0bcab;
+      z-index: -1; }
 
 .card-product {
   margin-top: 71px;
