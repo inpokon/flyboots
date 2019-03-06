@@ -1640,7 +1640,7 @@ if ($(window).width() >= '768') {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-var inputCheck = $('.registration-modal .modal__check input, .checkout__desc-bottom .modal__check input');
+var inputCheck = $('.registration-modal .modal__check input, .checkout__desc-bottom .modal__check input, .quick-modal .modal__check input');
 
 if (inputCheck.prop('checked')) {
   inputCheck.addClass('valid').removeClass('error');
@@ -1662,7 +1662,7 @@ activeBtn('.password-modal', 1);
 valid('#js-form-registration');
 activeBtn('.registration-modal', 5);
 valid('#js-form-quick');
-activeBtn('.quick-modal', 1);
+activeBtn('.quick-modal', 2);
 valid('#js-checkout');
 activeBtn('#js-form-account', 3);
 valid('#js-form-account');
