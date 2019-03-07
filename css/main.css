@@ -2028,7 +2028,6 @@ form {
       background: url(../images/sprites/svg/check.svg) center no-repeat;
       -webkit-background-size: cover;
       -moz-background-size: cover;
-      -o-background-size: cover;
       background-size: cover;
       opacity: 0;
       -webkit-transition: opacity .3s;
@@ -2256,7 +2255,7 @@ input.error {
               justify-content: center;
       cursor: pointer; }
       .top-menu__user--block span {
-        max-width: 90px; }
+        max-width: 125px; }
       .top-menu__user--block .svg-arrow {
         margin-left: 6px; }
         .top-menu__user--block .svg-arrow use {
@@ -2355,7 +2354,7 @@ input.error {
             transform: translateX(-50%);
     width: 100%;
     z-index: 210;
-    max-width: 1075px; }
+    max-width: 1076px; }
   .nav-menu__logo {
     padding-left: 20px;
     padding-right: 22px;
@@ -3984,7 +3983,6 @@ input.error {
       background: url("../images/sprites/svg/check.svg") center no-repeat;
       -webkit-background-size: cover;
       -moz-background-size: cover;
-        -o-background-size: cover;
            background-size: cover;
       opacity: 0;
       -webkit-transition: opacity .3s;
@@ -4292,7 +4290,6 @@ input.error {
             border-radius: 6px;
     -webkit-background-size: cover;
     -moz-background-size: cover;
-      -o-background-size: cover;
          background-size: cover;
     padding: 34px 32px 44px;
     min-height: 296px;
@@ -4961,7 +4958,6 @@ input.error {
     background: url("../images/sprites/svg/arrow.svg") center no-repeat;
     -webkit-background-size: cover;
     -moz-background-size: cover;
-      -o-background-size: cover;
          background-size: cover; }
   .modal__address-link span {
     display: block;
@@ -7854,7 +7850,6 @@ input.error {
     background: url("../images/sprites/svg/arrow.svg") center no-repeat;
     -webkit-background-size: cover;
     -moz-background-size: cover;
-      -o-background-size: cover;
          background-size: cover; }
   .checkout__city-link .link-modal {
     min-width: 258px;
@@ -8023,7 +8018,6 @@ input.error {
     background: url("../images/sprites/svg/arrow.svg") center no-repeat;
     -webkit-background-size: cover;
     -moz-background-size: cover;
-      -o-background-size: cover;
          background-size: cover; }
 
 .hidden {
@@ -8281,7 +8275,6 @@ input.error {
   background: url(../images/sprites/svg/visa_master.svg) center no-repeat;
   -webkit-background-size: contain;
   -moz-background-size: contain;
-    -o-background-size: contain;
        background-size: contain; }
   .checkout .checkout__tabs-pay .about__tab.about__tab--active#js-visa svg use {
     opacity: 0; }
@@ -9928,7 +9921,6 @@ input.error {
       background: url("../images/sprites/svg/arrow.svg") center no-repeat;
       -webkit-background-size: cover;
       -moz-background-size: cover;
-        -o-background-size: cover;
            background-size: cover; }
   .checkout__top {
     border-bottom: none; }

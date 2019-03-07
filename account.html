@@ -11,7 +11,7 @@
 		<link rel="icon" href="images/favicon.ico" sizes="96x96">
 		<link rel="icon" href="images/favicon.ico" sizes="128x128">
 		<link rel="icon" href="images/favicon.ico" sizes="196x196">
-		<link rel="stylesheet" href="css/main.css?v=1551416502946">
+		<link rel="stylesheet" href="css/main.css?v=1551938540682">
 	</head>
 	<body>
 		<div class="to-favorites">В избранное</div>
@@ -21,7 +21,7 @@
 					<svg class="svg-close">
 						<use xlink:href="images/sprites.svg#close"></use>
 					</svg></a>
-				<div class="modal__wrap">
+				<div class="modal__wrap modal__surv">
 					<div class="modal__subtitle">Быстрый заказ со скидкой 15%</div>
 					<form class="modal__form" role="form" method="POST" id="js-form-quick">
 						<div class="modal__block">
@@ -101,9 +101,22 @@
 						</div>
 						<button class="btn btn-red btn-disabled">Заказать</button>
 						<label class="modal__check">
-							<input type="checkbox" name="check" checked><span class="modal__check-text">Я согласен на&nbsp;<a href="#">обработку персональных данных</a></span>
+							<input class="valid" type="checkbox" name="check" checked><span class="modal__check-text">Я согласен на&nbsp;<a href="#">обработку персональных данных</a></span>
 						</label>
 					</form>
+				</div>
+				<div class="modal__wrap modal__ok modal__wrap--active">
+					<div class="modal__title">
+						<div class="card-product__mass-svg">
+							<svg class="svg-check-2">
+								<use xlink:href="images/sprites.svg#check-2"></use>
+							</svg>
+						</div><span>Спасибо за заказ</span>
+					</div>
+					<div class="modal__desc">Заказ можно забрать сегодня по адресу:<br> ул. Советская, 58/1, МТЦ «Новый», пав. 135, с 14:00 до 22:00</div>
+					<div class="modal__desc">Промокод отправлен в смс на номер +7 (999) 999-99-99</div>
+					<div class="modal__bold">К оплате 490 руб.</div><span class="modal__span">Цена с учетом скидки 20%</span>
+					<div class="modal__italic">Если вы хотите изменить заказ, звоните: +7 (3952) 50-35-87</div><span class="btn btn-grad">Продолжить покупки</span>
 				</div>
 			</div>
 		</div>
@@ -124,10 +137,10 @@
 									<li><a class="top-menu__link" href="guarantee.html"><span>Гарантия</span></a></li>
 								</ul>
 							</div>
-							<div class="top-menu__box"><a class="top-menu__user top-menu__user--none" href="#user-modal" id="js-link-user">
+							<div class="top-menu__box"><a class="top-menu__user top-menu__user--block" href="#user-modal" id="js-link-user">
 									<svg class="svg-user">
 										<use xlink:href="images/sprites.svg#user"></use>
-									</svg><span>Личный кабинет</span></a><span class="top-menu__user top-menu__user--block" id="js-user-active">
+									</svg><span>Личный кабинет</span></a><span class="top-menu__user top-menu__user--none" id="js-user-active">
 									<svg class="svg-user">
 										<use xlink:href="images/sprites.svg#user"></use>
 									</svg><span>Антон Прокопьев</span>
@@ -328,10 +341,10 @@
 												<li><a class="top-menu__link" href="about.html"><span>О компании</span></a></li>
 											</ul>
 										</div>
-										<div class="top-menu__box"><a class="top-menu__user top-menu__user--none" href="#user-modal" id="js-link-user-two">
+										<div class="top-menu__box"><a class="top-menu__user top-menu__user--block" href="#user-modal" id="js-link-user-two">
 												<svg class="svg-user">
 													<use xlink:href="images/sprites.svg#user"></use>
-												</svg><span>Личный кабинет</span></a><span class="top-menu__user top-menu__user--block" id="js-user-active-two">
+												</svg><span>Личный кабинет</span></a><span class="top-menu__user top-menu__user--none" id="js-user-active-two">
 												<svg class="svg-user">
 													<use xlink:href="images/sprites.svg#user"></use>
 												</svg><span>Антон Прокопьев</span>
@@ -403,7 +416,7 @@
 										<form id="js-form-account-password">
 											<div class="account__title">Пароль и безопасность</div>
 											<label class="modal__label account__label"><span>Старый&nbsp;<br>пароль</span>
-												<input class="valid" type="password" name="password" value="qwert12345">
+												<input type="password" name="password" value="">
 												<div class="modal__pas modal__pas--active">
 													<svg class="svg-pas_1 modal__svg">
 														<use xlink:href="images/sprites.svg#pas_1"></use>
@@ -414,7 +427,7 @@
 												</div>
 											</label>
 											<label class="account__label modal__label"><span>Новый&nbsp;<br>пароль</span>
-												<input class="valid" type="password" name="password" value="qwert12345">
+												<input class="password" type="password" name="password" value="">
 												<div class="modal__pas modal__pas--active">
 													<svg class="svg-pas_1 modal__svg">
 														<use xlink:href="images/sprites.svg#pas_1"></use>
@@ -425,7 +438,7 @@
 												</div>
 											</label>
 											<label class="account__label modal__label"><span>Пароль&nbsp;<br>еще раз</span>
-												<input class="valid" type="password" name="password" value="qwert12345">
+												<input type="password" name="password_confirmation" value="">
 												<div class="modal__pas modal__pas--active">
 													<svg class="svg-pas_1 modal__svg">
 														<use xlink:href="images/sprites.svg#pas_1"></use>
@@ -572,7 +585,7 @@
 								<input type="text" name="email">
 							</label>
 							<label class="modal__label"><span>Пароль</span>
-								<input type="password" name="password">
+								<input class="password" type="password" name="password">
 								<div class="modal__pas modal__pas--reg modal__pas--active">
 									<svg class="svg-pas_1 modal__svg">
 										<use xlink:href="images/sprites.svg#pas_1"></use>
@@ -583,7 +596,7 @@
 								</div>
 							</label>
 							<label class="modal__label"><span>Пароль<br>еще раз</span>
-								<input type="password" name="password">
+								<input type="password" name="password_confirmation">
 								<div class="modal__pas modal__pas--reg modal__pas--active">
 									<svg class="svg-pas_1 modal__svg">
 										<use xlink:href="images/sprites.svg#pas_1"></use>
@@ -603,8 +616,8 @@
 				</div>
 			</div>
 		</div>
-		<script src="js/vendor.js?v=1551416502947"></script>
+		<script src="js/vendor.js?v=1551938540683"></script>
 		<script src="https://api-maps.yandex.ru/2.1/?apikey=c0de13b2-36aa-4ac2-80e6-6d3fde6821bb&amp;lang=ru_RU" type="text/javascript"></script>
-		<script src="js/main.js?v=1551416502947"></script>
+		<script src="js/main.js?v=1551938540683"></script>
 	</body>
 </html>
