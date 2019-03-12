@@ -409,11 +409,23 @@ var linkModalItem = $('.link-modal__item');
 linkDostavka.on('click', function () {
   $(this).find(linkModal).toggleClass('link-modal--active');
 });
-$(document).on('mouseup, touchend', function (e) {
-  if (!linkModal.is(e.target) && linkModal.has(e.target).length === 0 && linkDostavka.has(e.target).length === 0 && $('.toolbar__price').has(e.target).length === 0) {
-    linkModal.removeClass('link-modal--active');
-  }
-});
+
+if ($(window).width() >= '768') {
+  $(document).on('mouseup', function (e) {
+    if (!linkModal.is(e.target) && linkModal.has(e.target).length === 0 && linkDostavka.has(e.target).length === 0 && $('.toolbar__price').has(e.target).length === 0) {
+      linkModal.removeClass('link-modal--active');
+    }
+  });
+}
+
+if ($(window).width() < '768') {
+  $(document).on('mouseup, touchend', function (e) {
+    if (!linkModal.is(e.target) && linkModal.has(e.target).length === 0 && linkDostavka.has(e.target).length === 0 && $('.toolbar__price').has(e.target).length === 0) {
+      linkModal.removeClass('link-modal--active');
+    }
+  });
+}
+
 linkModalItem.on('click', function () {
   var txt = $(this).text();
   $('#js-dostavka > span').text(txt);
@@ -453,13 +465,26 @@ filterLink.on('click', function (e) {
   $this.closest(filterWrap).toggleClass('bx-filter-parameters-box--desc-active');
   $this.toggleClass(filterActive);
 });
-$(document).on('mouseup, touchend', function (e) {
-  if (!filterWrap.is(e.target) && filterWrap.has(e.target).length === 0 && filterLink.has(e.target).length === 0) {
-    filterBlock.removeClass('bx-filter-block--active');
-    filterLink.removeClass(filterActive);
-    filterWrap.removeClass('bx-filter-parameters-box--desc-active');
-  }
-});
+
+if ($(window).width() >= '768') {
+  $(document).on('mouseup', function (e) {
+    if (!filterWrap.is(e.target) && filterWrap.has(e.target).length === 0 && filterLink.has(e.target).length === 0) {
+      filterBlock.removeClass('bx-filter-block--active');
+      filterLink.removeClass(filterActive);
+      filterWrap.removeClass('bx-filter-parameters-box--desc-active');
+    }
+  });
+}
+
+if ($(window).width() < '768') {
+  $(document).on('mouseup, touchend', function (e) {
+    if (!filterWrap.is(e.target) && filterWrap.has(e.target).length === 0 && filterLink.has(e.target).length === 0) {
+      filterBlock.removeClass('bx-filter-block--active');
+      filterLink.removeClass(filterActive);
+      filterWrap.removeClass('bx-filter-parameters-box--desc-active');
+    }
+  });
+}
 
 for (var i = 0; i < filterParam.length; i++) {
   if ($(filterParam[i]).find('input').prop('checked')) {
@@ -657,15 +682,30 @@ if ($('div').is('.card-product__link-on')) {
     onWrap.toggleClass('card-product__on-wrap--active');
     $(this).toggleClass('card-product__link-on--active');
   });
-  $(document).on('mouseup, touchend', function (e) {
-    // событие клика по веб-документу
-    if (!onWrap.is(e.target) // если клик был не по нашему блоку
-    && onWrap.has(e.target).length === 0 && onLink.has(e.target).length === 0) {
-      // и не по его дочерним элементам
-      onWrap.removeClass('card-product__on-wrap--active');
-      onLink.removeClass('card-product__link-on--active');
-    }
-  });
+
+  if ($(window).width() >= '768') {
+    $(document).on('mouseup', function (e) {
+      // событие клика по веб-документу
+      if (!onWrap.is(e.target) // если клик был не по нашему блоку
+      && onWrap.has(e.target).length === 0 && onLink.has(e.target).length === 0) {
+        // и не по его дочерним элементам
+        onWrap.removeClass('card-product__on-wrap--active');
+        onLink.removeClass('card-product__link-on--active');
+      }
+    });
+  }
+
+  if ($(window).width() < '768') {
+    $(document).on('mouseup, touchend', function (e) {
+      // событие клика по веб-документу
+      if (!onWrap.is(e.target) // если клик был не по нашему блоку
+      && onWrap.has(e.target).length === 0 && onLink.has(e.target).length === 0) {
+        // и не по его дочерним элементам
+        onWrap.removeClass('card-product__on-wrap--active');
+        onLink.removeClass('card-product__link-on--active');
+      }
+    });
+  }
 }
 
 tab.on('click', function (e) {
@@ -723,9 +763,10 @@ var textTwo = $('.checkout__text-two');
 var checkMin = $('.checkout__min');
 var checkTab = $('.checkout__tab');
 
-function checkoutProverka(btn, coll) {
+function checkoutProverka(btn, coll, $this) {
   var inputValid = $('.checkout__desc-bottom input.valid').length;
   var inputError = $('.checkout__desc-bottom input.error').length;
+  var $thisWrap = $this.closest('.checkout__desc-wrap').attr('data-tab');
 
   if (inputError == 0) {
     if (input.hasClass('valid')) {
@@ -737,6 +778,12 @@ function checkoutProverka(btn, coll) {
   } else {
     btn.addClass('btn-dis');
     $('.checkout__error').removeAttr('style');
+
+    if ($thisWrap == 'js-tab-user') {
+      $('.checkout__tab').removeClass('checkout__tab--ok');
+    } else if ($thisWrap == 'js-tab-delivery') {
+      $('.checkout__tab[data-tab="js-tab-order"]').removeClass('checkout__tab--ok');
+    }
   }
 }
 
@@ -811,7 +858,7 @@ $('.link-modal__item').on('click', function () {
     }
 
     if ($(this).closest('.checkout__desc-wrap').find('#js-curier input').prop('checked')) {
-      checkoutProverka(btnTwo, 5);
+      checkoutProverka(btnTwo, 5, $(this));
       $('.checkout__wrap-pickup').removeClass('checkout__wrap--active');
       $('.checkout__wrap-curier').addClass('checkout__wrap--active');
     }
@@ -830,7 +877,7 @@ $('.link-modal__item').on('click', function () {
     $('.checkout__text-two').removeClass('checkout__text-span--active');
     $('.checkout__date').css('display', 'none');
     $('.checkout__date-time').css('display', 'none');
-    checkoutProverka(btnTwo, 5);
+    checkoutProverka(btnTwo, 5, $(this));
     $('#js-cash').css('display', 'none').removeClass('about__tab--active');
     $('#js-visa').addClass('about__tab--active about__tab--one').prop('checked');
     $('.checkout__final').addClass('checkout__final--active');
@@ -907,8 +954,8 @@ function myCalendar() {
 
   if (dayThree.find('input').prop('checked')) {
     timeOne.removeClass('checkout__time--disabled').addClass('checkout__time--active');
-    timeTwo.removeClass('checkout__time--disable checkout__time--active').removeAttr('style').addClass('checkout__time');
-    timeThree.removeClass('checkout__time--disable checkout__time--active').removeAttr('style').addClass('checkout__time');
+    timeTwo.removeAttr('class').addClass('checkout__time');
+    timeThree.removeAttr('class').addClass('checkout__time');
     $('.exact-time__text').text(afterTomorrow.getDate() + ' ' + monthNames[afterTomorrow.getMonth()] + ' ' + timeOne.text());
   }
 }
@@ -956,16 +1003,16 @@ $('.checkout__tab[data-tab="js-tab-order"]').on('click', function (e) {
   funTextRight(false);
 });
 input.on('keyup', function () {
-  checkoutProverka(btnOne, 4);
-  checkoutProverka(btnTwo, 5);
+  checkoutProverka(btnOne, 4, $(this));
+  checkoutProverka(btnTwo, 5, $(this));
 });
 input.on('blur', function () {
-  checkoutProverka(btnOne, 4);
-  checkoutProverka(btnTwo, 5);
+  checkoutProverka(btnOne, 4, $(this));
+  checkoutProverka(btnTwo, 5, $(this));
 });
 input.on('click', function () {
-  checkoutProverka(btnOne, 4);
-  checkoutProverka(btnTwo, 5);
+  checkoutProverka(btnOne, 4, $(this));
+  checkoutProverka(btnTwo, 5, $(this));
 });
 $('#js-curier').on('click', function () {
   deliveryMethod($(this), wrapPickup, wrapCurier, textOne, textTwo, true);
@@ -996,6 +1043,14 @@ $('#js-visa').on('click', function () {
   tabOrder($(this), $('.checkout__btn-cash'), $('.checkout__btn-visa'));
   $('.checkout__final').addClass('checkout__final--active');
 });
+
+if ($('div').is('.checkout__desc-wrap')) {
+  setTimeout(function () {
+    $('.checkout__focus-one').focus();
+  }, 100);
+}
+
+$('.svg-cdek').closest('.about__tab').addClass('about__tab-cdek');
 
 /***/ }),
 
@@ -1223,11 +1278,23 @@ $radioAdress = $('.modal__item');
 $addressLink.on('click', function () {
   $(this).find($listAdress).toggleClass('modal__address-wrap--active');
 });
-$(document).on('mouseup, touchend', function (e) {
-  if (!$listAdress.is(e.target) && $listAdress.has(e.target).length === 0 && $addressLink.has(e.target).length === 0) {
-    $listAdress.removeClass('modal__address-wrap--active');
-  }
-});
+
+if ($(window).width() >= '768') {
+  $(document).on('mouseup', function (e) {
+    if (!$listAdress.is(e.target) && $listAdress.has(e.target).length === 0 && $addressLink.has(e.target).length === 0) {
+      $listAdress.removeClass('modal__address-wrap--active');
+    }
+  });
+}
+
+if ($(window).width() < '768') {
+  $(document).on('mouseup, touchend', function (e) {
+    if (!$listAdress.is(e.target) && $listAdress.has(e.target).length === 0 && $addressLink.has(e.target).length === 0) {
+      $listAdress.removeClass('modal__address-wrap--active');
+    }
+  });
+}
+
 $radioAdress.on('click', function () {
   $radioAdress.removeClass('modal__item--active');
   $(this).addClass('modal__item--active');
@@ -1361,11 +1428,22 @@ $linkUserTwo.on('click', function (e) {
     $('input#form-email').focus();
   }, 100);
 });
-$(document).on('mouseup, touchend', function (e) {
-  if (!$modal.is(e.target) && $modal.has(e.target).length === 0) {
-    $modal.removeClass(modalActive);
-  }
-});
+
+if ($(window).width() >= '768') {
+  $(document).on('mouseup', function (e) {
+    if (!$modal.is(e.target) && $modal.has(e.target).length === 0) {
+      $modal.removeClass(modalActive);
+    }
+  });
+}
+
+if ($(window).width() < '768') {
+  $(document).on('mouseup, touchend', function (e) {
+    if (!$modal.is(e.target) && $modal.has(e.target).length === 0) {
+      $modal.removeClass(modalActive);
+    }
+  });
+}
 
 /***/ }),
 
@@ -1464,17 +1542,34 @@ $search.on('click', function () {
     inputNoBlur.focus();
   }, 700);
 });
-$(document).on('mouseup, touchend', function (e) {
-  // событие клика по веб-документу
-  if (!$search.is(e.target) // если клик был не по нашему блоку
-  && $search.has(e.target).length === 0) {
-    // и не по его дочерним элементам
-    inputNoBlur.blur();
-    $search.removeClass('nav-menu__search--active');
-    $bags.removeClass('no-event');
-    $sertificat.removeClass('no-event');
-  }
-});
+
+if ($(window).width() >= '768') {
+  $(document).on('mouseup', function (e) {
+    // событие клика по веб-документу
+    if (!$search.is(e.target) // если клик был не по нашему блоку
+    && $search.has(e.target).length === 0) {
+      // и не по его дочерним элементам
+      inputNoBlur.blur();
+      $search.removeClass('nav-menu__search--active');
+      $bags.removeClass('no-event');
+      $sertificat.removeClass('no-event');
+    }
+  });
+}
+
+if ($(window).width() < '768') {
+  $(document).on('mouseup, touchend', function (e) {
+    // событие клика по веб-документу
+    if (!$search.is(e.target) // если клик был не по нашему блоку
+    && $search.has(e.target).length === 0) {
+      // и не по его дочерним элементам
+      inputNoBlur.blur();
+      $search.removeClass('nav-menu__search--active');
+      $bags.removeClass('no-event');
+      $sertificat.removeClass('no-event');
+    }
+  });
+}
 
 /***/ }),
 
@@ -1656,33 +1751,25 @@ inputCheck.on('click', function () {
   }
 });
 valid('#js-form-user');
-activeBtn('.user-modal', 2);
+activeBtn('.user-modal', $('#js-form-user'));
 valid('#js-form-password');
-activeBtn('.password-modal', 1);
+activeBtn('.password-modal', $('#js-form-password'));
 valid('#js-form-registration');
-activeBtn('.registration-modal', 5);
+activeBtn('.registration-modal', $('#js-form-registration'));
 valid('#js-form-quick');
-activeBtn('.quick-modal', 2);
+activeBtn('.quick-modal', $('#js-form-quick'));
 valid('#js-checkout');
-activeBtn('#js-form-account', 3);
 valid('#js-form-account');
-activeBtn('#js-form-account-password', 3);
+activeBtn('#js-form-account-password', $('#js-form-account-password'));
 valid('#js-form-account-password');
 
-function activeBtn(modal, col) {
+function activeBtn(modal, forma) {
   var input = $('' + modal + ' input');
   var btn = $('' + modal + ' .btn');
 
   function proverka() {
-    var inputValid = $('' + modal + ' input.valid').length;
-    var inputError = $('' + modal + ' input.error').length;
-
-    if (inputError == 0) {
-      if (input.hasClass('valid')) {
-        if (inputValid >= col) {
-          btn.removeClass('btn-disabled');
-        }
-      }
+    if (forma.valid()) {
+      btn.removeClass('btn-disabled');
     } else {
       btn.addClass('btn-disabled');
     }
@@ -1701,6 +1788,21 @@ function activeBtn(modal, col) {
     proverka();
   });
 }
+
+var inputName = $('input[name="name"]');
+var inputEmail = $('input[name="email"]');
+inputName.on('keypress', function (e) {
+  var char = /["a-zA-Z]/;
+  var val = String.fromCharCode(e.which);
+  var test = char.test(val);
+  if (!test) return false;
+});
+inputEmail.on('keypress', function (e) {
+  var char = /["а-яА-ЯёЁ]/;
+  var val = String.fromCharCode(e.which);
+  var test = char.test(val);
+  if (test) return false;
+});
 
 function valid(form) {
   $.validator.addMethod("minlenghtphone", function (value, element) {
@@ -1721,7 +1823,15 @@ function valid(form) {
       },
       password: {
         required: true,
-        minlength: 3
+        minlength: 6
+      },
+      password_old: {
+        required: true,
+        minlength: 6
+      },
+      password_confirmation: {
+        minlength: 6,
+        equalTo: ".password"
       },
       phone: {
         requiredphone: true,
@@ -1789,6 +1899,45 @@ $(function () {
     placeholder: "_"
   });
 });
+var valNameAcc = $('#js-form-account input[name="name"]').val();
+var valPhoneAcc = $('#js-form-account input[name="phone"]').val();
+var valMailAcc = $('#js-form-account input[name="email"]').val();
+
+function activeBtnAccount() {
+  var input = $('#js-form-account input');
+  var btn = $('#js-form-account .btn');
+
+  function proverka() {
+    var thisValNameAcc = $('#js-form-account input[name="name"]').val();
+    var thisValPhoneAcc = $('#js-form-account input[name="phone"]').val();
+    var thisValMailAcc = $('#js-form-account input[name="email"]').val();
+
+    if ($('#js-form-account').valid()) {
+      if (valMailAcc != thisValMailAcc || valNameAcc != thisValNameAcc || valPhoneAcc != thisValPhoneAcc) {
+        btn.removeClass('btn-disabled');
+      } else {
+        btn.addClass('btn-disabled');
+      }
+    } else {
+      btn.addClass('btn-disabled');
+    }
+  }
+
+  input.on('keyup', function () {
+    proverka();
+  });
+  input.on('blur', function () {
+    proverka();
+  });
+  input.on('click', function () {
+    proverka();
+  });
+  input.one('change', function () {
+    proverka();
+  });
+}
+
+activeBtnAccount();
 
 /***/ }),
 
@@ -2046,7 +2195,13 @@ function initThree() {
   // Подключаем поисковые подсказки к полю ввода.
   var suggestView = new ymaps.SuggestView('suggest'),
       map,
-      placemark; // При клике по кнопке запускаем верификацию введёных данных.
+      placemark;
+  var stateObj = {
+    center: [52.275555, 104.281047],
+    zoom: 12,
+    controls: []
+  };
+  createMap(stateObj, 'Россия, Иркутск'); // При клике по кнопке запускаем верификацию введёных данных.
 
   $('#suggest').on('blur', function () {
     geocode();
@@ -2094,7 +2249,7 @@ function initThree() {
 
 
       if (error) {
-        showError(error);
+        showResult(obj);
       } else {
         showResult(obj);
       }
