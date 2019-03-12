@@ -1878,7 +1878,7 @@ form {
   height: 100vh;
   top: 0;
   left: 0;
-  z-index: 20;
+  z-index: 20 !important;
   background-color: rgba(41, 41, 48, 0.3);
   -webkit-transition: background-color .3s;
   -o-transition: background-color .3s;
@@ -8462,10 +8462,31 @@ label.about__tab-cdek.about__tab {
   .nav-menu__link:hover {
     background-color: #fff;
     color: #d0271e;
-    text-decoration: none; }
+    text-decoration: none;
+    -webkit-transition: all 0s ease .15s;
+    -o-transition: all 0s ease .15s;
+    -moz-transition: all 0s ease .15s;
+    transition: all 0s ease .15s; }
     .nav-menu__link:hover svg use {
       fill: #d0271e;
-      stroke: #d0271e; } }
+      stroke: #d0271e; }
+  .doggle-menu {
+    -webkit-transition: all 0s ease .15s;
+    -o-transition: all 0s ease .15s;
+    -moz-transition: all 0s ease .15s;
+    transition: all 0s ease .15s; }
+  .wrapper::before {
+    content: '';
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    -webkit-transition: background-color 0s ease .15s;
+    -o-transition: background-color 0s ease .15s;
+    -moz-transition: background-color 0s ease .15s;
+    transition: background-color 0s ease .15s; } }
 
 @media (max-width: 768.9px) {
   html,
