@@ -1330,7 +1330,7 @@ form {
     fill: #fff; }
 
 .svg-pay {
-  width: 62px;
+  width: 64px;
   height: 12px; }
 
 .svg-check_s {
@@ -2235,6 +2235,7 @@ input.error {
       border-bottom-color: rgba(41, 41, 48, 0.6); }
   .top-menu__user {
     height: 100%;
+    width: 100%;
     line-height: 56px; }
     .top-menu__user span {
       margin-left: 10px;
@@ -2269,11 +2270,11 @@ input.error {
          -moz-box-align: center;
           -ms-flex-align: center;
               align-items: center;
-      -webkit-box-pack: center;
-      -webkit-justify-content: center;
-         -moz-box-pack: center;
-          -ms-flex-pack: center;
-              justify-content: center;
+      -webkit-box-pack: end;
+      -webkit-justify-content: flex-end;
+         -moz-box-pack: end;
+          -ms-flex-pack: end;
+              justify-content: flex-end;
       cursor: pointer; }
       .top-menu__user--block span {
         max-width: 125px; }
@@ -6115,7 +6116,17 @@ input.error {
     margin-left: 8px; }
 
 .card-product__guarantee {
-  margin-bottom: 12px; }
+  margin-bottom: 12px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+     -moz-box-align: center;
+      -ms-flex-align: center;
+          align-items: center; }
   .card-product__guarantee span {
     font-size: 0.9375rem;
     line-height: 1.6;

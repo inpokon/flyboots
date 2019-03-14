@@ -1051,6 +1051,11 @@ if ($('div').is('.checkout__desc-wrap')) {
 }
 
 $('.svg-cdek').closest('.about__tab').addClass('about__tab-cdek');
+var linkComment = $('.checkout__textarea span');
+var textComment = $('.checkout__textarea textarea');
+linkComment.on('click', function () {
+  textComment.toggleClass('checkout__textarea--active');
+});
 
 /***/ }),
 
@@ -1222,6 +1227,24 @@ if ($('a').is('.top-menu__user--active')) {}
 $('#js-user-active').on('click', function () {
   $(this).closest('.top-menu__box').find('.top-menu__modal').toggleClass('top-menu__modal--active');
 });
+var topModal = $('.top-menu__modal');
+var topUser = $('.top-menu__user');
+
+if ($(window).width() >= '768') {
+  $(document).on('mouseup', function (e) {
+    if (!topModal.is(e.target) && topModal.has(e.target).length === 0 && topUser.has(e.target).length === 0) {
+      topModal.removeClass('top-menu__modal--active');
+    }
+  });
+}
+
+if ($(window).width() < '768') {
+  $(document).on('mouseup, touchend', function (e) {
+    if (!topModal.is(e.target) && topModal.has(e.target).length === 0 && topUser.has(e.target).length === 0) {
+      topModal.removeClass('top-menu__modal--active');
+    }
+  });
+}
 
 /***/ }),
 
@@ -1236,7 +1259,7 @@ if ($(window).width() >= '769') {
   $('.nav-menu__link--doggle').hover(function () {
     $(this).addClass('nav-menu__link--active');
     $(this).next('.doggle-menu').addClass('doggle-menu--active');
-    $('body').addClass('overlay-dark');
+    $('.wrapper').addClass('overlay-dark');
 
     if ($('.doggle-menu').hasClass('doggle-menu--active')) {
       $(this).closest('.nav-menu').addClass('nav-menu--active');
@@ -1245,12 +1268,12 @@ if ($(window).width() >= '769') {
     $(this).next('.doggle-menu').removeClass('doggle-menu--active');
     $(this).removeClass('nav-menu__link--active');
     $(this).closest('.nav-menu').removeClass('nav-menu--active');
-    $('body').removeClass('overlay-dark');
+    $('.wrapper').removeClass('overlay-dark');
   });
   $('.doggle-menu').hover(function () {
     $(this).addClass('doggle-menu--active');
     $(this).prev('.nav-menu__link--doggle').addClass('nav-menu__link--active');
-    $('body').addClass('overlay-dark');
+    $('.wrapper').addClass('overlay-dark');
 
     if ($('.doggle-menu').hasClass('doggle-menu--active')) {
       $(this).closest('.nav-menu').addClass('nav-menu--active');
@@ -1259,7 +1282,7 @@ if ($(window).width() >= '769') {
     $(this).prev('.nav-menu__link--doggle').removeClass('nav-menu__link--active');
     $(this).removeClass('doggle-menu--active');
     $(this).closest('.nav-menu').removeClass('nav-menu--active');
-    $('body').removeClass('overlay-dark');
+    $('.wrapper').removeClass('overlay-dark');
   });
 }
 
@@ -1773,18 +1796,18 @@ function activeBtn(modal, forma) {
     } else {
       btn.addClass('btn-disabled');
     }
-  }
+  } // forma.on('keyup', function () {
+  //     proverka();
+  // });
+  // forma.on('blur',function () {
+  //     proverka();
+  // });
+  // forma.on('click', function () {
+  //     proverka();
+  // });
 
-  input.on('keyup', function () {
-    proverka();
-  });
-  input.on('blur', function () {
-    proverka();
-  });
-  input.on('click', function () {
-    proverka();
-  });
-  input.one('change', function () {
+
+  forma.on('change', function () {
     proverka();
   });
 }
@@ -1844,24 +1867,6 @@ function valid(form) {
         required: true,
         minlength: 5
       }
-    },
-    messages: {
-      name: {
-        required: ''
-      },
-      phone: {
-        required: ''
-      },
-      terms: {
-        required: ''
-      }
-    },
-    errorPlacement: function errorPlacement(error, element) {},
-    highlight: function highlight(element, errorClass, validClass) {
-      $(element).addClass(errorClass).removeClass(validClass);
-    },
-    unhighlight: function unhighlight(element, errorClass, validClass) {
-      $(element).removeClass(errorClass).addClass(validClass);
     },
     submitHandler: function submitHandler(form) {
       //alert("Submitted!");
@@ -2294,8 +2299,8 @@ function initThree() {
     if (!map) {
       map = new ymaps.Map('maps-chekout', state);
       placemark = new ymaps.Placemark(map.getCenter(), {
-        iconCaption: caption,
-        balloonContent: caption
+        iconCaption: false,
+        balloonContent: false
       }, {
         preset: 'islands#redDotIconWithCaption'
       });
@@ -2304,8 +2309,8 @@ function initThree() {
       map.setCenter(state.center, state.zoom);
       placemark.geometry.setCoordinates(state.center);
       placemark.properties.set({
-        iconCaption: caption,
-        balloonContent: caption
+        iconCaption: false,
+        balloonContent: false
       });
     }
   }
