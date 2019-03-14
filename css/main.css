@@ -4410,9 +4410,9 @@ input.error {
     .fast-catalog__box:last-child .fast-catalog__wrapper:first-child {
       height: 456px; }
     .fast-catalog__box:last-child .fast-catalog__wrapper:last-child {
-      height: 136px;
+      height: 100%;
       min-height: 136px;
-      max-height: 136px;
+      max-height: 100%;
       margin-bottom: 0; }
     .fast-catalog__box:last-child .fast-catalog__list {
       max-height: 400px; }
