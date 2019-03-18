@@ -1710,7 +1710,7 @@ if ($(window).width() >= '768') {
   $('.card-product__slider-bottom').slick({
     lazyLoad: 'ondemand',
     infinite: true,
-    slidesToShow: 6,
+    slidesToShow: 1,
     slidesToScroll: 1,
     asNavFor: $('.card-product__slider-top'),
     dots: false,
@@ -1774,40 +1774,45 @@ inputCheck.on('click', function () {
   }
 });
 valid('#js-form-user');
-activeBtn('.user-modal', $('#js-form-user'));
+activeBtn('.user-modal', 2);
 valid('#js-form-password');
-activeBtn('.password-modal', $('#js-form-password'));
+activeBtn('.password-modal', 1);
 valid('#js-form-registration');
-activeBtn('.registration-modal', $('#js-form-registration'));
+activeBtn('.registration-modal', 5);
 valid('#js-form-quick');
-activeBtn('.quick-modal', $('#js-form-quick'));
+activeBtn('.quick-modal', 2);
 valid('#js-checkout');
 valid('#js-form-account');
-activeBtn('#js-form-account-password', $('#js-form-account-password'));
+activeBtn('#js-form-account-password', 3);
 valid('#js-form-account-password');
 
-function activeBtn(modal, forma) {
+function activeBtn(modal, coll) {
   var input = $('' + modal + ' input');
   var btn = $('' + modal + ' .btn');
 
   function proverka() {
-    if (forma.valid()) {
-      btn.removeClass('btn-disabled');
+    var inputValid = $('' + modal + ' input.valid').length;
+    var inputError = $('' + modal + ' input.error').length;
+
+    if (inputError == 0) {
+      if (inputValid >= coll) {
+        btn.removeClass('btn-disabled');
+      }
     } else {
       btn.addClass('btn-disabled');
     }
-  } // forma.on('keyup', function () {
-  //     proverka();
-  // });
-  // forma.on('blur',function () {
-  //     proverka();
-  // });
-  // forma.on('click', function () {
-  //     proverka();
-  // });
+  }
 
-
-  forma.on('change', function () {
+  input.on('keyup', function () {
+    proverka();
+  });
+  input.on('blur', function () {
+    proverka();
+  });
+  input.on('click', function () {
+    proverka();
+  });
+  input.on('change', function () {
     proverka();
   });
 }
@@ -1815,7 +1820,7 @@ function activeBtn(modal, forma) {
 var inputName = $('input[name="name"]');
 var inputEmail = $('input[name="email"]');
 inputName.on('keypress', function (e) {
-  var char = /["a-zA-Z]/;
+  var char = /["а-яА-ЯёЁ]/;
   var val = String.fromCharCode(e.which);
   var test = char.test(val);
   if (!test) return false;
