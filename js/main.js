@@ -2480,21 +2480,20 @@ $('.card-product__desc').appendTo($('.card-product__box--right'));
 /***/ (function(module, exports) {
 
 if ($('div').is('.checkout')) {
-  var colItem = $('.checkout__item').length;
-  var price = $('.checkout__summa').text();
-  var noPrice = $('.checkout__no-price');
-  var count = 0;
-
-  for (var i = 0; i < noPrice.length; i++) {
-    var str = $(noPrice[i]).text();
-    str = str.replace(/\s/g, '');
-    str = Number(str);
-    count = count + str;
-  }
-
-  count = String(count);
-  count = count.replace(/(\d)(?=(\d\d\d)+([^\d]|$))/g, '$1 ');
-  $('.checkout__top-txt').html('<div>В заказе ' + colItem + ' товара на сумму: </div><div class="checkout__top-prices"><div class="checkout__price">' + price + '</div><div class="checkout__no-price">' + count + '</div></div>');
+  // var colItem = $('.checkout__item').length;
+  // var price = $('.checkout__summa').text();
+  // var noPrice = $('.checkout__no-price');
+  // var count = 0;
+  //
+  // for (var i = 0; i < noPrice.length; i++) {
+  //     var str = $(noPrice[i]).text();
+  //     str = str.replace(/\s/g, '');
+  //     str = Number(str);
+  //     count = count + str;
+  // }
+  // count = String(count);
+  // count = count.replace(/(\d)(?=(\d\d\d)+([^\d]|$))/g, '$1 ');
+  // $('.checkout__top-txt').html('<div>В заказе ' + colItem + ' товара на сумму: </div><div class="checkout__top-prices"><div class="checkout__price">' + price + '</div><div class="checkout__no-price">' + count + '</div></div>');
   $('.checkout__top').on('click', function () {
     $(this).toggleClass('checkout__top--active');
     $('.checkout__right-wrap').toggleClass('checkout__right-wrap--active');

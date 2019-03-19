@@ -4,14 +4,14 @@
 	<head>
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
-		<meta name="viewport" content="width=device-width">
+		<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
 		<link rel="icon" href="images/favicon.ico">
 		<link rel="icon" href="images/favicon.ico" sizes="16x16">
 		<link rel="icon" href="images/favicon.ico" sizes="32x32">
 		<link rel="icon" href="images/favicon.ico" sizes="96x96">
 		<link rel="icon" href="images/favicon.ico" sizes="128x128">
 		<link rel="icon" href="images/favicon.ico" sizes="196x196">
-		<link rel="stylesheet" href="css/main.css?v=1551416507060">
+		<link rel="stylesheet" href="css/main.css?v=1552964411505">
 	</head>
 	<body>
 		<div class="wrapper">
@@ -38,7 +38,7 @@
 								<form class="checkout__desc-bottom" id="js-checkout">
 									<div class="checkout__desc-wrap checkout__desc-wrap--active" data-tab="js-tab-user">
 										<label class="checkout__label"><span>Имя</span>
-											<input type="text" name="name">
+											<input class="checkout__focus-one" type="text" name="name">
 										</label>
 										<label class="checkout__label checkout__label--mobile"><span>Мобильный телефон</span>
 											<input class="js-form-phone" type="text" name="phone" placeholder="+7 (000) 000-00-00">
@@ -91,13 +91,13 @@
 												</svg><span>Самовывоз</span>
 												<input class="link-modal__hidden" type="radio" name="deliveryTab" value="pickup" checked>
 											</label>
-											<div class="modal__min checkout__min">Доставка бесплатно</div>
 											<label class="about__tab" id="js-curier">
 												<svg class="svg-curier">
 													<use xlink:href="images/sprites.svg#curier"></use>
 												</svg><span>Курьером</span>
 												<input class="link-modal__hidden" type="radio" name="deliveryTab" value="curier">
 											</label>
+											<div class="modal__min checkout__min">Доставка бесплатно</div>
 										</div>
 										<div class="checkout__tabs-tk checkout__delivery">
 											<label class="about__tab about__tab--active" id="js-tk">
@@ -241,7 +241,13 @@
 							</div><a class="checkout__link desc-hidden" href="#"><span>Изменить</span></a>
 							<div class="checkout__right">
 								<div class="checkout__top">
-									<div class="checkout__top-txt">Мой заказ</div><a class="checkout__link" href="#"><span>Изменить</span></a>
+									<div class="checkout__top-txt"><span class="mob-hidden">Мой заказ</span>
+										<div class="desc-hidden-flex">В заказе: 3 товара на сумму:</div>
+										<div class="checkout__top-prices desc-hidden-flex">
+											<div class="checkout__price desc-hidden-flex">10 000</div>
+											<div class="checkout__no-price desc-hidden-flex">15 000</div>
+										</div>
+									</div><a class="checkout__link" href="#"><span>Изменить</span></a>
 								</div>
 								<div class="checkout__right-wrap">
 									<div class="checkout__main">
@@ -307,8 +313,14 @@
 				</div>
 			</footer>
 		</div>
-		<script src="js/vendor.js?v=1551416507060"></script>
+		<script>
+			document.querySelector("meta[name=viewport]").id = "viewport";
+			if (screen.width < 375) {
+				document.getElementById("viewport").setAttribute("content", "width=375; initial-scale=1; maximum-scale=1");
+			}
+		</script>
+		<script src="js/vendor.js?v=1552964411505"></script>
 		<script src="https://api-maps.yandex.ru/2.1/?apikey=c0de13b2-36aa-4ac2-80e6-6d3fde6821bb&amp;lang=ru_RU" type="text/javascript"></script>
-		<script src="js/main.js?v=1551416507060"></script>
+		<script src="js/main.js?v=1552964411505"></script>
 	</body>
 </html>
