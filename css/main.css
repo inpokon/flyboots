@@ -8600,7 +8600,11 @@ label.about__tab-cdek.about__tab {
     font-size: 14px;
     color: rgba(41, 41, 48, 0.8);
     z-index: 9999;
-    max-width: 290px; } }
+    max-width: 290px; }
+  .card-product .btn-grad {
+    text-transform: lowercase; }
+    .card-product .btn-grad > span {
+      text-transform: inherit; } }
 
 @media (max-width: 768.9px) {
   html,
@@ -9047,6 +9051,16 @@ label.about__tab-cdek.about__tab {
     padding: 13px 16px 16px; }
   .top-menu__modal-wrap a {
     padding: 13px 16px 16px; }
+  .menu-mobile-active {
+    position: relative; }
+    .menu-mobile-active::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 4px;
+      height: 100%;
+      background-color: #d0271e; }
   .doggle-menu {
     position: relative;
     top: 0;
@@ -9686,7 +9700,6 @@ label.about__tab-cdek.about__tab {
       font-size: 17px;
       line-height: 1.41; }
     .card-product__filter .product-slide__box a {
-      text-transform: capitalize;
       margin-bottom: 0; }
     .card-product__filter .product-slide__box span {
       display: none; }
